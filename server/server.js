@@ -8,6 +8,7 @@ const bookedTimesRoute = require("./routes/bookedtimes");
 dotenv.config();
 
 app.use(express.json());
+
 app.use("/auth", authRoute);
 app.use("/users", usersRoute);
 app.use("/booked", bookedTimesRoute);

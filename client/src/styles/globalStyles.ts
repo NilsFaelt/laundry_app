@@ -41,7 +41,7 @@ box-shadow: 1px 1px 1px;
 &:active{
     box-shadow: 0px 0px 0px; 
     background-color:${colors.positive};
-    border:2px solid #ebcbf5;
+    border:2px solid #b7c3e7;
 }
 
 `;
