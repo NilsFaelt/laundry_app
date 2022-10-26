@@ -3,12 +3,11 @@ export const colors = {
   secondary: "",
   positive: "#8798e2",
   danger: "#ff201f",
-  border: "",
   borderBtn: "",
   underlineMain: "",
   underlineSecond: "",
   hover: "",
   hoverDanger: "",
-  activePositive: "#cad9f0",
+  activePositive: "#6983cd",
   activeDanger: "#c50100",
 };

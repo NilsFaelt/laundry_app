@@ -40,7 +40,7 @@ box-shadow: 1px 1px 1px;
 }
 &:active{
     box-shadow: 0px 0px 0px; 
-    background-color:${colors.positive};
+    background-color:${colors.activePositive};
     border:2px solid #b7c3e7;
 }
 
