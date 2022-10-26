@@ -1,13 +1,12 @@
-import './App.css'
+import "./App.css";
+import TestingStyles from "./components/TestingStyles";
 
 function App() {
-  
-
   return (
-    <div className="App">
-    
+    <div className='App'>
+      <TestingStyles />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
