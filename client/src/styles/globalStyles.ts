@@ -32,14 +32,29 @@ cursor:pointer;
 box-shadow: 1px 1px 1px;
 &:hover{
     transition:0.2s;
-    background-color:${colors.positive};
+    background-color:${colors.hover};
     border: none;
     color:white;
     box-shadow: 1.5px 1.5px 1.5px black; 
+
 }
 &:active{
     box-shadow: 0px 0px 0px; 
-    background-color:${colors.activePositive};
+    background-color:${colors.positive};
+    border:2px solid #ebcbf5;
 }
 
+`;
+
+export const DangerBUtton = styles(MainBtn)`
+background-color:${colors.danger};
+&:hover{
+    background-color:${colors.danger};
+    color:white;
+  
+}
+&:active{
+    background-color:${colors.activeDanger};
+    border:2px solid #e3aeaf;
+}
 `;

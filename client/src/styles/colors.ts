@@ -2,7 +2,7 @@ export const colors = {
   primary: "",
   secondary: "",
   positive: "#8798e2",
-  danger: "",
+  danger: "#ff201f",
   border: "",
   borderBtn: "",
   underlineMain: "",
@@ -10,5 +10,5 @@ export const colors = {
   hover: "",
   hoverDanger: "",
   activePositive: "#cad9f0",
-  activeDanger: "",
+  activeDanger: "#c50100",
 };

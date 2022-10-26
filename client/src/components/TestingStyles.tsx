@@ -5,6 +5,7 @@ const TestingStyles = () => {
   return (
     <div>
       <styles.MainBtn>Cl</styles.MainBtn>
+      <styles.DangerBUtton>DANGEr</styles.DangerBUtton>
     </div>
   );
 };
