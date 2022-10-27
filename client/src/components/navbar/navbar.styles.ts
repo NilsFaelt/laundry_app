@@ -4,6 +4,7 @@ import * as globalStyles from "../../styles/globalStyles";
 import { CiCalendarDate } from "react-icons/all";
 import { TfiBook } from "react-icons/all";
 import { BsChatRightText } from "react-icons/all";
+import { NavLink } from "react-router-dom";
 
 export const Container = styles(globalStyles.FlexedContainerRow)`
 position:fixed;
@@ -17,9 +18,14 @@ box-shadow:0px 0px 10px;
 export const Calendar = styles(CiCalendarDate)`
 transform:scale(3.5);
 `;
-export const Laundry = styles(TfiBook)`
+export const MyBookings = styles(TfiBook)`
 transform:scale(2.5);
 `;
 export const Forum = styles(BsChatRightText)`
 transform:scale(2.5);
+`;
+
+export const Link = styles(NavLink)`
+text-decoration:none;
+color:black;
 `;
