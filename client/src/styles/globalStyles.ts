@@ -1,17 +1,23 @@
 import { colors } from "./colors";
 import styles from "styled-components";
 
-export const MainTitle = styles.h1``;
+export const MainTitle = styles.h1`
+font-family: 'Montserrat', sans-serif;
+font-size:calc(15px + 1vw);
+color:white;
+`;
 export const SecondaryTitle = styles.h2``;
 export const ThhirdTitle = styles.h2``;
 
-export const FlexedContainerRow = `
+export const FlexedContainerRow = styles.div`
+background-color:${colors.primary};
 display:flex;
-flex-direction:column;
+flex-direction:row;
 justify-content:center;
 align-items:center;
 `;
-export const FlexedContainerCollumn = `
+export const FlexedContainerCollumn = styles.div`
+background-color:${colors.primary};
 display:flex;
 flex-direction:column;
 justify-content:center;
