@@ -1,9 +1,8 @@
 import axios, { AxiosPromise } from "axios";
 import { useEffect, useState } from "react";
-
 import { getData } from "../redux/bookedTimesSlice";
 
-export function fetchHook() {
+export function useFetchHook() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);

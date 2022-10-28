@@ -1,12 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, Middleware, combineReducers } from "@reduxjs/toolkit";
 import showActiveMenuSlice from "./menuSlice";
 import bookedTimesSlice from "./bookedTimesSlice";
+import logger from "redux-logger";
 
+const reducer = {
+  bookedTimesReducer: bookedTimesSlice,
+  showActiveMenuReducer: showActiveMenuSlice,
+};
 const store = configureStore({
-  reducer: {
-    bookedTimesReducer: bookedTimesSlice,
-    showActiveMenuReducer: showActiveMenuSlice,
-  },
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
