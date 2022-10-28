@@ -1,13 +1,12 @@
 export const colors = {
-  primary: "rgba(225, 225, 225, 0.84)",
+  primary: "rgba(22, 22, 22, 0.80)",
   secondary: "",
   positive: "#8798e2",
   danger: "#ff201f",
   borderBtn: "",
-  underlineMain: "",
-  underlineSecond: "",
+  primaryText: "white",
   hover: "#c8d3f9",
   hoverDanger: "",
-  activePositive: "#eab2f9",
+  activePositive: "#ebd45e",
   activeDanger: "#c50100",
 };
