@@ -19,19 +19,19 @@ const Navbar = () => {
       <styles.Link to={"/myBooking"}>
         <styles.Calendar
           onClick={() => dispatch(activateCalendar())}
-          color={calendar ? colors.activePositive : "white"}
+          color={calendar ? colors.showActiveLink : "white"}
         ></styles.Calendar>
       </styles.Link>
       <styles.Link to={"/myBooking"}>
         <styles.MyBookings
           onClick={() => dispatch(activateBooking())}
-          color={bookings ? colors.activePositive : "white"}
+          color={bookings ? colors.showActiveLink : "white"}
         ></styles.MyBookings>
       </styles.Link>
       <styles.Link to={"/myBooking"}>
         <styles.Forum
           onClick={() => dispatch(activateChat())}
-          color={chat ? colors.activePositive : "white"}
+          color={chat ? colors.showActiveLink : "white"}
         ></styles.Forum>
       </styles.Link>
     </styles.Container>

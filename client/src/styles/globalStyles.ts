@@ -3,10 +3,13 @@ import styles from "styled-components";
 
 export const MainTitle = styles.h1`
 font-family: 'Montserrat', sans-serif;
-font-size:calc(15px + 1vw);
+font-size:calc(30px + 0.5vw);
 color:white;
 `;
-export const SecondaryTitle = styles.h2``;
+export const SecondaryTitle = styles.h2`
+font-family: 'Montserrat', sans-serif;
+font-size:calc(20px + 0.5vw);
+color:white;`;
 export const ThhirdTitle = styles.h2``;
 
 export const FlexedContainerRow = styles.div`
@@ -24,9 +27,20 @@ justify-content:center;
 align-items:center;
 `;
 
+export const Label = styles.label`
+font-family: 'Montserrat', sans-serif;
+font-size:calc(12px + 0.5vw);
+`;
+export const Input = styles.input`
+margin:0 auto;
+width:90%;
+height:30px;
+backgroundcolor:grey;
+font-family: 'Montserrat', sans-serif;
+font-size:calc(12px + 0.5vw);
+`;
+
 export const MainBtn = styles.button`
-margin-top:10vh;
-margin-left:10vh;
 width:clamp(90px, 10vw, 120px);
 height:clamp(30px, 6vh, 60px);
 font-size:calc(10px + 0.5vw);
@@ -35,19 +49,21 @@ border:none;
 border-radius:8px;
 padding:5px;
 cursor:pointer;
-box-shadow: 1px 1px 1px;
+box-shadow: 1px 1px 1px black;
+color:white;
 &:hover{
     transition:0.2s;
     background-color:${colors.hover};
     border: none;
-    color:white;
+    color:black;
     box-shadow: 1.5px 1.5px 1.5px black; 
 
 }
 &:active{
     box-shadow: 0px 0px 0px; 
     background-color:${colors.activePositive};
-    border:2px solid #b7c3e7;
+    border:2px solid ${colors.borderBtn};
+    color:black;
 }
 
 `;

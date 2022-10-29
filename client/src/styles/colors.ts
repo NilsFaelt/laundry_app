@@ -1,12 +1,13 @@
 export const colors = {
   primary: "rgba(22, 22, 22, 0.80)",
   secondary: "",
-  positive: "#8798e2",
+  positive: "grey",
   danger: "#ff201f",
-  borderBtn: "",
+  showActiveLink: "#f8e053",
+  borderBtn: "#e5e1e2",
   primaryText: "white",
-  hover: "#c8d3f9",
+  hover: "#dfe1e8",
   hoverDanger: "",
-  activePositive: "#ebd45e",
+  activePositive: "#e5e6ec",
   activeDanger: "#c50100",
 };
