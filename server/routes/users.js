@@ -1,19 +1,18 @@
 const express = require("express");
+const postNewUser = require("../controllers/users/postNewUserController");
 const Users = require("../models/Users");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("users");
-});
-
-router.post("/", async (req, res) => {
-  const newUser = new Users(req.body);
+router.get("/", async (req, res) => {
   try {
-    const savedUser = newUser.save();
-    res.status(200).json({ user: newUser });
+    const users = await Users.findById(req.body.id).exec();
+    res.status(200).json({ uesr: users });
   } catch (err) {
-    res.status(500).json({ error: err });
+    console.log(err);
+    res.status(500).json({ err });
   }
 });
+
+router.post("/", postNewUser);
 
 module.exports = router;
