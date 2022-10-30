@@ -1,5 +1,5 @@
+import { Navigate, Outlet } from "react-router-dom";
 import Header from "../header/Header";
-import Login from "../login/login/Login";
 import Navbar from "../navbar/Navbar";
 import * as styles from "./root.styles";
 
@@ -8,7 +8,7 @@ const Root = () => {
   return (
     <styles.Container>
       <Header />
-      <Login />
+      {logedin ? <Outlet /> : <Navigate to={"/login"} />}
       <Navbar />
     </styles.Container>
   );

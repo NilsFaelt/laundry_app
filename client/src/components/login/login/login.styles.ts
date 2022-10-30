@@ -1,11 +1,17 @@
 import styles from "styled-components";
 import { colors } from "../../../styles/colors";
 import * as globalStyles from "../../../styles/globalStyles";
+import laundryImg from "../../../assets/img/laundry.png";
+
+export const BackgroundContainer = styles.div`
+width:100vw;
+height:100vh;
+background-image:url(${laundryImg});
+`;
 
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
 margin:0 auto;
-position:absolute;
-top:20vh;
+margin-top:20vh;
 width:clamp(380px, 30vw, 700px);
 height:300px;
 justify-content:flex-start;

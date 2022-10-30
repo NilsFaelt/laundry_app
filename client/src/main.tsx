@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Login from "./components/login/login/Login";
 import MyBookings from "./components/myBookings/MyBookings";
 import Root from "./components/root/Root";
 import "./index.css";
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         element: <MyBookings />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
