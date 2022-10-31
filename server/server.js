@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const usersRoute = require("./routes/users");
 const bookedTimesRoute = require("./routes/bookedtTimes");
+const errorHandler = require("./middlewares/errorHandler");
 dotenv.config();
 
 const connect = async () => {
@@ -30,6 +31,10 @@ app.use(express.json());
 app.use("/auth", authRoute);
 app.use("/users", usersRoute);
 app.use("/booked", bookedTimesRoute);
+
+app.use((err, req, res, next) => {
+  return res.status(500).json("error mufker");
+});
 
 app.get("/", (req, res) => {
   res.send("HELO WORLD");
