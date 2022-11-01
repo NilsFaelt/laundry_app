@@ -43,7 +43,6 @@ const UserSchema = new Schema(
     apartment: {
       type: Number,
       required: true,
-      unique: true,
     },
     adress: {
       type: adressSchema,

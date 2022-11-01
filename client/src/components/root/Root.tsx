@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { CreateUser } from "../createUser/CreateUser";
 import Header from "../header/Header";
 import Navbar from "../navbar/Navbar";
 import * as styles from "./root.styles";
@@ -8,6 +9,7 @@ const Root = () => {
   return (
     <styles.Container>
       <Header />
+      <CreateUser />
       {logedin ? <Outlet /> : <Navigate to={"/login"} />}
       <Navbar />
     </styles.Container>

@@ -3,6 +3,7 @@ const app = express();
 const PORT = 8080;
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const authRoute = require("./routes/auth");
 const usersRoute = require("./routes/users");
 const bookedTimesRoute = require("./routes/bookedtTimes");
@@ -26,6 +27,7 @@ mongoose.connection.on("connected", () => {
 });
 
 app.use(express.json());
+app.use(cors({ origin: "*" }));
 
 app.use("/auth", authRoute);
 app.use("/users", usersRoute);

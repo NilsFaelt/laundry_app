@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const postNewUser = async (req, res, next) => {
   const salt = 10;
   const hashPassword = bcrypt.hashSync(req.body.password, salt);
+  const email = req.body.email;
+  const user = await Users.findOne({ email });
 
   const newUser = new Users({
     name: req.body.name,
@@ -13,19 +15,23 @@ const postNewUser = async (req, res, next) => {
     brf: req.body.brf,
     apartment: req.body.apartment,
     adress: {
-      adress: req.body.adress.adress,
-      city: req.body.adress.city,
-      postal: req.body.adress.postal,
+      adress: req.body.adress,
+      city: req.body.city,
+      postal: req.body.postal,
     },
     bookingNr: req.body.bookingNr,
     admin: req.body.admin,
     nrOfActiveBookings: req.body.nrOfActiveBookings,
   });
-  try {
-    const savedUser = newUser.save();
-    res.status(200).json({ user: newUser });
-  } catch (err) {
-    next(err);
+  if (!user) {
+    try {
+      const savedUser = newUser.save();
+      res.status(200).json({ user: newUser });
+    } catch (err) {
+      next(err);
+    }
+  } else {
+    res.status(403).json({ user: "already exsists" });
   }
 };
 

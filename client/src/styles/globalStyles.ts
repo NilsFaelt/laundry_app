@@ -35,7 +35,6 @@ export const Input = styles.input`
 margin:0 auto;
 width:90%;
 height:30px;
-backgroundcolor:grey;
 font-family: 'Montserrat', sans-serif;
 font-size:calc(12px + 0.5vw);
 `;
