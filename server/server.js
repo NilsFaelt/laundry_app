@@ -18,7 +18,7 @@ const connect = async () => {
     throw err;
   }
 };
-
+//REMOVE
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDb were disconnected");
 });
