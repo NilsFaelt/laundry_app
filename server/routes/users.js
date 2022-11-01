@@ -2,10 +2,8 @@ const express = require("express");
 const deleteUser = require("../controllers/users/deleteUser");
 const getAllUsers = require("../controllers/users/getUsers");
 const findById = require("../controllers/users/getOneUser");
-const postNewUser = require("../controllers/users/postNewUserController");
+const postNewUser = require("../controllers/users/postNewUser");
 const updateUser = require("../controllers/users/updateUser");
-
-const Users = require("../models/Users");
 
 const router = express.Router();
 

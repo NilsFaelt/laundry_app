@@ -16,52 +16,55 @@ const adressSchema = new Schema({
   },
 });
 
-const UserSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+const UserSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      min: 6,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    brf: {
+      type: String,
+      required: true,
+    },
+    apartment: {
+      type: Number,
+      required: true,
+      unique: true,
+    },
+    adress: {
+      type: adressSchema,
+      required: true,
+    },
+    bookingNr: {
+      type: Number,
+      required: true,
+    },
+    admin: {
+      type: Boolean,
+      default: false,
+    },
+    nrOfActiveBookings: {
+      type: Number,
+      min: 0,
+      max: 3,
+    },
   },
-  lastName: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    min: 6,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  brf: {
-    type: String,
-    required: true,
-  },
-  apartment: {
-    type: Number,
-    required: true,
-    unique: true,
-  },
-  adress: {
-    type: adressSchema,
-    required: true,
-  },
-  bookingNr: {
-    type: Number,
-    required: true,
-  },
-  admin: {
-    type: Boolean,
-    default: false,
-  },
-  nrOfActiveBookings: {
-    type: Number,
-    min: 0,
-    max: 3,
-  },
-});
+  { timestamps: true }
+);
 
 const Users = mongoose.model("Users", UserSchema);
 

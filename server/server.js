@@ -26,19 +26,12 @@ mongoose.connection.on("connected", () => {
 });
 
 app.use(express.json());
-app.use(express.json());
 
 app.use("/auth", authRoute);
 app.use("/users", usersRoute);
 app.use("/booked", bookedTimesRoute);
 
-app.use((err, req, res, next) => {
-  return res.status(500).json("error mufker");
-});
-
-app.get("/", (req, res) => {
-  res.send("HELO WORLD");
-});
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   connect();

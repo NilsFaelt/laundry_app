@@ -1,23 +1,26 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const BookedTimesSchema = new Schema({
-  laundryRoom: {
-    type: String,
+const BookedTimesSchema = new Schema(
+  {
+    laundryRoom: {
+      type: String,
+    },
+    dateForBooking: {
+      type: String,
+      required: true,
+    },
+    user: {
+      type: String,
+      required: true,
+    },
+    bookedHours: {
+      type: Number,
+      required: true,
+    },
   },
-  dateForBooking: {
-    type: String,
-    required: true,
-  },
-  user: {
-    type: String,
-    required: true,
-  },
-  bookedHours: {
-    type: Number,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 const BookedTimes = mongoose.model("BookedTimes", BookedTimesSchema);
 module.exports = BookedTimes;
