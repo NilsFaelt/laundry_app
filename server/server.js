@@ -3,6 +3,7 @@ const app = express();
 const PORT = 8080;
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const authRoute = require("./routes/auth");
 const usersRoute = require("./routes/users");
@@ -25,7 +26,7 @@ mongoose.connection.on("disconnected", () => {
 mongoose.connection.on("connected", () => {
   console.log("mongoDb were conected");
 });
-
+app.use(cookieParser());
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 

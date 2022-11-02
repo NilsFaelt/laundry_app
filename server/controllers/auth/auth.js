@@ -1,6 +1,7 @@
 const Users = require("../../models/Users");
 const bcrypt = require("bcrypt");
 const customError = require("../../utils/customError");
+const jwt = require("jsonwebtoken");
 
 const authUser = async (req, res, next) => {
   const email = req.body.email;
@@ -12,8 +13,15 @@ const authUser = async (req, res, next) => {
       user.password
     );
     if (!isPassworCorrect) return next(customError(400, "wrong password"));
-
-    res.status(200).json({ user: user, message: "sucess" });
+    const token = jwt.sign(
+      { id: user.id, isAdmin: user.admin },
+      process.env.JWT
+    );
+    const { password, ...otherDetails } = user._doc;
+    res
+      .cookie("acesstoken", token, { httpOnly: true })
+      .status(200)
+      .json({ user: { ...otherDetails }, message: "sucess" });
   } catch (err) {
     next(err);
   }
