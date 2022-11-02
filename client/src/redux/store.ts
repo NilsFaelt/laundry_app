@@ -2,10 +2,12 @@ import { configureStore, Middleware, combineReducers } from "@reduxjs/toolkit";
 import showActiveMenuSlice from "./menuSlice";
 import bookedTimesSlice from "./bookedTimesSlice";
 import logger from "redux-logger";
+import userSlice from "./userSlice";
 
 const reducer = {
   bookedTimesReducer: bookedTimesSlice,
   showActiveMenuReducer: showActiveMenuSlice,
+  userReducer: userSlice,
 };
 const store = configureStore({
   reducer,

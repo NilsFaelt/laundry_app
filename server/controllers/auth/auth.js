@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const customError = require("../../utils/customError");
 
 const authUser = async (req, res, next) => {
-  console.log("hej in auth");
   const email = req.body.email;
   try {
     const user = await Users.findOne({ email });

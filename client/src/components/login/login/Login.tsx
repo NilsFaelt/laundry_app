@@ -3,17 +3,28 @@ import * as styles from "./login.styles";
 import { LoginInfo } from "../../../types/loginTypes";
 import { changeInputInfo } from "./utils/changeInputInfo";
 import { login } from "../../../api/login";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../../redux/userSlice";
+import { RootState } from "../../../redux/store";
+import { Navigate } from "react-router-dom";
+
 const Login = () => {
+  const dispatch = useDispatch();
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({
     email: null,
     password: null,
   });
 
+  const user = useSelector((state: RootState) => state.userReducer);
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const test = await login(loginInfo);
-    console.log(test, "in comp");
+    const user = await login(loginInfo);
+    if (user) {
+      dispatch(loginUser(user));
+      <Navigate to={"/myBooking"} />;
+    }
   };
+  console.log(user, " in login ny friend");
   return (
     <styles.BackgroundContainer>
       <styles.Container>

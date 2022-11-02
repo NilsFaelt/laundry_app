@@ -1,7 +1,7 @@
-import React from "react";
+import * as styles from "./myBookings.style";
 
 const MyBookings = () => {
-  return <div>MyBookings</div>;
+  return <styles.BackgroundContainer>jkcfbeqrkjh</styles.BackgroundContainer>;
 };
 
 export default MyBookings;

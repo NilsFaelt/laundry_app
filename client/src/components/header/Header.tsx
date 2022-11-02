@@ -3,10 +3,8 @@ import * as styles from "./header.styles";
 import { toogleMenu } from "../../redux/menuSlice";
 import DropDownUserMenu from "./dropDownUserMenu/DropDownUserMenu";
 import { RootState } from "../../redux/store";
-import { useFetchHook } from "../../hooks/bluePrintFetchHook";
 
 const Header = () => {
-  const test2 = useFetchHook();
   const { userMenu } = useSelector(
     (state: RootState) => state.showActiveMenuReducer
   );

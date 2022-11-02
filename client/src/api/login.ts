@@ -8,7 +8,7 @@ export const login = async (loginInfo: any) => {
       loginInfo
     );
     console.log(user);
-    return user;
+    return user.data.user;
   } catch (err) {
     console.log(err);
   }

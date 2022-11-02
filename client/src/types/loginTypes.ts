@@ -1,4 +1,4 @@
 export interface LoginInfo {
-  Email: string | null;
-  Password: string | null;
+  email: string | null;
+  password: string | null;
 }

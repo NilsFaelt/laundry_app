@@ -16,11 +16,11 @@ const router = createBrowserRouter([
         path: "myBooking",
         element: <MyBookings />,
       },
+      {
+        path: "login",
+        element: <Login />,
+      },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
   },
 ]);
 

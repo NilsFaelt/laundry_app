@@ -1,15 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as styles from "./dropDownUserMenu.styles";
 import { RootState } from "../../../redux/store";
 import { useRef } from "react";
 import { useClickOustsideToClose } from "../../../hooks/useClickOustsideToClose";
+import { loggOutUser } from "../../../redux/userSlice";
+import { Navigate } from "react-router-dom";
 
 const DropDownUserMenu = () => {
+  const user = useSelector((state: any) => state.userMenu);
+  const dispatch = useDispatch();
   const menuRef = useRef(null);
   const { userMenu, firstTooglge } = useSelector(
     (state: RootState) => state.showActiveMenuReducer
   );
   useClickOustsideToClose(menuRef);
+  const handleLoggout = () => {
+    dispatch(loggOutUser());
+  };
   return (
     <>
       {firstTooglge ? (
@@ -30,6 +37,7 @@ const DropDownUserMenu = () => {
             Settings
           </styles.Link>
           <styles.Link
+            onClick={handleLoggout}
             animation={userMenu ? "open-animation-nav" : "close-animation-nav"}
             to={"/"}
           >
