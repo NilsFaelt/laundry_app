@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import { createUser } from "../../api/createUser";
+import { UserType } from "../../types/userType";
 import * as styles from "./createUser.style";
-import { handleSubmit } from "./utils/handleSubmit";
 import { validateAdmin } from "./utils/validateAdmin";
 
 export const CreateUser = () => {
+  const [createdUser, setCreatedUser] = useState<UserType | null>(null);
   const [dropDownValue, setDropDownValue] = useState("false");
   const [admin, setAdmin] = useState(false);
   const [createUserInfo, setCreateUserInfo] = useState({
@@ -28,6 +30,16 @@ export const CreateUser = () => {
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    createUserInfo: UserType
+  ) => {
+    e.preventDefault();
+    const data = await createUser(createUserInfo);
+    setCreatedUser(data);
+    console.log(data, " in handel");
   };
 
   return (

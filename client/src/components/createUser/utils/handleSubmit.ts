@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createUser } from "../../../api/createUser";
 import { UserType } from "../../../types/userType";
 
 export const handleSubmit = async (
@@ -6,13 +7,6 @@ export const handleSubmit = async (
   createUserInfo: UserType
 ) => {
   e.preventDefault();
-  try {
-    const user = await axios.post(
-      "http://localhost:8080/users",
-      createUserInfo
-    );
-    console.log(user);
-  } catch (err) {
-    console.log(err);
-  }
+  const data = createUser(createUserInfo);
+  return data;
 };
