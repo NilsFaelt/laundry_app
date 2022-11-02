@@ -4,8 +4,7 @@ const bcrypt = require("bcrypt");
 const postNewUser = async (req, res, next) => {
   const salt = 10;
   const hashPassword = bcrypt.hashSync(req.body.password, salt);
-  const email = req.body.email;
-  const user = await Users.findOne({ email });
+  const user = await Users.findOne({ email: req.body.email });
 
   const newUser = new Users({
     name: req.body.name,
