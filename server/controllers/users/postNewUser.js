@@ -31,7 +31,7 @@ const postNewUser = async (req, res, next) => {
       next(err);
     }
   } else {
-    res.status(403).json({ user: "already exsists" });
+    res.status(403).json({ message: "something went  wrong" });
   }
 };
 

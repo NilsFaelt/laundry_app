@@ -3,6 +3,7 @@ import { useState } from "react";
 import { createUser } from "../../api/createUser";
 import { UserType } from "../../types/userType";
 import * as styles from "./createUser.style";
+import PopUpCreatedUser from "./popUp/PopUpCreatedUser";
 import { validateAdmin } from "./utils/validateAdmin";
 
 export const CreateUser = () => {
@@ -22,7 +23,7 @@ export const CreateUser = () => {
     bookingNr: null,
     admin: admin,
   });
-
+  console.log(createdUser);
   const handleDropDown = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDropDownValue(e.target.value);
     const validatedAdminString = validateAdmin(dropDownValue);
@@ -39,11 +40,18 @@ export const CreateUser = () => {
     e.preventDefault();
     const data = await createUser(createUserInfo);
     setCreatedUser(data);
-    console.log(data, " in handel");
   };
 
   return (
-    <styles.Container>
+    <styles.Container onClick={() => setCreatedUser(null)}>
+      {createdUser ? (
+        <PopUpCreatedUser
+          user={createdUser}
+          setCreatedUser={setCreatedUser}
+          text={"Created"}
+        />
+      ) : null}
+      {}
       <styles.Title>Create User</styles.Title>
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
