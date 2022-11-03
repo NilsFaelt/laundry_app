@@ -5,12 +5,11 @@ const findById = require("../controllers/users/getOneUser");
 const postNewUser = require("../controllers/users/postNewUser");
 const updateUser = require("../controllers/users/updateUser");
 const verifyToken = require("../utils/verifyToken");
-
 const router = express.Router();
 
 router.get("/checkIfauth", verifyToken);
 router.get("/", getAllUsers);
-router.get("/getOne", findById);
+router.post("/getOne", findById);
 router.put("/:id", updateUser);
 router.post("/", postNewUser);
 router.delete("/:id", deleteUser);

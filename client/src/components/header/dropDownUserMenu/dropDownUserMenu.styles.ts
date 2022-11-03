@@ -26,7 +26,7 @@ animation-fill-mode: forwards;
   transition:0.2s;
   background-color:${colors.primary};
   text-decoration:underline 1px solid   ${colors.activePositive};
-  box-shadow:3px 3px 3px  white;
+  border:1px solid white;
 }
 &:active{
   transition:0.2s;

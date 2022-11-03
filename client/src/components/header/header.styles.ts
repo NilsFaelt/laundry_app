@@ -24,7 +24,7 @@ export const User = styles(CiUser)`
 color:white;
 position:absolute;
 right:1px;
-transform:scale(3);
+transform:scale(2.5);
 margin-right:30px;
 &:hover{
 cursor:pointer;

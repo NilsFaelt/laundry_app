@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 import { createUser } from "../../api/createUser";
+import { getOneUser } from "../../api/getOneUser";
 import { UserType } from "../../types/userType";
 import * as styles from "./createUser.style";
 import PopUpCreatedUser from "./popUp/PopUpCreatedUser";
 import { validateAdmin } from "./utils/validateAdmin";
 
 export const CreateUser = () => {
+  const [userExsists, setUserexsists] = useState(false);
   const [createdUser, setCreatedUser] = useState<UserType | null>(null);
   const [dropDownValue, setDropDownValue] = useState("false");
   const [admin, setAdmin] = useState(false);
@@ -23,7 +25,7 @@ export const CreateUser = () => {
     bookingNr: null,
     admin: admin,
   });
-  console.log(createdUser);
+
   const handleDropDown = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDropDownValue(e.target.value);
     const validatedAdminString = validateAdmin(dropDownValue);
@@ -38,10 +40,16 @@ export const CreateUser = () => {
     createUserInfo: UserType
   ) => {
     e.preventDefault();
-    const data = await createUser(createUserInfo);
-    setCreatedUser(data);
+    const user = await getOneUser(createUserInfo.email);
+    if (user) {
+      setUserexsists(true);
+    } else {
+      setUserexsists(false);
+      const data = await createUser(createUserInfo);
+      setCreatedUser(data);
+    }
   };
-
+  console.log(userExsists);
   return (
     <styles.Container onClick={() => setCreatedUser(null)}>
       {createdUser ? (
@@ -53,6 +61,7 @@ export const CreateUser = () => {
       ) : null}
       {}
       <styles.Title>Create User</styles.Title>
+      {userExsists ? <styles.P>User already exsists</styles.P> : null}
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
           handleSubmit(e, createUserInfo)

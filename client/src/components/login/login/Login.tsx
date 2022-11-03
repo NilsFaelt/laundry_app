@@ -20,7 +20,6 @@ const Login = () => {
 
   return (
     <styles.BackgroundContainer>
-      {user ? <Navigate to={"/myBooking"} /> : null}
       <styles.Container>
         <styles.Title>Login</styles.Title>
         {showLoginFailed ? <styles.P>Couldnt Login</styles.P> : null}
