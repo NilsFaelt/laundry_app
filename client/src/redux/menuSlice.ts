@@ -47,6 +47,15 @@ const showActiveMenuSlice = createSlice({
     closeOusideClick: (state) => {
       return { ...state, userMenu: false };
     },
+    handelDropDownClick: (state) => {
+      return {
+        ...state,
+        calendar: false,
+        bookings: false,
+        chat: false,
+        userMenu: false,
+      };
+    },
   },
 });
 
@@ -56,5 +65,6 @@ export const {
   activateChat,
   toogleMenu,
   closeOusideClick,
+  handelDropDownClick,
 } = showActiveMenuSlice.actions;
 export default showActiveMenuSlice.reducer;

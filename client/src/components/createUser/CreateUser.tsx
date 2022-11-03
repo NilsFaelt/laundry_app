@@ -135,3 +135,5 @@ export const CreateUser = () => {
     </styles.Container>
   );
 };
+
+export default CreateUser;

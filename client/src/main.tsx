@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/login/login/Login";
 import MyBookings from "./components/myBookings/MyBookings";
+import CreateUser from "./components/createUser/CreateUser";
 import Root from "./components/root/Root";
 import "./index.css";
 import store from "./redux/store";
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "createUser",
+        element: <CreateUser />,
       },
     ],
   },
