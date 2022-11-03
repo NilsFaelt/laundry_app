@@ -7,7 +7,7 @@ export const login = async (loginInfo: any) => {
       `http://${apiConfig.url}:${apiConfig.port}/auth`,
       loginInfo
     );
-    console.log(user);
+    console.log(user, "user");
     return user.data.user;
   } catch (err) {
     console.log(err);

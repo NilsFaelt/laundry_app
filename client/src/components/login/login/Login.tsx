@@ -7,29 +7,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../../redux/userSlice";
 import { RootState } from "../../../redux/store";
 import { Navigate } from "react-router-dom";
+import { handleLogin } from "./utils/handleLogin";
 
 const Login = () => {
+  const [showLoginFailed, setsShowLoginFailed] = useState(false);
+  const user = useSelector((state: RootState) => state.userReducer);
   const dispatch = useDispatch();
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({
     email: null,
     password: null,
   });
 
-  const user = useSelector((state: RootState) => state.userReducer);
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const user = await login(loginInfo);
-    if (user) {
-      dispatch(loginUser(user));
-      <Navigate to={"/myBooking"} />;
-    }
-  };
-  console.log(user, " in login ny friend");
   return (
     <styles.BackgroundContainer>
       <styles.Container>
         <styles.Title>Login</styles.Title>
-        <styles.Form onSubmit={(e) => handleLogin(e)}>
+        {showLoginFailed ? <styles.P>Couldnt Login</styles.P> : null}
+        <styles.Form
+          onSubmit={(e) =>
+            handleLogin(e, loginInfo, setsShowLoginFailed, dispatch)
+          }
+        >
           <styles.Input
             required
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
