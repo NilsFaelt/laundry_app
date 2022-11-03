@@ -18,6 +18,7 @@ const DropDownUserMenu = () => {
   useClickOustsideToClose(menuRef);
 
   const handleLoggout = () => {
+    dispatch(handelDropDownClick());
     dispatch(loggOutUser());
   };
   return (
@@ -53,7 +54,6 @@ const DropDownUserMenu = () => {
             </styles.Link>
           ) : null}
           <styles.Link
-            onClick={() => dispatch(handelDropDownClick())}
             onClick={handleLoggout}
             animation={userMenu ? "open-animation-nav" : "close-animation-nav"}
             to={"/"}

@@ -11,10 +11,11 @@ interface NavProps {
 }
 
 export const Link = styles(NavLink)<NavProps>`
-width:199%;
-padding:20px;
+width:84%;
+padding:8%;
 border-bottom:1px solid black;
-font-size:calc(12px + 1.8vw);
+border-radius:5px;
+font-size:15px ;
 background-color:grey;
 color:${colors.primaryText};
 text-decoration:none;
@@ -51,11 +52,12 @@ animation-fill-mode: forwards;
 export const UserMenu = styles(globalStyles.FlexedContainerCollumn)<MenuProps>`
 justify-content:flex-start;
 align-items:flex-start;
-gap:0.2vh;
+gap:0.4vh;
 position:absolute;
 top:70px;
 right:0vw;
-width:clamp(300px, 30vw, 500px);
+width:clamp(300px, 30vw, 300px);
+padding:5px;
 border-radius:5px 0px 0px 5px;
 background-color:${colors.primary};
 box-shadow:10px 10px 10px  black;
@@ -65,18 +67,21 @@ animation-fill-mode: forwards;
 
 @keyframes open-animation {
     0% { height: 0vh;
-         width: 0vw; }
+         width: 0vw;}
 
-    100% { height:50vh;
-        width:clamp(300px, 30vw, 500px)
+    100% { max-height:auto;
+        width:clamp(300px, 30vw, 300px)
         box-shadow:10px 10px 10px grey;
+        padding:5px;
         ; }
    }
 @keyframes close-animation {
     0% { height:50vh;
         width:clamp(300px, 30vw, 500px); }
     100% { height: 0vh;
-         width: 0vw; }
+         width: 0vw;
+         padding:0px;
+        }
  
    }
 `;
