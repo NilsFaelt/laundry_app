@@ -31,14 +31,14 @@ const DropDownUserMenu = () => {
           <styles.Link
             onClick={() => dispatch(handelDropDownClick())}
             animation={userMenu ? "open-animation-nav" : "close-animation-nav"}
-            to={"/"}
+            to={"/myBooking"}
           >
             MyBookings
           </styles.Link>
           <styles.Link
             onClick={() => dispatch(handelDropDownClick())}
             animation={userMenu ? "open-animation-nav" : "close-animation-nav"}
-            to={"/"}
+            to={"/settings"}
           >
             Settings
           </styles.Link>
