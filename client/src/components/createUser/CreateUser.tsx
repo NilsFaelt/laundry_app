@@ -1,10 +1,8 @@
-import axios from "axios";
 import { useState } from "react";
-import { createUser } from "../../api/createUser";
-import { getOneUser } from "../../api/getOneUser";
 import { UserType } from "../../types/userType";
 import * as styles from "./createUser.style";
 import PopUpCreatedUser from "./popUp/PopUpCreatedUser";
+import { handleSubmit } from "./utils/handleSubmit";
 import { validateAdmin } from "./utils/validateAdmin";
 
 export const CreateUser = () => {
@@ -35,21 +33,6 @@ export const CreateUser = () => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>,
-    createUserInfo: UserType
-  ) => {
-    e.preventDefault();
-    const user = await getOneUser(createUserInfo.email);
-    if (user) {
-      setUserexsists(true);
-    } else {
-      setUserexsists(false);
-      const data = await createUser(createUserInfo);
-      setCreatedUser(data);
-    }
-  };
-  console.log(userExsists);
   return (
     <styles.Container onClick={() => setCreatedUser(null)}>
       {createdUser ? (
@@ -64,7 +47,7 @@ export const CreateUser = () => {
       {userExsists ? <styles.P>User already exsists</styles.P> : null}
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-          handleSubmit(e, createUserInfo)
+          handleSubmit(e, createUserInfo, setUserexsists, setCreatedUser)
         }
       >
         <styles.Input
