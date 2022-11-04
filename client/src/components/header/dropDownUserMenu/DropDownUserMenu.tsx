@@ -48,6 +48,17 @@ const DropDownUserMenu = () => {
               animation={
                 userMenu ? "open-animation-nav" : "close-animation-nav"
               }
+              to={"/allUsers"}
+            >
+              All Users
+            </styles.Link>
+          ) : null}
+          {admin ? (
+            <styles.Link
+              onClick={() => dispatch(handelDropDownClick())}
+              animation={
+                userMenu ? "open-animation-nav" : "close-animation-nav"
+              }
               to={"/createUser"}
             >
               Add User
