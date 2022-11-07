@@ -1,17 +1,24 @@
 import { useState } from "react";
+import { updateUser } from "../../../api/updateUser";
+import { UserType, UserTypeWithNestedAdress } from "../../../types/userType";
 import { validateAdmin } from "../../createUser/utils/validateAdmin";
 import * as styles from "./updatePopUp.style";
+import { changeUserStructubforebeforeSend } from "./utils/changeUserStructubforebeforeSend";
 
 interface Props {
-  user: any;
+  user: UserTypeWithNestedAdress;
+  setChoosenUser: React.Dispatch<
+    React.SetStateAction<UserTypeWithNestedAdress | null>
+  >;
 }
 
-const UpdatePopUp: React.FC<Props> = ({ user }) => {
+const UpdatePopUp: React.FC<Props> = ({ user, setChoosenUser }) => {
   const [userExsists, setUserexsists] = useState(false);
   const [dropDownValue, setDropDownValue] = useState("false");
   const [admin, setAdmin] = useState(false);
-
+  console.log(user);
   const [createUserInfo, setCreateUserInfo] = useState({
+    id: user._id,
     name: user.name,
     lastName: user.lastName,
     email: user.email,
@@ -31,12 +38,22 @@ const UpdatePopUp: React.FC<Props> = ({ user }) => {
     const validatedAdminString = validateAdmin(dropDownValue);
     setAdmin(validatedAdminString);
   };
-  console.log(createUserInfo);
+
+  const updateUseOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const newStructure = await changeUserStructubforebeforeSend(createUserInfo);
+    console.log(newStructure);
+    updateUser(newStructure);
+    e.preventDefault();
+    console.log("sub");
+  };
   return (
     <styles.Container>
+      <styles.Close onClick={() => setChoosenUser(null)}></styles.Close>
       <styles.Title>Update User</styles.Title>
       {userExsists ? <styles.P>User already exsists</styles.P> : null}
-      <styles.Form>
+      <styles.Form
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => updateUseOnSubmit(e)}
+      >
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
@@ -71,7 +88,7 @@ const UpdatePopUp: React.FC<Props> = ({ user }) => {
           name='apartment'
           placeholder='Apartment'
           type={"number"}
-          value={createUserInfo.apartment}
+          value={createUserInfo.apartment!}
         ></styles.Input>
         <styles.Input
           required={true}
@@ -93,7 +110,7 @@ const UpdatePopUp: React.FC<Props> = ({ user }) => {
           name='postal'
           placeholder='Postal'
           type={"number"}
-          value={createUserInfo.postal}
+          value={createUserInfo.postal!}
         ></styles.Input>
         <styles.Input
           required={true}
@@ -101,7 +118,7 @@ const UpdatePopUp: React.FC<Props> = ({ user }) => {
           name='bookingNr'
           placeholder='BookingNr'
           type={"number"}
-          value={createUserInfo.bookingNr}
+          value={createUserInfo.bookingNr!}
         ></styles.Input>
         <styles.Select
           required={true}

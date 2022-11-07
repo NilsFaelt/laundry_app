@@ -24,7 +24,7 @@ export const User = styles(CiUser)`
 color:white;
 position:absolute;
 right:1px;
-transform:scale(2.5);
+transform:scale(2.8);
 margin-right:30px;
 &:hover{
 cursor:pointer;
@@ -47,8 +47,6 @@ box-shadow:10px 10px 10px  black;
 animation-name: ${(props) => props.animation};
 animation-duration: 0.5s;
 animation-fill-mode: forwards;
-
-
 
 @keyframes open-animation {
     0% { height: 0vh;

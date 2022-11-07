@@ -1,6 +1,7 @@
 import styles from "styled-components";
 import { colors } from "../../../styles/colors";
 import * as loginStyles from "../../login/login/login.styles";
+import { AiFillCloseCircle } from "react-icons/all";
 
 export const Container = styles(loginStyles.Container)`
 position: absolute;
@@ -11,7 +12,7 @@ height:auto;
 margin-top:12vh;
 margin-bottom:10vh;
 padding-bottom:5vh;
-z-index:1;
+z-index:0;
 background-color:rgba(22, 22, 22, 1)
 `;
 export const Title = styles(loginStyles.Title)``;
@@ -36,4 +37,12 @@ export const Form = styles(loginStyles.Form)``;
 export const P = styles.p`
 color:${colors.danger};
 font.size:12px;
+`;
+
+export const Close = styles(AiFillCloseCircle)`
+position:absolute;
+left:5vw;
+top:3vh;
+color:${colors.danger};
+transform:scale(2.5)
 `;

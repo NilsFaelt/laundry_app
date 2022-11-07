@@ -64,6 +64,8 @@ box-shadow:10px 10px 10px  black;
 animation-name: ${(props) => props.animation};
 animation-duration: 0.5s;
 animation-fill-mode: forwards;
+z-index:1;
+
 
 @keyframes open-animation {
     0% { height: 0vh;
@@ -73,6 +75,7 @@ animation-fill-mode: forwards;
         width:clamp(300px, 30vw, 300px)
         box-shadow:10px 10px 10px grey;
         padding:5px;
+        z-index-3;
         ; }
    }
 @keyframes close-animation {

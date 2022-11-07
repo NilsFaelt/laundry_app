@@ -6,7 +6,7 @@ import * as loginStyles from "../login/login/login.styles";
 
 export const BackgroundContainer = styles.div`
 width:100vw;
-min-height:100vh;
+min-height:120vh;
 background-image:url(${laundryImg});
 `;
 
@@ -19,7 +19,6 @@ overflow:scroll;
 `;
 export const DisplayUserContainer = styles.div`
 height:100%;
-
 padding-bottom:5vh;
 overflow:scroll;
 box-shadow:0px 0px 0px;

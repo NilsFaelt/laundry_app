@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useGetAllUsers } from "../../hooks/useGetAllUsers";
-import { UserType } from "../../types/userType";
+import { UserType, UserTypeWithNestedAdress } from "../../types/userType";
 import * as styles from "./allUsers.style";
 import UpdatePopUp from "./updatePopUp/UpdatePopUp";
 
 const AllUsers = () => {
-  const [choosenUser, setChoosenUser] = useState<UserType | null>(null);
+  const [choosenUser, setChoosenUser] =
+    useState<UserTypeWithNestedAdress | null>(null);
   const [input, setInput] = useState("");
-  const [filteredUsers, setFilteredUsers] = useState<UserType[] | null>(null);
+  const [filteredUsers, setFilteredUsers] = useState<
+    UserTypeWithNestedAdress[] | null
+  >(null);
   const userData = useGetAllUsers();
   console.log(choosenUser);
 
@@ -24,7 +27,9 @@ const AllUsers = () => {
   }, [input]);
   return (
     <styles.BackgroundContainer>
-      {choosenUser ? <UpdatePopUp user={choosenUser} /> : null}
+      {choosenUser ? (
+        <UpdatePopUp setChoosenUser={setChoosenUser} user={choosenUser} />
+      ) : null}
       <styles.UserContainer>
         <styles.Label>Search User</styles.Label>
         <styles.Input
@@ -33,7 +38,7 @@ const AllUsers = () => {
           }
         ></styles.Input>
         <styles.DisplayUserContainer>
-          {filteredUsers?.map((user: UserType) => {
+          {filteredUsers?.map((user: UserTypeWithNestedAdress) => {
             return (
               <styles.P onClick={() => setChoosenUser(user)}>
                 {user.email}
