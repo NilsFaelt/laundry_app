@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import { getAllUsers } from "../api/getAllUsers";
+import { UserTypeWithNestedAdress } from "../types/userType";
 
-export const useGetAllUsers = () => {
-  const [data, setData] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
+export const useGetAllUsers = (): {
+  data: UserTypeWithNestedAdress[] | null;
+  loading: boolean;
+  error: any;
+} => {
+  const [data, setData] = useState<UserTypeWithNestedAdress[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
+  console.log(data, "in use getall");
   const fetch = async () => {
     setLoading(true);
     try {
       const users = await getAllUsers();
 
-      setData(users);
+      setData(users.users);
     } catch (err) {
       setError(err);
     } finally {
@@ -21,5 +27,6 @@ export const useGetAllUsers = () => {
   useEffect(() => {
     fetch();
   }, []);
+  console.log(data, "users in fetch");
   return { data: data, loading: loading, error: error };
 };

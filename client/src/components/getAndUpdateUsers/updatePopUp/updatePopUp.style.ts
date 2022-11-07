@@ -41,7 +41,7 @@ font.size:12px;
 
 export const Close = styles(AiFillCloseCircle)`
 position:absolute;
-left:5vw;
+left:20px;
 top:3vh;
 color:${colors.danger};
 transform:scale(2.5)

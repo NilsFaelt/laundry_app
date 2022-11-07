@@ -15,12 +15,10 @@ const AllUsers = () => {
   console.log(choosenUser);
 
   const searchUser = () => {
-    const data = userData?.data?.users?.filter((user: UserType) =>
-      user.email.includes(input)
-    );
-    setFilteredUsers(data);
-    console.log(data);
+    const data = userData?.data?.filter((user) => user.email.includes(input));
+    if (data) setFilteredUsers(data);
   };
+  console.log(userData, "äuserdata");
 
   useEffect(() => {
     searchUser();
