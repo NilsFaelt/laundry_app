@@ -7,9 +7,26 @@ export const handleSubmit = async (
   e: any,
   createUserInfo: UserType,
   setUserexsists: React.Dispatch<React.SetStateAction<boolean>>,
-  setCreatedUser: React.Dispatch<React.SetStateAction<UserType | null>>
+  setCreatedUser: React.Dispatch<React.SetStateAction<UserType | null>>,
+  admin: boolean,
+  setCreateUserInfo: React.Dispatch<
+    React.SetStateAction<{
+      name: string;
+      lastName: string;
+      password: string;
+      email: string;
+      brf: string;
+      apartment: null;
+      adress: string;
+      city: string;
+      postal: null;
+      bookingNr: null;
+      admin: boolean;
+    }>
+  >
 ) => {
   e.preventDefault();
+  await setCreateUserInfo((prev) => ({ ...prev, admin: admin }));
   const user = await getOneUser(createUserInfo.email);
   if (user) {
     setUserexsists(true);

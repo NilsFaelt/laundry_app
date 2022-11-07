@@ -9,16 +9,24 @@ top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
 height:auto;
-margin-top:12vh;
+margin-top:22vh;
 margin-bottom:10vh;
 padding-bottom:5vh;
+gap:0vh;
 z-index:0;
 background-color:rgba(22, 22, 22, 1)
 `;
 export const Title = styles(loginStyles.Title)``;
+export const Lable = styles.label`
+align-self:flex-start;
+margin-left:18px;
+color:white;
+font-size:12px`;
 export const Input = styles(loginStyles.Input)`
 font-family:serif;
 font-size:16px;
+
+
 `;
 export const Select = styles.select`
 width:200px;
@@ -38,11 +46,15 @@ export const P = styles.p`
 color:${colors.danger};
 font.size:12px;
 `;
+export const PGreen = styles.p`
+color:${colors.positive};
+font.size:12px;
+`;
 
 export const Close = styles(AiFillCloseCircle)`
 position:absolute;
 left:20px;
 top:3vh;
-color:${colors.danger};
+color:white;
 transform:scale(2.5)
 `;

@@ -5,9 +5,10 @@ import * as styles from "./allUsers.style";
 import UpdatePopUp from "./updatePopUp/UpdatePopUp";
 
 const AllUsers = () => {
+  const [triggerFetchUser, setTriggerFetchUsers] = useState(false);
+  const [input, setInput] = useState("");
   const [choosenUser, setChoosenUser] =
     useState<UserTypeWithNestedAdress | null>(null);
-  const [input, setInput] = useState("");
   const [filteredUsers, setFilteredUsers] = useState<
     UserTypeWithNestedAdress[] | null
   >(null);
@@ -21,6 +22,7 @@ const AllUsers = () => {
   useEffect(() => {
     searchUser();
   }, [input]);
+
   return (
     <styles.BackgroundContainer>
       {choosenUser ? (
@@ -36,7 +38,7 @@ const AllUsers = () => {
         <styles.DisplayUserContainer>
           {filteredUsers?.map((user: UserTypeWithNestedAdress) => {
             return (
-              <styles.P onClick={() => setChoosenUser(user)}>
+              <styles.P key={user._id} onClick={() => setChoosenUser(user)}>
                 {user.email}
               </styles.P>
             );

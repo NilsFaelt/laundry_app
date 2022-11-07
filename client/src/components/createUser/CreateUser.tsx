@@ -21,14 +21,17 @@ export const CreateUser = () => {
     city: "",
     postal: null,
     bookingNr: null,
-    admin: admin,
+    admin: false,
   });
+  console.log(createUserInfo);
+  console.log(admin);
 
   const handleDropDown = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDropDownValue(e.target.value);
     const validatedAdminString = validateAdmin(dropDownValue);
     setAdmin(validatedAdminString);
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -42,12 +45,19 @@ export const CreateUser = () => {
           text={"Created"}
         />
       ) : null}
-      {}
+
       <styles.Title>Create User</styles.Title>
       {userExsists ? <styles.P>User already exsists</styles.P> : null}
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-          handleSubmit(e, createUserInfo, setUserexsists, setCreatedUser)
+          handleSubmit(
+            e,
+            createUserInfo,
+            setUserexsists,
+            setCreatedUser,
+            admin,
+            setCreateUserInfo
+          )
         }
       >
         <styles.Input

@@ -5,7 +5,7 @@ interface Adress {
 }
 
 export interface UserType {
-  id: string;
+  id?: string;
   name: string;
   lastName: string;
   password: string;
@@ -18,6 +18,7 @@ export interface UserType {
   bookingNr: number | null;
   admin: boolean;
 }
+
 export interface UserTypeWithNestedAdress {
   name: string;
   lastName: string;
