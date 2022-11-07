@@ -5,7 +5,7 @@ import { AiFillCloseCircle } from "react-icons/all";
 
 export const Container = styles(loginStyles.Container)`
 position: absolute;
-top: 50%;
+top: 55%;
 left: 50%;
 transform: translate(-50%, -50%);
 height:auto;

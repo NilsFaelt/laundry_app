@@ -6,7 +6,7 @@ import * as loginStyles from "../login/login/login.styles";
 
 export const BackgroundContainer = styles.div`
 width:100vw;
-min-height:150vh;
+min-height:160vh;
 background-image:url(${laundryImg});
 `;
 

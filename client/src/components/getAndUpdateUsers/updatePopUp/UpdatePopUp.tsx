@@ -121,7 +121,7 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
           type={"number"}
           value={createUserInfo.bookingNr!}
         ></styles.Input>
-        {!user.admin ? (
+        {user.admin ? (
           <styles.PGreen>{user.name} is admin</styles.PGreen>
         ) : null}
         <styles.Select
