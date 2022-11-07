@@ -1,18 +1,11 @@
 import { useState } from "react";
 import { updateUser } from "../../../api/updateUser";
-import { UserType, UserTypeWithNestedAdress } from "../../../types/userType";
 import { validateAdmin } from "../../createUser/utils/validateAdmin";
 import * as styles from "./updatePopUp.style";
 import { changeUserStructubforebeforeSend } from "./utils/changeUserStructubforebeforeSend";
+import { UpdateUserProps } from "./Types";
 
-interface Props {
-  user: UserTypeWithNestedAdress;
-  setChoosenUser: React.Dispatch<
-    React.SetStateAction<UserTypeWithNestedAdress | null>
-  >;
-}
-
-const UpdatePopUp: React.FC<Props> = ({ user, setChoosenUser }) => {
+const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
   const [userExsists, setUserexsists] = useState(false);
   const [dropDownValue, setDropDownValue] = useState("false");
   const [admin, setAdmin] = useState(false);
@@ -41,7 +34,6 @@ const UpdatePopUp: React.FC<Props> = ({ user, setChoosenUser }) => {
 
   const updateUseOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const newStructure = await changeUserStructubforebeforeSend(createUserInfo);
-    console.log(newStructure);
     updateUser(newStructure);
     e.preventDefault();
     console.log("sub");
