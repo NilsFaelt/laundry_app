@@ -12,13 +12,11 @@ const AllUsers = () => {
     UserTypeWithNestedAdress[] | null
   >(null);
   const userData = useGetAllUsers();
-  console.log(choosenUser);
 
   const searchUser = () => {
     const data = userData?.data?.filter((user) => user.email.includes(input));
     if (data) setFilteredUsers(data);
   };
-  console.log(userData, "äuserdata");
 
   useEffect(() => {
     searchUser();
