@@ -1,18 +1,13 @@
-import { useState } from "react";
-import { updateUser } from "../../../api/updateUser";
-import { validateAdmin } from "../../createUser/utils/validateAdmin";
+import { useEffect, useState } from "react";
 import * as styles from "./updatePopUp.style";
-import { changeUserStructubforebeforeSend } from "./utils/changeUserStructubforebeforeSend";
 import { UpdateUserProps } from "./Types";
 import { updateUserOnSubmit } from "./utils/updateUserOnSubmit";
 import { handleDropDown } from "./utils/handleDropDown";
-import { User } from "../../header/header.styles";
 
 const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
   const [userExsists, setUserexsists] = useState(false);
   const [dropDownValue, setDropDownValue] = useState("false");
   const [admin, setAdmin] = useState(false);
-  console.log(user);
   const [createUserInfo, setCreateUserInfo] = useState({
     id: user._id,
     name: user.name,
@@ -26,15 +21,16 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
     bookingNr: user.bookingNr,
     admin: admin,
   });
+  console.log(admin);
+  useEffect(() => {
+    if (user.admin) setAdmin(true);
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  // const handleDropDown = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //   setDropDownValue(e.target.value);
-  //   const validatedAdminString = validateAdmin(dropDownValue);
-  //   setAdmin(validatedAdminString);
-  // };
-  console.log(admin);
+
+  //FIX UPDATE ALL USERS
 
   return (
     <styles.Container>
@@ -124,15 +120,27 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
         {user.admin ? (
           <styles.PGreen>{user.name} is admin</styles.PGreen>
         ) : null}
-        <styles.Select
-          required={true}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-            handleDropDown(e, setDropDownValue, setAdmin, dropDownValue)
-          }
-        >
-          <styles.Option value={"false"}>User</styles.Option>
-          <styles.Option value={"true"}>Admin</styles.Option>
-        </styles.Select>
+        {user.admin ? (
+          <styles.Select
+            required={true}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              handleDropDown(e, setDropDownValue, setAdmin, dropDownValue)
+            }
+          >
+            <styles.Option value={"true"}>Admin</styles.Option>
+            <styles.Option value={"false"}>User</styles.Option>
+          </styles.Select>
+        ) : (
+          <styles.Select
+            required={true}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              handleDropDown(e, setDropDownValue, setAdmin, dropDownValue)
+            }
+          >
+            <styles.Option value={"false"}>User</styles.Option>
+            <styles.Option value={"true"}>Admin</styles.Option>
+          </styles.Select>
+        )}
         <styles.Btn>Create</styles.Btn>
       </styles.Form>
     </styles.Container>

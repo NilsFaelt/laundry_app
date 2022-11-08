@@ -1,5 +1,4 @@
 import { updateUser } from "../../../../api/updateUser";
-import { UserType, UserTypeWithNestedAdress } from "../../../../types/userType";
 import { changeUserStructubforebeforeSend } from "./changeUserStructubforebeforeSend";
 
 export const updateUserOnSubmit = async (
