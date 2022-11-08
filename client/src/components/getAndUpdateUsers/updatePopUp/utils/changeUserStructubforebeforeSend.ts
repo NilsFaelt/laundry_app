@@ -12,11 +12,7 @@ interface User {
   id?: string;
 }
 
-export const changeUserStructubforebeforeSend = async (
-  user: User,
-  admin: boolean
-) => {
-  console.log(user, "in changfe");
+export const changeUserStructubforebeforeSend = async (user: User) => {
   const newUserStructure = {
     id: user.id,
     name: user.name,
@@ -30,7 +26,7 @@ export const changeUserStructubforebeforeSend = async (
       postal: user.postal,
     },
     bookingNr: user.bookingNr,
-    admin: admin,
+    admin: user?.admin,
   };
   return newUserStructure;
 };

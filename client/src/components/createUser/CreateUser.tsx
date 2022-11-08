@@ -3,12 +3,10 @@ import { UserType } from "../../types/userType";
 import * as styles from "./createUser.style";
 import PopUpCreatedUser from "./popUp/PopUpCreatedUser";
 import { handleSubmit } from "./utils/handleSubmit";
-import { validateAdmin } from "./utils/validateAdmin";
 
 export const CreateUser = () => {
   const [userExsists, setUserexsists] = useState(false);
   const [createdUser, setCreatedUser] = useState<UserType | null>(null);
-  const [dropDownValue, setDropDownValue] = useState("false");
   const [admin, setAdmin] = useState(false);
   const [createUserInfo, setCreateUserInfo] = useState({
     name: "",
@@ -21,14 +19,8 @@ export const CreateUser = () => {
     city: "",
     postal: null,
     bookingNr: null,
-    admin: false,
+    admin: admin,
   });
-
-  const handleDropDown = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDropDownValue(e.target.value);
-    const validatedAdminString = validateAdmin(dropDownValue);
-    setAdmin(validatedAdminString);
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -125,16 +117,20 @@ export const CreateUser = () => {
           placeholder='BookingNr'
           type={"number"}
         ></styles.Input>
-        <styles.Select
-          required={true}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-            handleDropDown(e)
-          }
-        >
-          <styles.Option value={"false"}>User</styles.Option>
-          <styles.Option value={"true"}>Admin</styles.Option>
-        </styles.Select>
-        <styles.Btn>Create</styles.Btn>
+        {admin ? (
+          <styles.PNeutral>Admin</styles.PNeutral>
+        ) : (
+          <styles.P>Not Admin</styles.P>
+        )}
+        <styles.BtnDiv>
+          <styles.PstvBtn type='button' onClick={() => setAdmin(true)}>
+            Admin
+          </styles.PstvBtn>
+          <styles.DangerBtn type='button' onClick={() => setAdmin(false)}>
+            Not Admin
+          </styles.DangerBtn>
+        </styles.BtnDiv>
+        <styles.Btn type='submit'>Create</styles.Btn>
       </styles.Form>
     </styles.Container>
   );

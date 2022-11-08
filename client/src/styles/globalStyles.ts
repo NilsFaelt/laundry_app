@@ -43,7 +43,7 @@ export const MainBtn = styles.button`
 width:clamp(90px, 10vw, 120px);
 height:clamp(30px, 6vh, 60px);
 font-size:calc(10px + 0.5vw);
-background-color:${colors.positive};
+background-color:${colors.grey};
 border:none;
 border-radius:8px;
 padding:5px;
@@ -70,12 +70,17 @@ color:white;
 export const DangerBUtton = styles(MainBtn)`
 background-color:${colors.danger};
 &:hover{
-    background-color:${colors.danger};
-    color:white;
-  
+    transition:0.2s;
+    background-color:${colors.hover};
+    border: none;
+    color:black;
+    box-shadow: 1.5px 1.5px 1.5px black; 
+
 }
 &:active{
-    background-color:${colors.activeDanger};
-    border:2px solid #e3aeaf;
+    box-shadow: 0px 0px 0px; 
+    background-color:${colors.activePositive};
+    border:2px solid ${colors.borderBtn};
+    color:black;
 }
 `;

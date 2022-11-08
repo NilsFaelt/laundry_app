@@ -13,6 +13,7 @@ export async function updateUser(
       createUserInfo
     );
     const returnData = user.data.user;
+
     return returnData;
   } catch (err) {
     console.log(err);

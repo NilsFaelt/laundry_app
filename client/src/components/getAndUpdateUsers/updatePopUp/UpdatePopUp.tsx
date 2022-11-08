@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import * as styles from "./updatePopUp.style";
 import { UpdateUserProps } from "./Types";
 import { updateUserOnSubmit } from "./utils/updateUserOnSubmit";
-import { handleDropDown } from "./utils/handleDropDown";
-import { validateAdmin } from "../../createUser/utils/validateAdmin";
 
 const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
+  const [userWereUpdated, setUserWereUpdated] = useState(false);
   const [userExsists, setUserexsists] = useState(false);
-  const [dropDownValue, setDropDownValue] = useState("false");
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(user.admin);
   const [createUserInfo, setCreateUserInfo] = useState({
     id: user._id,
     name: user.name,
@@ -20,14 +18,17 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
     city: user.adress.city,
     postal: user.adress.postal,
     bookingNr: user.bookingNr,
-    admin: admin,
+    admin: user.admin,
   });
+
+  console.log(admin);
+  useEffect(() => {
+    setCreateUserInfo((prev) => ({ ...prev, admin: admin }));
+  }, [admin]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
-  //FIX UPDATE ALL USERS
 
   return (
     <styles.Container>
@@ -36,7 +37,7 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
       {userExsists ? <styles.P>User already exsists</styles.P> : null}
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-          updateUserOnSubmit(e, createUserInfo, admin)
+          updateUserOnSubmit(e, createUserInfo, setUserWereUpdated)
         }
       >
         <styles.Lable>Name</styles.Lable>
@@ -117,18 +118,18 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
         {user.admin ? (
           <styles.PGreen>{user.name} is admin</styles.PGreen>
         ) : null}
-
-        <styles.Select
-          required={true}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-            handleDropDown(e, setDropDownValue, setAdmin, dropDownValue)
-          }
-        >
-          <styles.Option value={"false"}>User</styles.Option>
-          <styles.Option value={"true"}>Admin</styles.Option>
-        </styles.Select>
-
-        <styles.Btn>Create</styles.Btn>
+        <styles.BtnDiv>
+          <styles.PstvBtn type='button' onClick={() => setAdmin(true)}>
+            Admin
+          </styles.PstvBtn>
+          <styles.DangerBtn type='button' onClick={() => setAdmin(false)}>
+            Not Admin
+          </styles.DangerBtn>
+        </styles.BtnDiv>
+        {userWereUpdated ? (
+          <styles.UpdateTitle>User were updated</styles.UpdateTitle>
+        ) : null}
+        <styles.Btn type='submit'>Create</styles.Btn>
       </styles.Form>
     </styles.Container>
   );

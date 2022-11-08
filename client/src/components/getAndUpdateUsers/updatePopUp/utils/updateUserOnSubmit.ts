@@ -4,15 +4,13 @@ import { changeUserStructubforebeforeSend } from "./changeUserStructubforebefore
 export const updateUserOnSubmit = async (
   e: React.FormEvent<HTMLFormElement>,
   createUserInfo: CreateUserInfo,
-  admin: boolean
+  setUserWereUpdated: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-  const newStructure = await changeUserStructubforebeforeSend(
-    createUserInfo,
-    admin
-  );
-  console.log(admin, " infunc");
-  updateUser(newStructure);
   e.preventDefault();
+  const newStructure = await changeUserStructubforebeforeSend(createUserInfo);
+  const updatedUser = await updateUser(newStructure);
+  console.log(updatedUser, "upd useer");
+  if (updatedUser?.adress) setUserWereUpdated(true);
 };
 
 interface CreateUserInfo {
@@ -26,5 +24,5 @@ interface CreateUserInfo {
   city: string;
   postal: number | null;
   bookingNr: number | null;
-  admin: boolean;
+  admin?: boolean;
 }

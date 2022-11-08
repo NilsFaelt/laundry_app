@@ -1,7 +1,8 @@
 export const colors = {
   primary: "rgba(22, 22, 22, 0.80)",
-  secondary: "",
-  positive: "grey",
+  white: "white",
+  positive: "#41f43b",
+  grey: "#8f919a",
   danger: "#ff201f",
   showActiveLink: "#f8e053",
   borderBtn: "#e5e1e2",
