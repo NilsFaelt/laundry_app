@@ -10,6 +10,7 @@ export const updateUserOnSubmit = async (
     createUserInfo,
     admin
   );
+  console.log(admin, " infunc");
   updateUser(newStructure);
   e.preventDefault();
 };

@@ -3,6 +3,7 @@ import * as styles from "./updatePopUp.style";
 import { UpdateUserProps } from "./Types";
 import { updateUserOnSubmit } from "./utils/updateUserOnSubmit";
 import { handleDropDown } from "./utils/handleDropDown";
+import { validateAdmin } from "../../createUser/utils/validateAdmin";
 
 const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
   const [userExsists, setUserexsists] = useState(false);
@@ -21,10 +22,6 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
     bookingNr: user.bookingNr,
     admin: admin,
   });
-  console.log(admin);
-  useEffect(() => {
-    if (user.admin) setAdmin(true);
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -120,27 +117,17 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
         {user.admin ? (
           <styles.PGreen>{user.name} is admin</styles.PGreen>
         ) : null}
-        {user.admin ? (
-          <styles.Select
-            required={true}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              handleDropDown(e, setDropDownValue, setAdmin, dropDownValue)
-            }
-          >
-            <styles.Option value={"true"}>Admin</styles.Option>
-            <styles.Option value={"false"}>User</styles.Option>
-          </styles.Select>
-        ) : (
-          <styles.Select
-            required={true}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              handleDropDown(e, setDropDownValue, setAdmin, dropDownValue)
-            }
-          >
-            <styles.Option value={"false"}>User</styles.Option>
-            <styles.Option value={"true"}>Admin</styles.Option>
-          </styles.Select>
-        )}
+
+        <styles.Select
+          required={true}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+            handleDropDown(e, setDropDownValue, setAdmin, dropDownValue)
+          }
+        >
+          <styles.Option value={"false"}>User</styles.Option>
+          <styles.Option value={"true"}>Admin</styles.Option>
+        </styles.Select>
+
         <styles.Btn>Create</styles.Btn>
       </styles.Form>
     </styles.Container>

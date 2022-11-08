@@ -16,7 +16,7 @@ export interface UserType {
   city: string;
   postal: number | null;
   bookingNr: number | null;
-  admin: boolean;
+  admin?: boolean;
 }
 
 export interface UserTypeWithNestedAdress {
@@ -28,6 +28,12 @@ export interface UserTypeWithNestedAdress {
   apartment: number | null;
   adress: Adress;
   bookingNr: number | null;
-  admin: boolean;
+  admin?: boolean;
   _id?: string;
+}
+
+export interface GetAllUsers {
+  data: UserTypeWithNestedAdress[] | null;
+  loading: boolean;
+  error: any;
 }

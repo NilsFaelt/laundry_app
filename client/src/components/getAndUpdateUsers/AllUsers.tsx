@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { getAllUsers } from "../../api/getAllUsers";
 import { useGetAllUsers } from "../../hooks/useGetAllUsers";
-import { UserType, UserTypeWithNestedAdress } from "../../types/userType";
+import { GetAllUsers, UserTypeWithNestedAdress } from "../../types/userType";
 import * as styles from "./allUsers.style";
 import UpdatePopUp from "./updatePopUp/UpdatePopUp";
 
 const AllUsers = () => {
-  const [triggerFetchUser, setTriggerFetchUsers] = useState(false);
   const [input, setInput] = useState("");
   const [choosenUser, setChoosenUser] =
     useState<UserTypeWithNestedAdress | null>(null);
@@ -18,7 +18,6 @@ const AllUsers = () => {
     const data = userData?.data?.filter((user) => user.email.includes(input));
     if (data) setFilteredUsers(data);
   };
-
   useEffect(() => {
     searchUser();
   }, [input]);

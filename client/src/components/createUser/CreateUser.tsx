@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserType } from "../../types/userType";
 import * as styles from "./createUser.style";
 import PopUpCreatedUser from "./popUp/PopUpCreatedUser";
@@ -23,8 +23,6 @@ export const CreateUser = () => {
     bookingNr: null,
     admin: false,
   });
-  console.log(createUserInfo);
-  console.log(admin);
 
   const handleDropDown = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDropDownValue(e.target.value);
@@ -35,6 +33,10 @@ export const CreateUser = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  useEffect(() => {
+    setCreateUserInfo((prev) => ({ ...prev, admin: admin }));
+  }, [admin]);
 
   return (
     <styles.Container onClick={() => setCreatedUser(null)}>

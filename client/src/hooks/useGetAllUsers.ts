@@ -21,7 +21,6 @@ export const useGetAllUsers = (): {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     fetch();
   }, []);
