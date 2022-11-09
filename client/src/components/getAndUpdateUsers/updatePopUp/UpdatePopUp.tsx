@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import * as styles from "./updatePopUp.style";
 import { UpdateUserProps } from "./Types";
 import { updateUserOnSubmit } from "./utils/updateUserOnSubmit";
+import { deleteUser } from "../../../api/deleteUser";
 
 const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
+  const [showDeleteBtns, setshowDeleteBtns] = useState(false);
   const [userWereUpdated, setUserWereUpdated] = useState(false);
   const [userExsists, setUserexsists] = useState(false);
   const [admin, setAdmin] = useState(user.admin);
@@ -21,7 +23,6 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
     admin: user.admin,
   });
 
-  console.log(admin);
   useEffect(() => {
     setCreateUserInfo((prev) => ({ ...prev, admin: admin }));
   }, [admin]);
@@ -29,11 +30,36 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+  console.log(user._id);
+  const deleteUserOnClick = async () => {
+    if (user._id) {
+      const response = await deleteUser(user._id);
+      console.log(response?.status);
+      if (response?.status === 200) {
+        setChoosenUser(null);
+      }
+    }
+  };
 
   return (
     <styles.Container>
       <styles.Close onClick={() => setChoosenUser(null)}></styles.Close>
       <styles.Title>Update User</styles.Title>
+      <styles.Pdel onClick={() => setshowDeleteBtns(true)}>
+        Delete User ?
+      </styles.Pdel>
+      {showDeleteBtns ? (
+        <>
+          <styles.BtnDiv>
+            <styles.PstvBtn onClick={() => setshowDeleteBtns(false)}>
+              No
+            </styles.PstvBtn>
+            <styles.DangerBtn onClick={() => deleteUserOnClick()}>
+              Yes
+            </styles.DangerBtn>
+          </styles.BtnDiv>
+        </>
+      ) : null}
       {userExsists ? <styles.P>User already exsists</styles.P> : null}
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
@@ -115,9 +141,7 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
           type={"number"}
           value={createUserInfo.bookingNr!}
         ></styles.Input>
-        {user.admin ? (
-          <styles.PGreen>{user.name} is admin</styles.PGreen>
-        ) : null}
+        {admin ? <styles.PGreen>{user.name} is admin</styles.PGreen> : null}
         <styles.BtnDiv>
           <styles.PstvBtn type='button' onClick={() => setAdmin(true)}>
             Admin
@@ -129,7 +153,7 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
         {userWereUpdated ? (
           <styles.UpdateTitle>User were updated</styles.UpdateTitle>
         ) : null}
-        <styles.Btn type='submit'>Create</styles.Btn>
+        <styles.Btn type='submit'>Update</styles.Btn>
       </styles.Form>
     </styles.Container>
   );

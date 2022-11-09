@@ -8,6 +8,7 @@ import CreateUser from "./components/createUser/CreateUser";
 import AllUsers from "./components/getAndUpdateUsers/AllUsers";
 import Settings from "./components/settings/Settings";
 import Root from "./components/root/Root";
+
 import "./index.css";
 import store from "./redux/store";
 const router = createBrowserRouter([

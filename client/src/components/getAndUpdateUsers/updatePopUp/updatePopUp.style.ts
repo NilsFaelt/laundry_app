@@ -10,7 +10,7 @@ top: 55%;
 left: 50%;
 transform: translate(-50%, -50%);
 height:auto;
-margin-top:22vh;
+margin-top:27vh;
 margin-bottom:10vh;
 padding-bottom:5vh;
 gap:0vh;
@@ -60,11 +60,19 @@ export const PGreen = styles.p`
 color:${colors.white};
 font.size:12px;
 `;
+export const Pdel = styles.p`
+margin-top:2vh;
+margin-bottom:2vh;
+color:${colors.danger};
+font.size:12px;
+cursor:pointer;
+`;
 
 export const Close = styles(AiFillCloseCircle)`
 position:absolute;
 left:20px;
 top:3vh;
 color:white;
-transform:scale(2.5)
+transform:scale(2.5);
+cursor:pointer
 `;
