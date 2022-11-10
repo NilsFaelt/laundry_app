@@ -8,6 +8,7 @@ height:auto;
 margin-top:20vh;
 margin-bottom:20vh;
 padding-bottom:5vh;
+box-shadow:10px 10px 10px;
 `;
 export const Title = styles(loginStyles.Title)``;
 export const Input = styles(loginStyles.Input)`

@@ -15,7 +15,8 @@ margin-bottom:10vh;
 padding-bottom:5vh;
 gap:0vh;
 z-index:1;
-background-color:rgba(22, 22, 22, 1)
+background-color:rgba(22, 22, 22, 1);
+box-shadow:10px 10px 10px;
 `;
 export const Title = styles(loginStyles.Title)``;
 export const UpdateTitle = styles(loginStyles.Title)`

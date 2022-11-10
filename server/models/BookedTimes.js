@@ -10,7 +10,11 @@ const BookedTimesSchema = new Schema(
       type: String,
       required: true,
     },
-    user: {
+    email: {
+      type: String,
+      required: true,
+    },
+    name: {
       type: String,
       required: true,
     },

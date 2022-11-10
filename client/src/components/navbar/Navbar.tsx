@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <styles.Container>
-      <styles.Link to={"/myBooking"}>
+      <styles.Link to={"/calendar"}>
         <styles.Calendar
           onClick={() => dispatch(activateCalendar())}
           color={calendar ? colors.showActiveLink : "white"}

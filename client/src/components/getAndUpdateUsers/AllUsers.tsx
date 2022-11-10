@@ -18,7 +18,7 @@ const AllUsers = () => {
   >(null);
 
   const userData = useGetAllUsers(input);
-  console.log(users);
+
   useEffect(() => {
     setUsers(userData);
     searchUser(userData, input, setFilteredUsers);
@@ -28,7 +28,7 @@ const AllUsers = () => {
     setInput("");
     setFilteredUsers(null);
   };
-  console.log(userData.data, "datttttta");
+
   return (
     <styles.BackgroundContainer>
       {choosenUser ? (

@@ -9,7 +9,7 @@ import { handelDropDownClick } from "../../../redux/menuSlice";
 
 const DropDownUserMenu = () => {
   const { admin } = useSelector((state: any) => state.userReducer);
-  console.log(admin);
+
   const dispatch = useDispatch();
   const menuRef = useRef(null);
   const { userMenu, firstTooglge } = useSelector(
