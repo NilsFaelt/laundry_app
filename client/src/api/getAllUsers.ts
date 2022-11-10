@@ -8,6 +8,6 @@ export const getAllUsers = async () => {
     );
     return allUsers.data;
   } catch (err) {
-    console.log(err);
+    throw { message: "Couldnt get users", status: 500 };
   }
 };

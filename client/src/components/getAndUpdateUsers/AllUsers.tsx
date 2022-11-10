@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { redirect } from "react-router-dom";
+
 import { useGetAllUsers } from "../../hooks/useGetAllUsers";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import * as styles from "./allUsers.style";
@@ -7,24 +9,37 @@ import { chooseUserOnClick } from "./utils/chooseUserOnClick";
 import { searchUser } from "./utils/searchUser";
 
 const AllUsers = () => {
+  const [users, setUsers] = useState<any>(null);
   const [input, setInput] = useState("");
   const [choosenUser, setChoosenUser] =
     useState<UserTypeWithNestedAdress | null>(null);
   const [filteredUsers, setFilteredUsers] = useState<
     UserTypeWithNestedAdress[] | null
   >(null);
+
   const userData = useGetAllUsers(input);
+  console.log(users);
   useEffect(() => {
+    setUsers(userData);
     searchUser(userData, input, setFilteredUsers);
   }, [input]);
 
+  const refresh = () => {
+    setInput("");
+    setFilteredUsers(null);
+  };
+  console.log(userData.data, "datttttta");
   return (
     <styles.BackgroundContainer>
       {choosenUser ? (
         <UpdatePopUp setChoosenUser={setChoosenUser} user={choosenUser} />
       ) : null}
       <styles.UserContainer>
+        <styles.Refresh onClick={refresh}></styles.Refresh>
         <styles.Label>Search User</styles.Label>
+        {userData.error?.message && !userData.data ? (
+          <styles.Error>{userData.error?.message}</styles.Error>
+        ) : null}
         <styles.Input
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setInput(e.target.value)

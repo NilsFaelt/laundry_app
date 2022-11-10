@@ -30,7 +30,7 @@ const UpdatePopUp: React.FC<UpdateUserProps> = ({ user, setChoosenUser }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  console.log(user._id);
+
   const deleteUserOnClick = async () => {
     if (user._id) {
       const response = await deleteUser(user._id);

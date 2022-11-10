@@ -7,7 +7,7 @@ export const colors = {
   showActiveLink: "#f8e053",
   borderBtn: "#e5e1e2",
   primaryText: "white",
-  hover: "#dfe1e8",
+  hover: "#f2da4d",
   hoverDanger: "",
   activePositive: "#e5e6ec",
   activeDanger: "#c50100",

@@ -33,6 +33,7 @@ animation-fill-mode: forwards;
   background-color:${colors.primary};
   box-shadow:0px 0px 0px  white;
   text-decoration:underline 1px solid   ${colors.activePositive};
+
 }
 
 @keyframes open-animation-nav {
@@ -64,7 +65,7 @@ box-shadow:10px 10px 10px  black;
 animation-name: ${(props) => props.animation};
 animation-duration: 0.5s;
 animation-fill-mode: forwards;
-z-index:1;
+z-index:2;
 
 
 @keyframes open-animation {

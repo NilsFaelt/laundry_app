@@ -3,14 +3,16 @@ import laundryImg from "../../assets/img/laundry.png";
 import { colors } from "../../styles/colors";
 import * as globalStyles from "../../styles/globalStyles";
 import * as loginStyles from "../login/login/login.styles";
+import { FiRefreshCcw } from "react-icons/all";
 
 export const BackgroundContainer = styles.div`
 width:100vw;
-min-height:160vh;
+min-height:170vh;
 background-image:url(${laundryImg});
 `;
 
 export const UserContainer = styles(loginStyles.Container)`
+position:relative;
 max-height:70vh;
 margin-top:20vh;
 margin-bottom:20vh;
@@ -39,4 +41,21 @@ margin-top:3vh;
     cursor:pointer;
     color:${colors.showActiveLink}
 }
+`;
+export const Error = styles.p`
+font-size:15px;
+color:${colors.danger};
+`;
+
+export const Refresh = styles(FiRefreshCcw)`
+position:absolute;
+right:20px;
+top:3vh;
+color:white;
+transform:scale(1.6);
+cursor:pointer;
+&:hover{
+    cursor:pointer;
+    color:${colors.hover};
+    }
 `;

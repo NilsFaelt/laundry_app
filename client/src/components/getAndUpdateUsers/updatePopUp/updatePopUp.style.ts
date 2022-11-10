@@ -14,7 +14,7 @@ margin-top:27vh;
 margin-bottom:10vh;
 padding-bottom:5vh;
 gap:0vh;
-z-index:0;
+z-index:1;
 background-color:rgba(22, 22, 22, 1)
 `;
 export const Title = styles(loginStyles.Title)``;

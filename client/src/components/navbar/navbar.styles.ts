@@ -5,8 +5,8 @@ import { CiCalendarDate } from "react-icons/all";
 import { TfiBook } from "react-icons/all";
 import { BsChatRightText } from "react-icons/all";
 import { NavLink } from "react-router-dom";
-import { colors } from "../../styles/colors";
 import { breakPoints } from "../../styles/breakPoints";
+import { colors } from "../../styles/colors";
 
 export const Container = styles(globalStyles.FlexedContainerRow)`
 position:fixed;
