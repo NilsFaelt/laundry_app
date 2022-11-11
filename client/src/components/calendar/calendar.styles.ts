@@ -11,11 +11,18 @@ height:120vh;
 background-image:url(${laundryImg});
 `;
 
-export const CalendarWrapper = styles(globalStyles.FlexedContainerRow)`
+export const CalendarWrapper = styles(globalStyles.FlexedContainerCollumn)`
 width:auto;
 height:auto;
 background-color:${colors.primary};
-padding:5vw;
+padding:calc(20px + 2vw);
 border-radius:5px;
 box-shadow:10px 10px 10px;
+`;
+
+export const Title = styles.h2`
+margin-top:2vh;
+font-size:15px;
+color:${colors.white};
+text-align:center;
 `;

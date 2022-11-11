@@ -6,7 +6,7 @@ const getBookingsByDay = require("../controllers/bookedTimes/findByDay");
 const router = express.Router();
 
 router.get("/byUser", getBookingsByUser);
-router.get("/byDay", getBookingsByDay);
+router.post("/byDay", getBookingsByDay);
 router.post("/", postNewBooking);
 
 module.exports = router;

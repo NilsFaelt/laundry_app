@@ -1,15 +1,30 @@
 import * as styles from "./calendar.styles";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { splitAndConCatDateString } from "./utils/splitAndConCatDateString";
+import { getBookedTimesByDate } from "../../api/getBookedTimesByDate";
+import { useGetbookTimesByDay } from "../../hooks/useGetbookTimesByDay";
+import { laundryTimes } from "./laundryTimes";
+import { LaundryTimes } from "../../types/laundryTypes";
 
 const CalendarComp = () => {
-  const [value, onChange] = useState(new Date());
-  console.log(value);
+  const [bookingTimes, setBookingTimes] =
+    useState<LaundryTimes[]>(laundryTimes);
+  const [date, setDate] = useState(new Date());
+  const dateString = splitAndConCatDateString(date);
+  const data = useGetbookTimesByDay(dateString);
+  console.log(data);
+  console.log(bookingTimes);
+
   return (
     <styles.Container>
       <styles.CalendarWrapper>
-        <Calendar onChange={onChange} value={value} />
+        <Calendar onChange={setDate} value={date} />
+        <styles.Title>Availible times today</styles.Title>
+        {bookingTimes.map((time) => {
+          return <styles.Title>{time.timeAsString}</styles.Title>;
+        })}
       </styles.CalendarWrapper>
     </styles.Container>
   );
@@ -24,5 +39,3 @@ const CalendarComp = () => {
 // no duplicate bookings
 
 export default CalendarComp;
-
-export function Loader() {}
