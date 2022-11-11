@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 import { getBookedTimesByDate } from "../api/getBookedTimesByDate";
+import { BookedLaundrytimes } from "../types/laundryTypes";
 
-export const useGetbookTimesByDay = (dateString: string) => {
-  const [data, setData] = useState<any>(null);
+interface Error {
+  message: string;
+  status: number;
+}
+interface ReturnData {
+  data: BookedLaundrytimes[] | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+export const useGetbookTimesByDay = (dateString: string): ReturnData => {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(<any>null);
+  const [error, setError] = useState<any>(null);
   const fetch = async () => {
     setLoading(true);
     try {
       const data = await getBookedTimesByDate(dateString);
       setData(data);
     } catch (err) {
-      setError(err);
+      if (err) setError(err);
     } finally {
       setLoading(false);
     }

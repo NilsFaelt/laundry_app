@@ -1,3 +1,3 @@
 export const breakPoints = {
-  breakOne: `(min-width: 600px)`,
+  breakOne: `(min-width: 620px)`,
 };
