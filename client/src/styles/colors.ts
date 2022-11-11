@@ -2,6 +2,7 @@ export const colors = {
   primary: "rgba(22, 22, 22, 0.80)",
   white: "white",
   positive: "#41f43b",
+  bluePositive: "#a6b2e1",
   grey: "#8f919a",
   danger: "#ff201f",
   showActiveLink: "#f8e053",

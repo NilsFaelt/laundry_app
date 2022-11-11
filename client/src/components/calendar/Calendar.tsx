@@ -3,52 +3,34 @@ import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 import { useEffect, useState } from "react";
 import { splitAndConCatDateString } from "./utils/splitAndConCatDateString";
-import { getBookedTimesByDate } from "../../api/getBookedTimesByDate";
 import { useGetbookTimesByDay } from "../../hooks/useGetbookTimesByDay";
 import { laundryTimes } from "./laundryTimes";
-import { BookedLaundrytimes, LaundryTimes } from "../../types/laundryTypes";
+import { LaundryTimes } from "../../types/laundryTypes";
+import { loopThruLaundryTimes } from "./utils/loopThruLaundryTimes";
+import ShowAvilibleTimes from "./showAvilibleTimes/ShowAvilibleTimes";
 
 const CalendarComp = () => {
-  const [bookingTimes, setBookingTimes] =
-    useState<LaundryTimes[]>(laundryTimes);
+  const [bookingTimes, setBookingTimes] = useState<LaundryTimes[] | null>(null);
   const [date, setDate] = useState(new Date());
   const dateString = splitAndConCatDateString(date);
   const data = useGetbookTimesByDay(dateString);
 
-  const loopThruLaundryTimes = (
-    laundryTimes: LaundryTimes[],
-    bookeLaundryTimes: BookedLaundrytimes[]
-  ) => {
-    setBookingTimes(laundryTimes);
-    for (let i = 0; i < laundryTimes.length; i++) {
-      bookeLaundryTimes.map((booked) => {
-        if (booked.bookedHours === laundryTimes[i].time) {
-          setBookingTimes((prev) =>
-            prev.map((each) => {
-              if (each.time === laundryTimes[i].time) {
-                return { ...each, availible: false };
-              } else return each;
-            })
-          );
-        }
-      });
-    }
-  };
-
   useEffect(() => {
-    if (data.data) loopThruLaundryTimes(laundryTimes, data.data);
+    if (data.data)
+      loopThruLaundryTimes(laundryTimes, data.data, setBookingTimes);
   }, [date]);
-
-  console.log(data, "data");
-  console.log(bookingTimes);
 
   return (
     <styles.Container>
       <styles.CalendarWrapper>
         <Calendar onChange={setDate} value={date} />
-        <styles.Title>Availible times today</styles.Title>
-        {bookingTimes.map((time) => {
-          return <styles.Title>{time.timeAsString}</styles.Title>;
+        {bookingTimes ? (
+          <styles.Title>Availible times today</styles.Title>
+        ) : (
+          <styles.Title>Choose a date</styles.Title>
+        )}
+        {bookingTimes?.map((time) => {
+          return <ShowAvilibleTimes bookedTime={time} />;
         })}
       </styles.CalendarWrapper>
     </styles.Container>
