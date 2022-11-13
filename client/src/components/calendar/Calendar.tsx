@@ -47,6 +47,7 @@ const CalendarComp = () => {
         {bookingTimes?.map((time) => {
           return (
             <ShowAvilibleTimes
+              key={time.time}
               bookedTime={time}
               handleBookTimeClick={handleBookTimeClick}
             />

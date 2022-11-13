@@ -1,10 +1,12 @@
 const BookedTimes = require("../../models/BookedTimes");
 
 const getBookingsByUser = async (req, res, next) => {
+  console.log("in");
   try {
     const bookedTimes = await BookedTimes.find({
       email: req.body.email,
     }).exec();
+    console.log(bookedTimes);
     res.status(200).send({ bookings: bookedTimes });
   } catch (err) {
     console.log(err);

@@ -14,4 +14,5 @@ export interface BookedLaundrytimes {
   laundryRoom: string;
   name: string;
   updatedAt: string;
+  _id: string;
 }
