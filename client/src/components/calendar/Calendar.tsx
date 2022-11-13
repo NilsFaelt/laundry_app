@@ -58,10 +58,4 @@ const CalendarComp = () => {
   );
 };
 
-//Book new time
-//Max 3
-//Show my bokked times
-//Delete old bookings
-// no duplicate bookings
-
 export default CalendarComp;
