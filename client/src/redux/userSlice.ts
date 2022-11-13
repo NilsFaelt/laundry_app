@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { UserTypeWithNestedAdress } from "../types/userType";
 
-const initialState = null;
+const initialState: UserTypeWithNestedAdress | null = null;
 
 const userLslice = createSlice({
   name: "userSlice",

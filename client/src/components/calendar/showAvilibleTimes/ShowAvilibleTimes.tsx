@@ -4,11 +4,16 @@ import * as styles from "./showAvilibleTimes.styles";
 
 interface Props {
   bookedTime: LaundryTimes;
+  handleBookTimeClick: (time: LaundryTimes) => void;
 }
-const ShowAvilibleTimes: React.FC<Props> = ({ bookedTime }) => {
+const ShowAvilibleTimes: React.FC<Props> = ({
+  bookedTime,
+  handleBookTimeClick,
+}) => {
   return (
     <styles.container
-      cursor={bookedTime.availible ? "pointer" : ""}
+      onClick={() => handleBookTimeClick(bookedTime)}
+      cursor={bookedTime.availible ? "pointer" : "none"}
       color={bookedTime.availible ? colors.bluePositive : ""}
     >
       <styles.Title>{bookedTime.timeAsString}</styles.Title>

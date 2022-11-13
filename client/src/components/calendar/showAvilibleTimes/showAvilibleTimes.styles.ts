@@ -5,6 +5,7 @@ interface Props {
   cursor: string;
 }
 export const container = styles.div<Props>`
+pointer-events: ${(props) => props.cursor};
 cursor:${(props) => props.cursor};
 border:1px solid white;
 align-self:center;

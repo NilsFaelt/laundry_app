@@ -1,9 +1,9 @@
 const BookedTimes = require("../../models/BookedTimes");
 const postNewBooking = async (req, res) => {
-  const newBooking = new BookedTimes(req.body);
+  const newBooking = new BookedTimes(req.body.bookingInfo);
   try {
-    const savedNewBooking = newBooking.save();
-    res.status(200).json({ booking: newBooking });
+    const savedNewBooking = await newBooking.save();
+    res.status(200).json({ booking: savedNewBooking });
   } catch (err) {
     console.log(err);
     next(err);
