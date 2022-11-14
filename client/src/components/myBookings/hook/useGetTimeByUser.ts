@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { getBookedTimesByUser } from "../../../api/getTimesByUser";
 import { LaundryTimes } from "../../../types/laundryTypes";
 
-export const useGetTimeByUser = (email: string) => {
+export const useGetTimeByUser = (email: string, rerenderBookings: boolean) => {
   const [data, setData] = useState<LaundryTimes[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
-
+  console.log(data, "inhook");
   const fetch = async () => {
     setLoading(true);
     try {
@@ -21,7 +21,7 @@ export const useGetTimeByUser = (email: string) => {
   };
   useEffect(() => {
     fetch();
-  }, []);
+  }, [rerenderBookings]);
 
   return { data, loading, error };
 };

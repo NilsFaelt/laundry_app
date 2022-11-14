@@ -5,13 +5,21 @@ import * as styles from "./eachBooking.styles";
 
 interface Props {
   info: BookedLaundrytimes;
+  setRerenderBookings: React.Dispatch<React.SetStateAction<boolean>>;
+  rerenderBookings: boolean;
 }
 //delete booked time
 //Clean upp code
 //Fix delay calendar
-const EachBooking: React.FC<Props> = ({ info }) => {
+//fix design my booked times
+const EachBooking: React.FC<Props> = ({
+  info,
+  setRerenderBookings,
+  rerenderBookings,
+}) => {
   const deleteOnClick = async () => {
     deleteBookTimeById(info._id);
+    setRerenderBookings(!rerenderBookings);
   };
   return (
     <styles.container>
