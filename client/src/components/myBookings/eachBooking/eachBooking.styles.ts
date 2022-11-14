@@ -27,7 +27,7 @@ color:${colors.danger};
 text-align:center;
 `;
 
-export const Close = styles(AiFillCloseCircle)`
+export const Delete = styles(AiFillCloseCircle)`
 
 left:20px;
 top:3vh;

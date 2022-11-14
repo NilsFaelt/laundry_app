@@ -11,7 +11,7 @@ background-image:url(${laundryImg});
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
 margin:0 auto;
 margin-top:20vh;
-width:clamp(300px, 80%, 500px);
+width:clamp(300px, 50%, 500px);
 height:auto;
 background-color:${colors.primary};
 padding:calc(20px + 2vw);

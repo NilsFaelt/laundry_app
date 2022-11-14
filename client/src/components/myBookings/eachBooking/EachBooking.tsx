@@ -1,3 +1,4 @@
+import { deleteBookTimeById } from "../../../api/deleteBookTimeById";
 import { colors } from "../../../styles/colors";
 import { BookedLaundrytimes } from "../../../types/laundryTypes";
 import * as styles from "./eachBooking.styles";
@@ -7,11 +8,14 @@ interface Props {
 }
 //delete booked time
 //Clean upp code
+//Fix delay calendar
 const EachBooking: React.FC<Props> = ({ info }) => {
-  const test = true;
+  const deleteOnClick = async () => {
+    deleteBookTimeById(info._id);
+  };
   return (
     <styles.container>
-      <styles.Close></styles.Close>
+      <styles.Delete onClick={() => deleteOnClick()}></styles.Delete>
       <styles.Title>{info?.bookedHours}</styles.Title>
       <styles.Title>{info?.dateForBooking}</styles.Title>
       <styles.TitleBooked></styles.TitleBooked>

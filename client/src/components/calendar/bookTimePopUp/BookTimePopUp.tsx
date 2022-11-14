@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bookALaundryTime } from "../../../api/bookALaundryTime";
+import { activateBooking } from "../../../redux/menuSlice";
+import { RootState } from "../../../redux/store";
 import { LaundryTimes } from "../../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../../types/userType";
 import * as styles from "./bookTimePopUp.style";
@@ -25,6 +27,10 @@ const BookTimePopUp: React.FC<Props> = ({
   setToogleBookPopUp,
 }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const toogleMenu = useSelector(
+    (state: RootState) => state.showActiveMenuReducer
+  );
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: any) => state.userReducer
   );
@@ -41,6 +47,7 @@ const BookTimePopUp: React.FC<Props> = ({
       const response = await bookALaundryTime(bookingInfo);
       if (response.booking) {
         navigate("/myBooking");
+        dispatch(activateBooking());
       }
     }
   };
