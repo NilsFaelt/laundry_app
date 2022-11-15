@@ -9,6 +9,7 @@ import { LaundryTimes } from "../../types/laundryTypes";
 import { loopThruLaundryTimes } from "./utils/loopThruLaundryTimes";
 import ShowAvilibleTimes from "./showAvilibleTimes/ShowAvilibleTimes";
 import BookTimePopUp from "./bookTimePopUp/BookTimePopUp";
+import { getBookedTimesByUser } from "../../api/getTimesByUser";
 
 const CalendarComp = () => {
   const [choosenTime, setChoosenTime] = useState<LaundryTimes | null>(null);

@@ -2,11 +2,8 @@ import { useState } from "react";
 import * as styles from "./login.styles";
 import { LoginInfo } from "../../../types/loginTypes";
 import { changeInputInfo } from "./utils/changeInputInfo";
-import { login } from "../../../api/login";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../../redux/userSlice";
 import { RootState } from "../../../redux/store";
-import { Navigate } from "react-router-dom";
 import { handleLogin } from "./utils/handleLogin";
 
 const Login = () => {

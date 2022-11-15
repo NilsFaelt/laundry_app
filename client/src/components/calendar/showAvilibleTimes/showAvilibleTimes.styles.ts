@@ -8,6 +8,7 @@ export const container = styles.div<Props>`
 pointer-events: ${(props) => props.cursor};
 cursor:${(props) => props.cursor};
 border:1px solid white;
+border-radius:5px;
 align-self:center;
 width:90%;
 margin-top:5px;

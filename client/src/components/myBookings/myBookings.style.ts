@@ -22,7 +22,7 @@ box-shadow:10px 10px 10px;
 export const Title = styles.h2`
 margin-top:2vh;
 margin-bottom:2vh;
-font-size:15px;
+font-size:20px;
 color:${colors.white};
 text-align:center;
 `;

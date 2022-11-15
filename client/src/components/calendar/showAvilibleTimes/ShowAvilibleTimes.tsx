@@ -1,19 +1,41 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { getBookedTimesByUser } from "../../../api/getTimesByUser";
+import { RootState } from "../../../redux/store";
 import { colors } from "../../../styles/colors";
 import { LaundryTimes } from "../../../types/laundryTypes";
+import { ShowAvailibleTimesProps } from "../../../types/ShowAvilibleTimesProps";
+import { UserTypeWithNestedAdress } from "../../../types/userType";
 import * as styles from "./showAvilibleTimes.styles";
 
-interface Props {
-  bookedTime: LaundryTimes;
-  handleBookTimeClick: (time: LaundryTimes) => void;
-}
-const ShowAvilibleTimes: React.FC<Props> = ({
+const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
   bookedTime,
   handleBookTimeClick,
 }) => {
+  const user: UserTypeWithNestedAdress | null = useSelector(
+    (state: RootState) => state.userReducer
+  );
+
+  const [usersBookedLimit, setusersBookedLimit] = useState<LaundryTimes[]>([]);
+
+  const fetchWrapper = async () => {
+    if (user!.email) {
+      const bookedTimes = await getBookedTimesByUser(user!.email);
+      if (bookedTimes) setusersBookedLimit(bookedTimes);
+    }
+  };
+  useEffect(() => {
+    fetchWrapper();
+  }, []);
+  console.log(usersBookedLimit);
   return (
     <styles.container
       onClick={() => handleBookTimeClick(bookedTime)}
-      cursor={bookedTime.availible ? "pointer" : "none"}
+      cursor={
+        bookedTime.availible && usersBookedLimit?.length < 3
+          ? "pointer"
+          : "none"
+      }
       color={bookedTime.availible ? colors.bluePositive : ""}
     >
       <styles.Title>{bookedTime.timeAsString}</styles.Title>
@@ -22,6 +44,9 @@ const ShowAvilibleTimes: React.FC<Props> = ({
       ) : (
         <styles.TitleBooked>Booked</styles.TitleBooked>
       )}
+      {usersBookedLimit.length === 3 ? (
+        <styles.TitleBooked>Your bookings limit is full</styles.TitleBooked>
+      ) : null}
     </styles.container>
   );
 };

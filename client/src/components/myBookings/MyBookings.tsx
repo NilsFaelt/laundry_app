@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
 import { BookedLaundrytimes, LaundryTimes } from "../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import EachBooking from "./eachBooking/EachBooking";
@@ -16,12 +16,12 @@ const MyBookings = () => {
   if (user?.email)
     bookedTimes = useGetTimeByUser(user?.email, rerenderBookings);
 
-  useEffect(() => {}, [rerenderBookings]);
-  console.log(bookedTimes.data, "booked");
   return (
     <styles.BackgroundContainer>
       <styles.Container>
-        <styles.Title>Myb booked laundrytimes</styles.Title>
+        <styles.Title>
+          Myb booked laundrytimes {bookedTimes.data?.length}/3
+        </styles.Title>
         {bookedTimes.data?.map((each: BookedLaundrytimes) => (
           <EachBooking
             key={each._id}
