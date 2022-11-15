@@ -11,7 +11,7 @@ export const handleBookingOnClick = async (
   user: UserTypeWithNestedAdress | null,
   bookingInfo: BookingInfo,
   navigate: NavigateFunction,
-  dispatch: Dispatch<unknown>
+  dispatch: Dispatch<any>
 ) => {
   if (typeof user?.email === "string" && typeof user?.name === "string") {
     const response = await bookALaundryTime(bookingInfo);
