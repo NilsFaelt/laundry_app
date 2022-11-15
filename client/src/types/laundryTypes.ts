@@ -16,3 +16,11 @@ export interface BookedLaundrytimes {
   updatedAt: string;
   _id: string;
 }
+
+export interface BookingInfo {
+  laundryRoom: string;
+  dateForBooking: string;
+  email: string;
+  name: string;
+  bookedHours: number;
+}

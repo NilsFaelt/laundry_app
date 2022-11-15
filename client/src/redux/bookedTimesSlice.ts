@@ -11,9 +11,6 @@ const bookedTimesSlice = createSlice({
       state = action.payload;
       return state;
     },
-    removeLaundryTime: (state, action) => {
-      return (state = action.payload.bookedTimes);
-    },
   },
 });
 

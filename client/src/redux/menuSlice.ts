@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ShowActiveMenuSlice } from "../types/reduxTypes";
 
-const initialState: ShowActiveMenuSlice = {
+export const initialState: ShowActiveMenuSlice = {
   calendar: false,
-  bookings: false,
+  bookings: true,
   chat: false,
   userMenu: false,
   firstTooglge: false,

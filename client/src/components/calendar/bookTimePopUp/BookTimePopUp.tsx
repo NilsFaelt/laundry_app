@@ -7,6 +7,7 @@ import { RootState } from "../../../redux/store";
 import { LaundryTimes } from "../../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../../types/userType";
 import * as styles from "./bookTimePopUp.style";
+import { handleBookingOnClick } from "./utils/handkeBookingOnclick";
 
 interface Props {
   bookedTime: LaundryTimes | null;
@@ -34,7 +35,6 @@ const BookTimePopUp: React.FC<Props> = ({
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: any) => state.userReducer
   );
-
   const [bookingInfo, setBookingInfo] = useState<BookingInfo>({
     laundryRoom: "default",
     dateForBooking: dateString,
@@ -42,22 +42,17 @@ const BookTimePopUp: React.FC<Props> = ({
     name: user?.name || "no name found",
     bookedHours: bookedTime?.time || 710,
   });
-  const handleBookingOnClick = async () => {
-    if (typeof user?.email === "string" && typeof user?.name === "string") {
-      const response = await bookALaundryTime(bookingInfo);
-      if (response.booking) {
-        navigate("/myBooking");
-        dispatch(activateBooking());
-      }
-    }
-  };
 
   return (
     <styles.Container>
       <styles.P>Book time: {bookedTime?.timeAsString}</styles.P>
       <styles.Pdate>Date: {dateString}</styles.Pdate>
       <styles.BtnDiv>
-        <styles.PstvBtn onClick={() => handleBookingOnClick()}>
+        <styles.PstvBtn
+          onClick={() =>
+            handleBookingOnClick(user, bookingInfo, navigate, dispatch)
+          }
+        >
           book
         </styles.PstvBtn>
         <styles.DangerBtn onClick={() => setToogleBookPopUp(false)}>

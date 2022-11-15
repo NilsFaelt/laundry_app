@@ -7,6 +7,7 @@ import { LaundryTimes } from "../../../types/laundryTypes";
 import { ShowAvailibleTimesProps } from "../../../types/ShowAvilibleTimesProps";
 import { UserTypeWithNestedAdress } from "../../../types/userType";
 import * as styles from "./showAvilibleTimes.styles";
+import { fetchWrapper } from "./utils/fetchWrappe";
 
 const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
   bookedTime,
@@ -15,19 +16,12 @@ const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: RootState) => state.userReducer
   );
-
   const [usersBookedLimit, setusersBookedLimit] = useState<LaundryTimes[]>([]);
 
-  const fetchWrapper = async () => {
-    if (user!.email) {
-      const bookedTimes = await getBookedTimesByUser(user!.email);
-      if (bookedTimes) setusersBookedLimit(bookedTimes);
-    }
-  };
   useEffect(() => {
-    fetchWrapper();
+    fetchWrapper(user, setusersBookedLimit);
   }, []);
-  console.log(usersBookedLimit);
+
   return (
     <styles.container
       onClick={() => handleBookTimeClick(bookedTime)}
