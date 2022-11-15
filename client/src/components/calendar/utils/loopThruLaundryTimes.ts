@@ -1,13 +1,17 @@
+import { getBookedTimesByDate } from "../../../api/getBookedTimesByDate";
 import { BookedLaundrytimes, LaundryTimes } from "../../../types/laundryTypes";
 
-export const loopThruLaundryTimes = (
+export const loopThruLaundryTimes = async (
   laundryTimes: LaundryTimes[],
-  bookeLaundryTimes: BookedLaundrytimes[],
-  setBookingTimes: React.Dispatch<React.SetStateAction<LaundryTimes[] | null>>
+  setBookingTimes: React.Dispatch<React.SetStateAction<LaundryTimes[] | null>>,
+  dateString: string
 ) => {
+  const data = await getBookedTimesByDate(dateString);
+  console.log(data, "in func");
+  console.log(laundryTimes);
   setBookingTimes(laundryTimes);
   for (let i = 0; i < laundryTimes.length; i++) {
-    bookeLaundryTimes.map((booked) => {
+    data.map((booked: BookedLaundrytimes) => {
       if (booked.bookedHours === laundryTimes[i].time) {
         setBookingTimes((prev) =>
           prev!.map((each) => {

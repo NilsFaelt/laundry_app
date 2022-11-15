@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { BookedLaundrytimes, LaundryTimes } from "../../types/laundryTypes";
@@ -12,6 +12,7 @@ const MyBookings = () => {
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: any) => state.userReducer
   );
+  const [bookedTime, setBookedTimes] = useState<LaundryTimes[]>([]);
   let bookedTimes: any = null;
   if (user?.email)
     bookedTimes = useGetTimeByUser(user?.email, rerenderBookings);
@@ -20,7 +21,7 @@ const MyBookings = () => {
     <styles.BackgroundContainer>
       <styles.Container>
         <styles.Title>
-          Myb booked laundrytimes {bookedTimes.data?.length}/3
+          My booked laundrytimes {bookedTimes.data?.length}/3
         </styles.Title>
         {bookedTimes.data?.map((each: BookedLaundrytimes) => (
           <EachBooking

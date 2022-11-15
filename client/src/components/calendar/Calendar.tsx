@@ -1,9 +1,8 @@
 import * as styles from "./calendar.styles";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { splitAndConCatDateString } from "./utils/splitAndConCatDateString";
-import { useGetbookTimesByDay } from "../../hooks/useGetbookTimesByDay";
 import { laundryTimes } from "./laundryTimes";
 import { LaundryTimes } from "../../types/laundryTypes";
 import { loopThruLaundryTimes } from "./utils/loopThruLaundryTimes";
@@ -16,11 +15,9 @@ const CalendarComp = () => {
   const [bookingTimes, setBookingTimes] = useState<LaundryTimes[] | null>(null);
   const [date, setDate] = useState(new Date());
   const dateString = splitAndConCatDateString(date);
-  const data = useGetbookTimesByDay(dateString);
-  console.log(dateString);
+
   useEffect(() => {
-    if (data.data)
-      loopThruLaundryTimes(laundryTimes, data.data, setBookingTimes);
+    loopThruLaundryTimes(laundryTimes, setBookingTimes, dateString);
   }, [date]);
 
   const handleBookTimeClick = (time: LaundryTimes) => {

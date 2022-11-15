@@ -12,10 +12,13 @@ interface ReturnData {
   error: Error | null;
 }
 
+// delete ?
+
 export const useGetbookTimesByDay = (dateString: string): ReturnData => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
+
   const fetch = async () => {
     setLoading(true);
     try {
