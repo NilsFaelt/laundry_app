@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getBookedTimesByUser } from "../../../api/getTimesByUser";
 import { RootState } from "../../../redux/store";
 import { colors } from "../../../styles/colors";
 import { LaundryTimes } from "../../../types/laundryTypes";
@@ -39,7 +38,9 @@ const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
         <styles.TitleBooked>Booked</styles.TitleBooked>
       )}
       {usersBookedLimit.length === 3 ? (
-        <styles.TitleBooked>Your bookings limit is full</styles.TitleBooked>
+        <>
+          <styles.TitleBooked>Your bookings limit is full</styles.TitleBooked>
+        </>
       ) : null}
     </styles.container>
   );

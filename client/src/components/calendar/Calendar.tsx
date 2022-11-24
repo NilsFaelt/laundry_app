@@ -1,13 +1,14 @@
 import * as styles from "./calendar.styles";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { splitAndConCatDateString } from "./utils/splitAndConCatDateString";
 import { laundryTimes } from "./laundryTimes";
 import { LaundryTimes } from "../../types/laundryTypes";
 import { loopThruLaundryTimes } from "./utils/loopThruLaundryTimes";
 import ShowAvilibleTimes from "./showAvilibleTimes/ShowAvilibleTimes";
 import BookTimePopUp from "./bookTimePopUp/BookTimePopUp";
+import { shortenDateToString } from "../../utils/shortenDateToString";
 
 const CalendarComp = () => {
   const [choosenTime, setChoosenTime] = useState<LaundryTimes | null>(null);
@@ -15,6 +16,7 @@ const CalendarComp = () => {
   const [bookingTimes, setBookingTimes] = useState<LaundryTimes[] | null>(null);
   const [date, setDate] = useState(new Date());
   const dateString = splitAndConCatDateString(date);
+  const readebleDate = shortenDateToString(date);
 
   useEffect(() => {
     loopThruLaundryTimes(laundryTimes, setBookingTimes, dateString);
@@ -31,13 +33,19 @@ const CalendarComp = () => {
         <Calendar onChange={setDate} value={date} />
         {toogleBookPopUp ? (
           <BookTimePopUp
-            bookedTime={choosenTime}
             dateString={dateString}
+            bookedTime={choosenTime}
+            readebleDate={readebleDate}
             setToogleBookPopUp={setToogleBookPopUp}
           />
         ) : null}
         {bookingTimes ? (
-          <styles.Title>Availible times today</styles.Title>
+          <>
+            <styles.Title>Availible times today</styles.Title>
+            <styles.Title>
+              {readebleDate.day}-{readebleDate.month}-{readebleDate.year}
+            </styles.Title>
+          </>
         ) : (
           <styles.Title>Choose a date</styles.Title>
         )}

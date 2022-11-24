@@ -28,7 +28,7 @@ const Navbar = () => {
           color={bookings ? colors.showActiveLink : "white"}
         ></styles.MyBookings>
       </styles.Link>
-      <styles.Link to={"/myBooking"}>
+      <styles.Link to={"/forum"}>
         <styles.Forum
           onClick={() => dispatch(activateChat())}
           color={chat ? colors.showActiveLink : "white"}

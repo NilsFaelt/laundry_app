@@ -7,6 +7,7 @@ import MyBookings from "./components/myBookings/MyBookings";
 import CreateUser from "./components/createUser/CreateUser";
 import AllUsers from "./components/getAndUpdateUsers/AllUsers";
 import CalendarComp from "./components/calendar/Calendar";
+import Forum from "./components/forum/Forum";
 import Settings from "./components/settings/Settings";
 import Root from "./components/root/Root";
 import "./index.css";
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "allUsers",
         element: <AllUsers />,
+      },
+      {
+        path: "forum",
+        element: <Forum />,
       },
     ],
   },

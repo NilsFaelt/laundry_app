@@ -9,9 +9,16 @@ import { UserTypeWithNestedAdress } from "../../../types/userType";
 import * as styles from "./bookTimePopUp.style";
 import { handleBookingOnClick } from "./utils/handkeBookingOnclick";
 
+interface DateObj {
+  dayLetters: string;
+  month: string;
+  day: string;
+  year: string;
+}
 interface Props {
-  bookedTime: LaundryTimes | null;
   dateString: string;
+  bookedTime: LaundryTimes | null;
+  readebleDate: DateObj;
   setToogleBookPopUp: React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface BookingInfo {
@@ -23,8 +30,9 @@ interface BookingInfo {
 }
 
 const BookTimePopUp: React.FC<Props> = ({
-  bookedTime,
   dateString,
+  bookedTime,
+  readebleDate,
   setToogleBookPopUp,
 }) => {
   const navigate = useNavigate();
@@ -46,7 +54,9 @@ const BookTimePopUp: React.FC<Props> = ({
   return (
     <styles.Container>
       <styles.P>Book time: {bookedTime?.timeAsString}</styles.P>
-      <styles.Pdate>Date: {dateString}</styles.Pdate>
+      <styles.Pdate>
+        Date: {readebleDate.day}-{readebleDate.month}-{readebleDate.year}
+      </styles.Pdate>
       <styles.BtnDiv>
         <styles.PstvBtn
           onClick={() =>

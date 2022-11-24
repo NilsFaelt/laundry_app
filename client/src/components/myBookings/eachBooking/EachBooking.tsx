@@ -9,6 +9,8 @@ interface Props {
   setRerenderBookings: React.Dispatch<React.SetStateAction<boolean>>;
   rerenderBookings: boolean;
 }
+// Clean all code
+//Grey out outated days
 
 const EachBooking: React.FC<Props> = ({
   info,
