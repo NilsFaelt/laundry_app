@@ -12,10 +12,22 @@ const MyBookings = () => {
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: any) => state.userReducer
   );
+
+  //Creatig func
+
+  const deleteOutdAtedBookings = () => {
+    const oldDate = new Date().getTime() - 86400000;
+    console.log(new Date(oldDate));
+  };
+  deleteOutdAtedBookings();
+  //
+
   const [bookedTime, setBookedTimes] = useState<LaundryTimes[]>([]);
   let bookedTimes: any = null;
   if (user?.email)
     bookedTimes = useGetTimeByUser(user?.email, rerenderBookings);
+
+  console.log(bookedTimes);
 
   return (
     <styles.BackgroundContainer>

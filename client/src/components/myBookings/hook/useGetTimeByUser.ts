@@ -12,7 +12,7 @@ export const useGetTimeByUser = (email: string, rerenderBookings: boolean) => {
     setLoading(true);
     try {
       const data = await getBookedTimesByUser(email);
-      console.log(data, "in hook");
+
       setData(data);
     } catch (err) {
       setError(err);
