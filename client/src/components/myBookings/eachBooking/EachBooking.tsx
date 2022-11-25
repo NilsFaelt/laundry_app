@@ -1,7 +1,9 @@
+import { BiInfoCircle } from "react-icons/bi";
 import { deleteBookTimeById } from "../../../api/deleteBookTimeById";
 import { colors } from "../../../styles/colors";
 import { BookedLaundrytimes } from "../../../types/laundryTypes";
 import * as styles from "./eachBooking.styles";
+import { fixBookingHoursToMoreReadble } from "./utils/fixBookingHoursToMoreReadble";
 import { makeDateReadeable } from "./utils/makeDateReadeble";
 
 interface Props {
@@ -15,6 +17,7 @@ const EachBooking: React.FC<Props> = ({
   setRerenderBookings,
   rerenderBookings,
 }) => {
+  const time = fixBookingHoursToMoreReadble(info);
   const deleteOnClick = async () => {
     deleteBookTimeById(info._id);
     setRerenderBookings(!rerenderBookings);
@@ -23,7 +26,7 @@ const EachBooking: React.FC<Props> = ({
   return (
     <styles.container>
       <styles.Delete onClick={() => deleteOnClick()}></styles.Delete>
-      <styles.Title>Time: {info?.bookedHours}</styles.Title>
+      <styles.Title>Time: {time}</styles.Title>
       <styles.Title>Date: {readabelDate}</styles.Title>
       <styles.TitleBooked></styles.TitleBooked>
     </styles.container>

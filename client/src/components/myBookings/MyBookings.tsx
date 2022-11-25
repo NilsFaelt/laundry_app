@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { deleteBookTimeById } from "../../api/deleteBookTimeById";
-import { BookedLaundrytimes, LaundryTimes } from "../../types/laundryTypes";
+import { BookedLaundrytimes } from "../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import EachBooking from "./eachBooking/EachBooking";
 import { useGetTimeByUser } from "./hook/useGetTimeByUser";
 import * as styles from "./myBookings.style";
+import { deleteOutdatedBooking } from "./utils/delteOutdatedBooking";
 
 interface Data {
   data: BookedLaundrytimes[] | null;
@@ -19,26 +19,11 @@ const MyBookings = () => {
     (state: any) => state.userReducer
   );
 
-  const [bookedTime, setBookedTimes] = useState<LaundryTimes[]>([]);
   let bookedTimes: Data | null = null;
   if (user?.email)
     bookedTimes = useGetTimeByUser(user?.email, rerenderBookings);
-  console.log(bookedTimes, "times");
 
-  useEffect(() => {
-    const oldDate = new Date().getTime() - 86400000;
-    if (bookedTimes) {
-      const filteredToDelete = bookedTimes.data?.find(
-        (time) => time.dateAsMilisecs < oldDate
-      );
-      if (filteredToDelete) {
-        deleteBookTimeById(filteredToDelete._id);
-      }
-      console.log(filteredToDelete, "del mufker");
-    }
-  }, [bookedTimes]);
-
-  console.log(bookedTimes);
+  deleteOutdatedBooking(bookedTimes);
 
   return (
     <styles.BackgroundContainer>
