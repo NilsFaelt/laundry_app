@@ -8,6 +8,7 @@ interface BookingInfo {
   email: string;
   name: string;
   bookedHours: number;
+  dateAsMilisecs?: number;
 }
 
 export const bookALaundryTime = async (bookingInfo: BookingInfo) => {

@@ -16,6 +16,7 @@ interface DateObj {
   year: string;
 }
 interface Props {
+  date: Date;
   dateString: string;
   bookedTime: LaundryTimes | null;
   readebleDate: DateObj;
@@ -27,6 +28,7 @@ interface BookingInfo {
   email: string;
   name: string;
   bookedHours: number;
+  dateAsMilisecs?: number;
 }
 
 const BookTimePopUp: React.FC<Props> = ({
@@ -34,6 +36,7 @@ const BookTimePopUp: React.FC<Props> = ({
   bookedTime,
   readebleDate,
   setToogleBookPopUp,
+  date,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,8 +52,10 @@ const BookTimePopUp: React.FC<Props> = ({
     email: user?.email || "no mail found",
     name: user?.name || "no name found",
     bookedHours: bookedTime?.time || 710,
+    dateAsMilisecs: date.getTime(),
   });
-
+  console.log(typeof date.getTime(), "getseom");
+  console.log(new Date(date), " fet some more");
   return (
     <styles.Container>
       <styles.P>Book time: {bookedTime?.timeAsString}</styles.P>

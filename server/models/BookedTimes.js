@@ -22,6 +22,10 @@ const BookedTimesSchema = new Schema(
       type: Number,
       required: true,
     },
+    dateAsMilisecs: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );

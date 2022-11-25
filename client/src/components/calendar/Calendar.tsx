@@ -33,6 +33,7 @@ const CalendarComp = () => {
         <Calendar onChange={setDate} value={date} />
         {toogleBookPopUp ? (
           <BookTimePopUp
+            date={date}
             dateString={dateString}
             bookedTime={choosenTime}
             readebleDate={readebleDate}
