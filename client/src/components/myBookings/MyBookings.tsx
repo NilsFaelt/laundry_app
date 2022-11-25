@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
+import { deleteBookTimeById } from "../../api/deleteBookTimeById";
 import { BookedLaundrytimes, LaundryTimes } from "../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import EachBooking from "./eachBooking/EachBooking";
 import { useGetTimeByUser } from "./hook/useGetTimeByUser";
 import * as styles from "./myBookings.style";
+
+interface Data {
+  data: BookedLaundrytimes[] | null;
+  loading: boolean;
+  error: any;
+}
 
 const MyBookings = () => {
   const [rerenderBookings, setRerenderBookings] = useState<boolean>(false);
@@ -13,19 +19,24 @@ const MyBookings = () => {
     (state: any) => state.userReducer
   );
 
-  //Creatig func
-
-  const deleteOutdAtedBookings = () => {
-    const oldDate = new Date().getTime() - 86400000;
-    console.log(new Date(oldDate));
-  };
-  deleteOutdAtedBookings();
-  //
-
   const [bookedTime, setBookedTimes] = useState<LaundryTimes[]>([]);
-  let bookedTimes: any = null;
+  let bookedTimes: Data | null = null;
   if (user?.email)
     bookedTimes = useGetTimeByUser(user?.email, rerenderBookings);
+  console.log(bookedTimes, "times");
+
+  useEffect(() => {
+    const oldDate = new Date().getTime() - 86400000;
+    if (bookedTimes) {
+      const filteredToDelete = bookedTimes.data?.find(
+        (time) => time.dateAsMilisecs < oldDate
+      );
+      if (filteredToDelete) {
+        deleteBookTimeById(filteredToDelete._id);
+      }
+      console.log(filteredToDelete, "del mufker");
+    }
+  }, [bookedTimes]);
 
   console.log(bookedTimes);
 
@@ -33,9 +44,9 @@ const MyBookings = () => {
     <styles.BackgroundContainer>
       <styles.Container>
         <styles.Title>
-          My booked laundrytimes {bookedTimes.data?.length}/3
+          My booked laundrytimes {bookedTimes?.data?.length}/3
         </styles.Title>
-        {bookedTimes.data?.map((each: BookedLaundrytimes) => (
+        {bookedTimes?.data?.map((each: BookedLaundrytimes) => (
           <EachBooking
             key={each._id}
             info={each}
