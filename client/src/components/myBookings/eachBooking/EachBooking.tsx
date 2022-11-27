@@ -1,4 +1,3 @@
-import { BiInfoCircle } from "react-icons/bi";
 import { deleteBookTimeById } from "../../../api/deleteBookTimeById";
 import { colors } from "../../../styles/colors";
 import { BookedLaundrytimes } from "../../../types/laundryTypes";

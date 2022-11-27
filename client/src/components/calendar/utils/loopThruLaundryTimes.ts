@@ -7,8 +7,7 @@ export const loopThruLaundryTimes = async (
   dateString: string
 ) => {
   const data = await getBookedTimesByDate(dateString);
-  console.log(data, "in func");
-  console.log(laundryTimes);
+
   setBookingTimes(laundryTimes);
   for (let i = 0; i < laundryTimes.length; i++) {
     data.map((booked: BookedLaundrytimes) => {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { BookedLaundrytimes } from "../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
+import Spinner from "../../ui/loadingSpinner/Spinner";
 import EachBooking from "./eachBooking/EachBooking";
 import { useGetTimeByUser } from "./hook/useGetTimeByUser";
 import * as styles from "./myBookings.style";
@@ -31,6 +32,7 @@ const MyBookings = () => {
         <styles.Title>
           My booked laundrytimes {bookedTimes?.data?.length}/3
         </styles.Title>
+        {bookedTimes?.loading ? <Spinner /> : null}
         {bookedTimes?.data?.map((each: BookedLaundrytimes) => (
           <EachBooking
             key={each._id}
