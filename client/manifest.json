@@ -1,13 +1,13 @@
 {
     "short_name":"laundry app",
     "name":"Laundry App Pwa",
-    "start_url":".",
+    "start_url":"index.html",
     "display":"standalone",
     "theme_color":"rgba(22, 22, 22, 0.80)",
     "background_color":"rgba(22, 22, 22, 0.80)",
     "icons":[
         {
-            "src":"../public/images/logo.png",
+            "src":"./public/images/logo.png",
             "type":"image/png",
             "size":"1024x1024"
         }
