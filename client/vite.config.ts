@@ -3,30 +3,6 @@ import react from "@vitejs/plugin-react";
 
 import { VitePWA } from "vite-plugin-pwa";
 
-// https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [
-//     react(),
-//     VitePWA({
-//       registerType: "prompt",
-//       includeAssets: ["logo.png"],
-//       manifest: {
-//         name: "Laundry App Pwa",
-//         short_name: "laundry app",
-//         description: "Laundry booking app)",
-//         theme_color: "#ffffff",
-//         start_url: "/",
-//         icons: [
-//           {
-//             src: "logo.png",
-//             sizes: "10242x1024",
-//             type: "image/png",
-//           },
-//         ],
-//       },
-//     }),
-//   ],
-// });
 export default defineConfig({
   plugins: [
     react(),
