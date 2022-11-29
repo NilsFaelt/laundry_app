@@ -28,7 +28,6 @@ export const useGetTimeByUser = (
       setLoading(false);
     }
   };
-  console.log(data);
   useEffect(() => {
     fetch();
   }, [rerenderBookings]);

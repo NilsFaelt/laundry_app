@@ -10,7 +10,6 @@ export const fixBookingHoursToMoreReadble = (
     const splitted = stringHour.split("");
     const spliced = splitted.splice(2, 0, "-");
     const joinedString = splitted.join("");
-    console.log(joinedString, "joindeedde");
     return joinedString;
   }
 };
