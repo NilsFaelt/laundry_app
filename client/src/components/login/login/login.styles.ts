@@ -23,6 +23,7 @@ box-shadow:3px 3px 3px;
 `;
 
 export const Title = styles(globalStyles.SecondaryTitle)`
+font-size:22px;
 margin-top:5vh;`;
 
 export const Form = styles.form`
@@ -34,7 +35,10 @@ align-items:center;
 gap:2vh;
 `;
 export const Input = styles(globalStyles.Input)`
-font-size:16px;`;
+border-radius:5px;
+border:1px solid black;
+padding:1px;
+font-size:14px;`;
 export const Label = styles(globalStyles.Label)``;
 
 export const P = styles.p`
@@ -42,4 +46,6 @@ color:${colors.danger};
 font.size:12px;
 `;
 
-export const Btn = styles(globalStyles.MainBtn)``;
+export const Btn = styles(globalStyles.MainBtn)`
+margin-top:10px;
+`;

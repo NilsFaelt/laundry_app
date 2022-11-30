@@ -34,9 +34,9 @@ font-size:calc(12px + 0.5vw);
 export const Input = styles.input`
 margin:0 auto;
 width:90%;
-height:30px;
+height:25px;
 font-family: 'Montserrat', sans-serif;
-font-size:calc(12px + 0.5vw);
+font-size:calc(12px + 0.2vw);
 `;
 
 export const MainBtn = styles.button`
