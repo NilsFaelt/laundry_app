@@ -10,7 +10,15 @@
             "src":"/public/pwa-512x512.png",
             "type":"image/png",
             "sizes":"512x512"
-        }
+        },    
+        {
+            "src": "/public/masked-icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+         }
+
+    
     
     ]
 

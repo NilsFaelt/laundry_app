@@ -4,6 +4,6 @@ import laundryImg from "../../assets/img/laundry.png";
 
 export const Container = styles(glolbalStyles.FlexedContainerCollumn)`
 height:auto;
-width:100vw;
+width:auto;
 background-image:url(${laundryImg});
 `;
