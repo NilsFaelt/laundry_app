@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as styles from "./login.styles";
 import { LoginInfo } from "../../../types/loginTypes";
 import { changeInputInfo } from "./utils/changeInputInfo";

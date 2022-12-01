@@ -42,6 +42,7 @@ const CalendarComp = () => {
             setToogleBookPopUp={setToogleBookPopUp}
           />
         ) : null}
+
         {bookingTimes ? (
           <>
             <styles.Title>Availible times today</styles.Title>

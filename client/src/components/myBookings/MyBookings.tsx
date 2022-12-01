@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 import { BookedLaundrytimes } from "../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import Spinner from "../../ui/loadingSpinner/Spinner";

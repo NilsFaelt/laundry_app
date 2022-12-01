@@ -18,6 +18,7 @@ const DropDownUserMenu = () => {
   useClickOustsideToClose(menuRef);
 
   const handleLoggout = () => {
+    localStorage.removeItem("user");
     dispatch(handelDropDownClick());
     dispatch(loggOutUser());
   };

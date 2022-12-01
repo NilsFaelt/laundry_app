@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserTypeWithNestedAdress } from "../types/userType";
 
+interface Action {
+  state: any;
+  payload: UserTypeWithNestedAdress;
+}
 const initialState: UserTypeWithNestedAdress | null = null;
 
 const userLslice = createSlice({
@@ -10,7 +14,7 @@ const userLslice = createSlice({
     loginUser: (state, action) => {
       return action.payload;
     },
-    loggOutUser: (state) => {
+    loggOutUser: () => {
       return null;
     },
   },

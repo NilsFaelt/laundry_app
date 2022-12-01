@@ -26,6 +26,7 @@ export interface UserTypeWithNestedAdress {
   email: string;
   brf: string;
   apartment: number | null;
+  nrOfActiveBookings?: number;
   adress: Adress;
   bookingNr: number | null;
   admin?: boolean;

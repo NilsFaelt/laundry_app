@@ -21,7 +21,11 @@ border-radius:5px;
 box-shadow:10px 10px 10px;
 
 `;
-export const TimesWrapper = styles(globalStyles.FlexedContainerCollumn)``;
+export const TimesWrapper = styles(globalStyles.FlexedContainerCollumn)`
+width:250px;
+margin-left:20px;
+background-color:transparent;
+`;
 
 export const Title = styles.h2`
 margin-top:2vh;

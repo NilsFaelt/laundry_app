@@ -6,6 +6,5 @@ export const checkSoDateIsStillRelevant = (date: Date): boolean => {
   if (calculatedMilisecs > choosendateInMiliSecs) {
     returnValue = false;
   }
-  console.log(returnValue);
   return returnValue;
 };

@@ -1,5 +1,3 @@
-import { useDispatch } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
 import { login } from "../../../../api/login";
 import { loginUser } from "../../../../redux/userSlice";
 import { LoginInfo } from "../../../../types/loginTypes";
@@ -18,6 +16,8 @@ export const handleLogin: HandleLogin = async (
 ) => {
   e.preventDefault();
   const user = await login(loginInfo);
+  const jsonUser = JSON.stringify(user);
+  localStorage.setItem("user", jsonUser);
   if (user) {
     dispatch(loginUser(user));
     setsShowLoginFailed(false);
