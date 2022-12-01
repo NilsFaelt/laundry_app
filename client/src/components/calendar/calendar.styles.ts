@@ -19,7 +19,9 @@ background-color:${colors.primary};
 padding:calc(20px + 2vw);
 border-radius:5px;
 box-shadow:10px 10px 10px;
+
 `;
+export const TimesWrapper = styles(globalStyles.FlexedContainerCollumn)``;
 
 export const Title = styles.h2`
 margin-top:2vh;

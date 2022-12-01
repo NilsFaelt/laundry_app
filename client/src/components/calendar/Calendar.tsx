@@ -10,6 +10,7 @@ import ShowAvilibleTimes from "./showAvilibleTimes/ShowAvilibleTimes";
 import BookTimePopUp from "./bookTimePopUp/BookTimePopUp";
 import { shortenDateToString } from "../../utils/shortenDateToString";
 import Spinner from "../../ui/loadingSpinner/Spinner";
+import { checkSoDateIsStillRelevant } from "./utils/checkSodateIsStillRelevant";
 
 const CalendarComp = () => {
   const [choosenTime, setChoosenTime] = useState<LaundryTimes | null>(null);
@@ -53,9 +54,11 @@ const CalendarComp = () => {
           <styles.Title>Choose a date</styles.Title>
         )}
         {bookingTimes ? null : <Spinner />}
+
         {bookingTimes?.map((time) => {
           return (
             <ShowAvilibleTimes
+              date={date}
               key={time.time}
               bookedTime={time}
               handleBookTimeClick={handleBookTimeClick}

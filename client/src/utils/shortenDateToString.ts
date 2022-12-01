@@ -16,7 +16,7 @@ export const shortenDateToString = (date: Date): DateObj => {
       day: splittedDate[2],
       year: splittedDate[3],
     };
-    console.log(dateObj);
+
     return dateObj;
   }
   return {
