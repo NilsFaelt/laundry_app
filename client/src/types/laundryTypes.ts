@@ -26,4 +26,5 @@ export interface BookingInfo {
   email: string;
   name: string;
   bookedHours: number;
+  dateAsMilisecs?: number;
 }

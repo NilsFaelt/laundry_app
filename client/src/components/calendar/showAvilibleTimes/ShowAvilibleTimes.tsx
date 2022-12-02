@@ -14,8 +14,8 @@ const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
   handleBookTimeClick,
   date,
 }) => {
-  const user: UserTypeWithNestedAdress = useSelector(
-    (state: any) => state.userReducer
+  const user: UserTypeWithNestedAdress | null = useSelector(
+    (state: RootState) => state.userReducer.user
   );
   const [usersBookedLimit, setusersBookedLimit] = useState<LaundryTimes[]>([]);
   const dateRelevance = checkSoDateIsStillRelevant(date);

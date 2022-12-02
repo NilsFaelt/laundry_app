@@ -18,7 +18,7 @@ interface Data {
 const MyBookings = () => {
   const [rerenderBookings, setRerenderBookings] = useState<boolean>(false);
   const user: UserTypeWithNestedAdress | null = useSelector(
-    (state: any) => state.userReducer
+    (state: any) => state.userReducer.user
   );
 
   let bookedTimes: Data | null = null;

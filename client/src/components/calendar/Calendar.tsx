@@ -10,7 +10,6 @@ import ShowAvilibleTimes from "./showAvilibleTimes/ShowAvilibleTimes";
 import BookTimePopUp from "./bookTimePopUp/BookTimePopUp";
 import { shortenDateToString } from "../../utils/shortenDateToString";
 import Spinner from "../../ui/loadingSpinner/Spinner";
-import { checkSoDateIsStillRelevant } from "./utils/checkSodateIsStillRelevant";
 
 const CalendarComp = () => {
   const [choosenTime, setChoosenTime] = useState<LaundryTimes | null>(null);

@@ -5,10 +5,10 @@ import { useRef } from "react";
 import { useClickOustsideToClose } from "../../../hooks/useClickOustsideToClose";
 import { loggOutUser } from "../../../redux/userSlice";
 import { Navigate } from "react-router-dom";
-import { handelDropDownClick } from "../../../redux/menuSlice";
+import { activateBooking, handelDropDownClick } from "../../../redux/menuSlice";
 
 const DropDownUserMenu = () => {
-  const { admin } = useSelector((state: any) => state.userReducer);
+  const { admin } = useSelector((state: any) => state.userReducer.user);
 
   const dispatch = useDispatch();
   const menuRef = useRef(null);
@@ -22,6 +22,11 @@ const DropDownUserMenu = () => {
     dispatch(handelDropDownClick());
     dispatch(loggOutUser());
   };
+
+  const handleMybookingsOnCLick = () => {
+    dispatch(handelDropDownClick());
+    dispatch(activateBooking());
+  };
   return (
     <>
       {firstTooglge ? (
@@ -30,7 +35,7 @@ const DropDownUserMenu = () => {
           animation={userMenu ? "open-animation" : "close-animation"}
         >
           <styles.Link
-            onClick={() => dispatch(handelDropDownClick())}
+            onClick={() => handleMybookingsOnCLick()}
             animation={userMenu ? "open-animation-nav" : "close-animation-nav"}
             to={"/myBooking"}
           >

@@ -4,31 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { bookALaundryTime } from "../../../api/bookALaundryTime";
 import { activateBooking } from "../../../redux/menuSlice";
 import { RootState } from "../../../redux/store";
-import { LaundryTimes } from "../../../types/laundryTypes";
+import { DateObj } from "../../../types/dateTypes";
+import { BookingInfo, LaundryTimes } from "../../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../../types/userType";
 import * as styles from "./bookTimePopUp.style";
 import { handleBookingOnClick } from "./utils/handkeBookingOnclick";
 
-interface DateObj {
-  dayLetters: string;
-  month: string;
-  day: string;
-  year: string;
-}
 interface Props {
   date: Date;
   dateString: string;
   bookedTime: LaundryTimes | null;
   readebleDate: DateObj;
   setToogleBookPopUp: React.Dispatch<React.SetStateAction<boolean>>;
-}
-interface BookingInfo {
-  laundryRoom: string;
-  dateForBooking: string;
-  email: string;
-  name: string;
-  bookedHours: number;
-  dateAsMilisecs?: number;
 }
 
 const BookTimePopUp: React.FC<Props> = ({
@@ -44,7 +31,7 @@ const BookTimePopUp: React.FC<Props> = ({
     (state: RootState) => state.showActiveMenuReducer
   );
   const user: UserTypeWithNestedAdress | null = useSelector(
-    (state: any) => state.userReducer
+    (state: any) => state.userReducer.user
   );
   const [bookingInfo, setBookingInfo] = useState<BookingInfo>({
     laundryRoom: "default",
