@@ -13,7 +13,7 @@ import { typeCheckUser } from "./utils/typeCheckUser";
 const Root = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state: RootState) => state.userReducer);
+  const user = useSelector((state: RootState) => state.userReducer.user);
 
   useEffect(() => {
     const userFromLocaal = localStorage.getItem("user");

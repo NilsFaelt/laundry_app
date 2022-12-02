@@ -1,21 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserTypeWithNestedAdress } from "../types/userType";
 
-interface Action {
-  state: any;
-  payload: UserTypeWithNestedAdress;
+interface UserSliceState {
+  user: UserTypeWithNestedAdress | null;
 }
-const initialState: UserTypeWithNestedAdress | null = null;
+const initialState: UserSliceState = {
+  user: null,
+};
 
 const userLslice = createSlice({
   name: "userSlice",
   initialState,
   reducers: {
-    loginUser: (state, action) => {
-      return action.payload;
+    loginUser: (state, action: PayloadAction<UserTypeWithNestedAdress>) => {
+      state.user = action.payload;
     },
-    loggOutUser: () => {
-      return null;
+    loggOutUser: (state) => {
+      console.log(state.user, "in loggout in reducer");
+      state.user = null;
     },
   },
 });

@@ -31,7 +31,7 @@ const MyBookings = () => {
     <styles.BackgroundContainer>
       <styles.Container>
         <styles.Title>
-          My booked laundrytimes {bookedTimes?.data?.length}/3
+          My booked laundrytimes {bookedTimes?.data?.length || 0}/3
         </styles.Title>
         {bookedTimes?.loading ? <Spinner /> : null}
         {bookedTimes?.data?.map((each: BookedLaundrytimes) => (
