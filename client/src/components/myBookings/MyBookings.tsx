@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addAllLaundryTimes,
+  addLaundryTime,
+} from "../../redux/bookedTimesSlice";
 import { RootState } from "../../redux/store";
 import { BookedLaundrytimes } from "../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
@@ -16,14 +20,19 @@ interface Data {
 }
 
 const MyBookings = () => {
+  const dispacth = useDispatch();
   const [rerenderBookings, setRerenderBookings] = useState<boolean>(false);
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: any) => state.userReducer.user
   );
 
   let bookedTimes: Data | null = null;
-  if (user?.email)
+  if (user?.email) {
     bookedTimes = useGetTimeByUser(user?.email, rerenderBookings);
+    if (bookedTimes.data) {
+      dispacth(addAllLaundryTimes(bookedTimes.data));
+    }
+  }
 
   deleteOutdatedBooking(bookedTimes);
 
