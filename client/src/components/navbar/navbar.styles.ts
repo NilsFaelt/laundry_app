@@ -1,9 +1,9 @@
 import styles from "styled-components";
 import * as headerStyles from "../header/header.styles";
 import * as globalStyles from "../../styles/globalStyles";
-import { CiCalendarDate } from "react-icons/all";
-import { TfiBook } from "react-icons/all";
-import { BsChatRightText } from "react-icons/all";
+import { CiCalendarDate } from "react-icons/ci";
+import { TfiBook } from "react-icons/tfi";
+import { BsChatRightText } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { breakPoints } from "../../styles/breakPoints";
 import { colors } from "../../styles/colors";

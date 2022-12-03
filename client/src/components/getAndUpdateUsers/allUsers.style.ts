@@ -3,7 +3,7 @@ import laundryImg from "../../assets/img/laundry.png";
 import { colors } from "../../styles/colors";
 import * as globalStyles from "../../styles/globalStyles";
 import * as loginStyles from "../login/login/login.styles";
-import { FiRefreshCcw } from "react-icons/all";
+import { FiRefreshCcw } from "react-icons/fi";
 
 export const BackgroundContainer = styles.div`
 width:100vw;

@@ -1,7 +1,7 @@
 import styles from "styled-components";
 import { colors } from "../../../styles/colors";
 import * as loginStyles from "../../login/login/login.styles";
-import { AiFillCloseCircle } from "react-icons/all";
+import { AiFillCloseCircle } from "react-icons/ai";
 import * as globalStyles from "../../../styles/globalStyles";
 
 export const Container = styles(loginStyles.Container)`

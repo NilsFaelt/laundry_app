@@ -1,6 +1,6 @@
 import styles from "styled-components";
 import * as globalStyles from "../../styles/globalStyles";
-import { CiUser } from "react-icons/all";
+import { CiUser } from "react-icons/ci";
 import { colors } from "../../styles/colors";
 
 interface MenuProps {

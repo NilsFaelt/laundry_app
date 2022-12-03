@@ -1,6 +1,6 @@
 import styles from "styled-components";
 import { colors } from "../../../styles/colors";
-import { AiFillCloseCircle } from "react-icons/all";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 export const container = styles.div`
 border:1px solid white;
