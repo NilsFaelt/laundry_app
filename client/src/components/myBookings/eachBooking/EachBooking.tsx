@@ -1,5 +1,5 @@
+import { useDispatch } from "react-redux";
 import { deleteBookTimeById } from "../../../api/deleteBookTimeById";
-import { colors } from "../../../styles/colors";
 import { BookedLaundrytimes } from "../../../types/laundryTypes";
 import * as styles from "./eachBooking.styles";
 import { fixBookingHoursToMoreReadble } from "./utils/fixBookingHoursToMoreReadble";
@@ -16,15 +16,16 @@ const EachBooking: React.FC<Props> = ({
   setRerenderBookings,
   rerenderBookings,
 }) => {
+  const dispatch = useDispatch();
   const time = fixBookingHoursToMoreReadble(info);
-  const deleteOnClick = async () => {
+  const deleteOnClick = async (info: BookedLaundrytimes) => {
     deleteBookTimeById(info._id);
     setRerenderBookings(!rerenderBookings);
   };
   const readabelDate = makeDateReadeable(info.dateForBooking);
   return (
     <styles.container>
-      <styles.Delete onClick={() => deleteOnClick()}></styles.Delete>
+      <styles.Delete onClick={() => deleteOnClick(info)}></styles.Delete>
       <styles.Title>Time: {time}</styles.Title>
       <styles.Title>Date: {readabelDate}</styles.Title>
       <styles.TitleBooked></styles.TitleBooked>

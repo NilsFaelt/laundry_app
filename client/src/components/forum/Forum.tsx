@@ -4,7 +4,7 @@ const Forum = () => {
   return (
     <styles.BackgroundContainer>
       <styles.Container>
-        <styles.Title>Forum</styles.Title>
+        <styles.Title>Bulletin Board</styles.Title>
         <styles.TreadsAndPoststContainer>
           <styles.ThreadsContainer>
             <styles.SecondaryTitle>Threads</styles.SecondaryTitle>

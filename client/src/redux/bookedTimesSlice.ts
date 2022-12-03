@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { laundryTimes } from "../components/calendar/laundryTimes";
 import { BookedLaundrytimes } from "../types/laundryTypes";
 
 interface BookedTimesState {
@@ -17,7 +18,6 @@ const bookedTimesSlice = createSlice({
       action: PayloadAction<BookedLaundrytimes[]>
     ) => {
       state.bookedTimes = action.payload;
-      console.log(state.bookedTimes, "bookingsss");
     },
     addLaundryTime: (state, action: PayloadAction<BookedLaundrytimes>) => {
       state.bookedTimes = [...state.bookedTimes, action.payload];
@@ -26,6 +26,7 @@ const bookedTimesSlice = createSlice({
       state.bookedTimes = state.bookedTimes.filter(
         (time) => time._id !== action.payload
       );
+      console.log(state.bookedTimes, "state in reducer");
     },
   },
 });
