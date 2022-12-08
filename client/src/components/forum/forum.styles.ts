@@ -47,6 +47,7 @@ background-color:transparent;
 padding:calc(20px + 2vw);
 border-radius:5px;
 
+
 `;
 export const ThreadsContaineWrapper = styles(
   globalStyles.FlexedContainerCollumn
@@ -78,4 +79,6 @@ text-align:center;
 
 export const Btn = styles(globalStyles.MainBtn)`
 margin-bottom:10px;
+box-shadow:3px 3px 3px black;
+
 `;

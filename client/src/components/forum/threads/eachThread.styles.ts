@@ -14,7 +14,7 @@ cursor:pointer;
     transition:0.2s;
     background-color:${colors.primary};
     text-decoration:underline 1px solid   ${colors.activePositive};
-    border:1px solid white;
+    outline:1px solid white;
   }
   &:active{
     transition:0.2s;
