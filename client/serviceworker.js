@@ -1,5 +1,5 @@
 const CACHE_NAME = "cache-1";
-const urlsToCache = ["index.html", "offline.html"];
+const urlsToCache = ["offline.html"];
 
 const self = this;
 

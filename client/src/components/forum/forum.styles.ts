@@ -41,12 +41,24 @@ box-shadow:3px 3px 3px;
 `;
 export const ThreadsContainer = styles(globalStyles.FlexedContainerCollumn)`
 margin:0 auto;
-width:clamp(100px, 20%, 200px);
+min-width:100px;
 height:auto;
-background-color:${colors.primary};
+background-color:transparent;
 padding:calc(20px + 2vw);
 border-radius:5px;
+
+`;
+export const ThreadsContaineWrapper = styles(
+  globalStyles.FlexedContainerCollumn
+)`
+margin:0 auto;
+width:auto;
+height:auto;
+background-color:${colors.primary};
+padding:10px;
+border-radius:5px;
 box-shadow:3px 3px 3px;
+
 `;
 
 export const Title = styles.h2`
@@ -59,7 +71,11 @@ text-align:center;
 export const SecondaryTitle = styles.h2`
 margin-top:-2vh;
 margin-bottom:2vh;
-font-size:15px;
+font-size:18px;
 color:${colors.white};
 text-align:center;
+`;
+
+export const Btn = styles(globalStyles.MainBtn)`
+margin-bottom:10px;
 `;
