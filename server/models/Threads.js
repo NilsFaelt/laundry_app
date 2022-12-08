@@ -6,6 +6,7 @@ const threadsSchema = new Schema(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     creator: {
       type: String,
@@ -17,7 +18,7 @@ const threadsSchema = new Schema(
     info: {
       editable: {
         type: Boolean,
-        default: false,
+        default: true,
       },
       removeable: {
         type: Boolean,

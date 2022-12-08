@@ -1,9 +1,12 @@
+import { ThreadType } from "../../../types/threadTypes";
 import * as Styles from "./eachThread.styles";
-
-const EachThread = () => {
+interface Props {
+  thread: ThreadType;
+}
+const EachThread: React.FC<Props> = ({ thread }) => {
   return (
     <Styles.Container>
-      <Styles.Title>Each Thread</Styles.Title>
+      <Styles.Title>{thread.title}</Styles.Title>
     </Styles.Container>
   );
 };
