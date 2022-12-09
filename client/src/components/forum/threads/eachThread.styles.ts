@@ -6,7 +6,7 @@ export const Container = styles(gloalStyles.FlexedContainerCollumn)`
 width:clamp(50px, 100%, 90%);
 height:auto;
 margin-top:10px;
-padding:15px;
+padding:3px 30px 3px 30px ;
 border-radius:5px;
 box-shadow:3px 3px 3px;
 cursor:pointer;

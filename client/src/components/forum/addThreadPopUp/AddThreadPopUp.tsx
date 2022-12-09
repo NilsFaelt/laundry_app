@@ -4,19 +4,27 @@ import { addThread } from "../../../api/addThread";
 import { RootState } from "../../../redux/store";
 import { ThreadType } from "../../../types/threadTypes";
 import * as Styles from "./addThreadPopUp.styles";
+import { filterThreadsNoDuplicates } from "./utils/filterThreadDuplicate";
 
 interface Props {
   setTooglePopUpThread: React.Dispatch<React.SetStateAction<boolean>>;
+  threads: ThreadType[];
 }
 
-const AddThreadPopUp: React.FC<Props> = ({ setTooglePopUpThread }) => {
+const AddThreadPopUp: React.FC<Props> = ({ setTooglePopUpThread, threads }) => {
+  const [threadDuplicate, setThreadDuplicate] = useState(true);
   const user = useSelector((state: RootState) => state.userReducer.user);
   const [threadName, setThreadName] = useState("nils");
 
+  console.log(threadDuplicate, "duplicate");
+
   const sendThreadOnClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addThread({ title: threadName, creator: user?.email || "noname" });
-    setTooglePopUpThread(false);
+    if (filterThreadsNoDuplicates(threads, setThreadDuplicate, threadName)) {
+      addThread({ title: threadName, creator: user?.email || "noname" });
+      setThreadDuplicate(false);
+      setTooglePopUpThread(false);
+    }
   };
 
   return (
@@ -27,6 +35,9 @@ const AddThreadPopUp: React.FC<Props> = ({ setTooglePopUpThread }) => {
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => sendThreadOnClick(e)}
       >
         <Styles.Label>Thread Name</Styles.Label>
+        {!threadDuplicate ? (
+          <Styles.Warning>Thread name already exsists</Styles.Warning>
+        ) : null}
         <Styles.Input
           placeholder='ThreadName'
           value={threadName}

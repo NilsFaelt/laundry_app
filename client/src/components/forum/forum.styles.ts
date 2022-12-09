@@ -7,6 +7,7 @@ export const BackgroundContainer = styles.div`
 width:100vw;
 height:120vh;
 background-image:url(${laundryImg});
+padding-bottom:200px;
 `;
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
 margin:0 auto;
@@ -17,6 +18,7 @@ background-color:${colors.primary};
 padding:calc(20px + 2vw);
 border-radius:5px;
 box-shadow:10px 10px 10px;
+
 `;
 
 export const TreadsAndPoststContainer = styles(globalStyles.FlexedContainerRow)`
@@ -46,6 +48,18 @@ height:auto;
 background-color:transparent;
 padding:calc(20px + 2vw);
 border-radius:5px;
+`;
+export const ThreadsContainerScroll = styles(
+  globalStyles.FlexedContainerCollumn
+)`
+margin:0 auto;
+min-width:100px;
+height:40vh;
+background-color:transparent;
+padding:calc(20px + 2vw);
+padding-top:100px;
+border-radius:5px;
+overflow: scroll;
 
 
 `;
@@ -55,11 +69,8 @@ export const ThreadsContaineWrapper = styles(
 margin:0 auto;
 width:auto;
 height:auto;
-background-color:${colors.primary};
-padding:10px;
+background-color:transparent;
 border-radius:5px;
-box-shadow:3px 3px 3px;
-
 `;
 
 export const Title = styles.h2`
@@ -82,3 +93,6 @@ margin-bottom:10px;
 box-shadow:3px 3px 3px black;
 
 `;
+
+export const Input = styles(globalStyles.Input)``;
+export const Label = styles(globalStyles.Label)``;

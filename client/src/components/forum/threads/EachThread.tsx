@@ -5,7 +5,7 @@ interface Props {
 }
 const EachThread: React.FC<Props> = ({ thread }) => {
   return (
-    <Styles.Container>
+    <Styles.Container key={thread._id}>
       <Styles.Title>{thread.title}</Styles.Title>
     </Styles.Container>
   );

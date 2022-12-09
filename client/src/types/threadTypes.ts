@@ -8,5 +8,6 @@ export interface Info {
 export interface ThreadType {
   title: string;
   creator: string;
+  _id?: string;
   info?: Info;
 }

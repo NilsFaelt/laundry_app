@@ -7,7 +7,9 @@ import EachThread from "./threads/EachThread";
 
 const Forum = () => {
   const [threads, setThreads] = useState<ThreadType[]>([]);
+  const [filteredThreads, setFilteredThreads] = useState<ThreadType[]>([]);
   const [tooglePopUpThread, setTooglePopUpThread] = useState(false);
+  const [inputSearch, setInputSearch] = useState("");
   const getAllthreadsFn = async () => {
     const data: ThreadType[] | null = await getAllThreads();
     if (data !== null) setThreads(data);
@@ -16,10 +18,29 @@ const Forum = () => {
     getAllthreadsFn();
   }, []);
 
+  const filterThreads = (
+    threads: ThreadType[],
+    setFilteredThreads: React.Dispatch<React.SetStateAction<ThreadType[]>>,
+    inputSearch: string
+  ) => {
+    useEffect(() => {
+      const filtererdThreads = threads?.filter((thread) =>
+        thread.title.includes(inputSearch)
+      );
+      setFilteredThreads(threads);
+      if (inputSearch !== "") setFilteredThreads(filtererdThreads);
+      else setFilteredThreads(threads);
+    }, [inputSearch]);
+  };
+  filterThreads(threads, setFilteredThreads, inputSearch);
+
   return (
     <styles.BackgroundContainer>
       {tooglePopUpThread ? (
-        <AddThreadPopUp setTooglePopUpThread={setTooglePopUpThread} />
+        <AddThreadPopUp
+          setTooglePopUpThread={setTooglePopUpThread}
+          threads={threads}
+        />
       ) : null}
       <styles.Container>
         <styles.Title>Bulletin Board</styles.Title>
@@ -27,9 +48,17 @@ const Forum = () => {
           <styles.ThreadsContaineWrapper>
             <styles.ThreadsContainer>
               <styles.SecondaryTitle>Threads</styles.SecondaryTitle>
-              {threads?.map((thread) => {
-                return <EachThread thread={thread} />;
-              })}
+              <styles.Input
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setInputSearch(e.target.value)
+                }
+                placeholder='Search thread'
+              />
+              <styles.ThreadsContainerScroll>
+                {filteredThreads?.map((thread) => {
+                  return <EachThread thread={thread} />;
+                })}
+              </styles.ThreadsContainerScroll>
             </styles.ThreadsContainer>
             <styles.Btn onClick={() => setTooglePopUpThread(true)}>
               Add Thread

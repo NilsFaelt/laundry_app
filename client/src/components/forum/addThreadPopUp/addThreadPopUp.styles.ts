@@ -1,6 +1,7 @@
 import styles from "styled-components";
 import * as globalStyles from "../../../styles/globalStyles";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { colors } from "../../../styles/colors";
 
 export const container = styles(globalStyles.FlexedContainerCollumn)`
 position: absolute;
@@ -31,6 +32,11 @@ export const Label = styles(globalStyles.Label)`
 font-size:15px;
 margin-top:10px;
 color:white;
+`;
+export const Warning = styles(globalStyles.Label)`
+font-size:15px;
+margin-top:10px;
+color:${colors.danger};
 `;
 export const Input = styles(globalStyles.Input)`
 width:100%;

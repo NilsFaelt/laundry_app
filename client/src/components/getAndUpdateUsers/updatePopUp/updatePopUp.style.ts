@@ -30,8 +30,6 @@ font-size:12px`;
 export const Input = styles(loginStyles.Input)`
 font-family:serif;
 font-size:16px;
-
-
 `;
 export const Select = styles.select`
 width:200px;

@@ -15,7 +15,7 @@ justify-content:space-around;
 width:100vw;
 height:clamp(75px, 7vh, 200px);
 box-shadow:0px 0px 10px;
-@media ${breakPoints.breakOne} { 
+@media ${breakPoints.breakTwo} { 
   left:0.5vw;
   top:20vh;
   width:100px;

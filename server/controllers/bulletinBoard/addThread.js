@@ -5,7 +5,7 @@ const addNewThread = async (req, res, next) => {
   const checkThread = false;
   if (!checkThread) {
     try {
-      const savedThread = newThread.save();
+      const savedThread = await newThread.save();
       res
         .status(200)
         .json({ msg: "thread succefully added", thread: newThread });
