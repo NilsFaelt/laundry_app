@@ -70,7 +70,7 @@ export const ThreadsContaineWrapper = styles(
 margin:0 auto;
 width:auto;
 height:auto;
-background-color:transparent;
+background-color:${colors.primary};
 border-radius:5px;
 `;
 
@@ -90,6 +90,7 @@ text-align:center;
 `;
 
 export const Btn = styles(globalStyles.MainBtn)`
+
 margin-bottom:10px;
 box-shadow:3px 3px 3px black;
 

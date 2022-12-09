@@ -20,7 +20,9 @@ const EachBooking: React.FC<Props> = ({
   const time = fixBookingHoursToMoreReadble(info);
   const deleteOnClick = async (info: BookedLaundrytimes) => {
     deleteBookTimeById(info._id);
-    setRerenderBookings(!rerenderBookings);
+    setTimeout(() => {
+      setRerenderBookings(!rerenderBookings);
+    }, 50);
   };
   const readabelDate = makeDateReadeable(info.dateForBooking);
   return (
