@@ -53,11 +53,12 @@ export const ThreadsContainerScroll = styles(
   globalStyles.FlexedContainerCollumn
 )`
 margin:0 auto;
+margin-top:20px;
 min-width:100px;
 height:40vh;
 background-color:transparent;
 padding:calc(20px + 2vw);
-padding-top:100px;
+padding-top:120px;
 border-radius:5px;
 overflow: scroll;
 

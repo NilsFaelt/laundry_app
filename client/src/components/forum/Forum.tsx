@@ -12,7 +12,10 @@ const Forum = () => {
   const [inputSearch, setInputSearch] = useState("");
   const getAllthreadsFn = async () => {
     const data: ThreadType[] | null = await getAllThreads();
-    if (data !== null) setThreads(data);
+    if (data !== null) {
+      setThreads(data);
+      setFilteredThreads(data);
+    }
   };
   useEffect(() => {
     getAllthreadsFn();
@@ -27,8 +30,8 @@ const Forum = () => {
       const filtererdThreads = threads?.filter((thread) =>
         thread.title.includes(inputSearch)
       );
-      setFilteredThreads(threads);
-      if (inputSearch !== "") setFilteredThreads(filtererdThreads);
+      if (inputSearch !== "" && filtererdThreads.length > 0)
+        setFilteredThreads(filtererdThreads);
       else setFilteredThreads(threads);
     }, [inputSearch]);
   };
