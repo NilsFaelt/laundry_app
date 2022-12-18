@@ -2,11 +2,13 @@ import styles from "styled-components";
 import { colors } from "../../../styles/colors";
 import * as gloalStyles from "../../../styles/globalStyles";
 
-export const Container = styles(gloalStyles.FlexedContainerCollumn)`
-width:clamp(50px, 100%, 90%);
+export const Container = styles(gloalStyles.FlexedContainerRow)`
+justify-content:space-between;
+width:100%;
+gap:10vw;
 height:auto;
 margin-top:10px;
-padding:3px 30px 3px 30px ;
+padding:20px;
 border-radius:5px;
 box-shadow:3px 3px 3px;
 cursor:pointer;
@@ -26,6 +28,17 @@ cursor:pointer;
 `;
 
 export const Title = styles.h2`
+flex-basis:0;
+flex-grow:1;
+max-inline-size: 100px;
+overflow-wrap: break-word;
+font-size:15px;
+color:white;
+`;
+export const DateAndEmail = styles.h2`
+flex-basis:0;
+flex-grow:1;
+overflow-wrap: break-word;
 font-size:15px;
 color:white;
 `;

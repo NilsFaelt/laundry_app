@@ -49,27 +49,24 @@ const Forum = () => {
         <styles.Title>Bulletin Board</styles.Title>
         <styles.TreadsAndPoststContainer>
           <styles.ThreadsContaineWrapper>
-            <styles.ThreadsContainer>
-              <styles.SecondaryTitle>Threads</styles.SecondaryTitle>
-              <styles.Input
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setInputSearch(e.target.value)
-                }
-                placeholder='Search thread'
-              />
-              <styles.ThreadsContainerScroll>
-                {filteredThreads?.map((thread) => {
-                  return <EachThread thread={thread} />;
-                })}
-              </styles.ThreadsContainerScroll>
-            </styles.ThreadsContainer>
+            {/* <styles.ThreadsContainer> */}
+            <styles.SecondaryTitle>Threads</styles.SecondaryTitle>
+            <styles.Input
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setInputSearch(e.target.value)
+              }
+              placeholder='Search thread'
+            />
+            <styles.ThreadsContainerScroll>
+              {filteredThreads?.map((thread) => {
+                return <EachThread key={thread._id} thread={thread} />;
+              })}
+            </styles.ThreadsContainerScroll>
+            {/* </styles.ThreadsContainer> */}
             <styles.Btn onClick={() => setTooglePopUpThread(true)}>
               Add Thread
             </styles.Btn>
           </styles.ThreadsContaineWrapper>
-          <styles.PostsContainer>
-            <styles.SecondaryTitle>Posts</styles.SecondaryTitle>
-          </styles.PostsContainer>
         </styles.TreadsAndPoststContainer>
       </styles.Container>
     </styles.BackgroundContainer>

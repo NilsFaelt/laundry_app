@@ -41,8 +41,7 @@ const BookTimePopUp: React.FC<Props> = ({
     bookedHours: bookedTime?.time || 710,
     dateAsMilisecs: date.getTime(),
   });
-  console.log(typeof date.getTime(), "getseom");
-  console.log(new Date(date), " fet some more");
+
   return (
     <styles.Container>
       <styles.P>Book time: {bookedTime?.timeAsString}</styles.P>

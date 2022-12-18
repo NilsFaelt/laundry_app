@@ -13,7 +13,7 @@ const threadsSchema = new Schema(
       required: true,
     },
     created: {
-      date: String,
+      type: String,
     },
     info: {
       editable: {

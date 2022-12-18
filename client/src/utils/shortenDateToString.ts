@@ -4,6 +4,7 @@ interface DateObj {
   month: string;
   day: string;
   year: string;
+  date: string;
 }
 
 export const shortenDateToString = (date: Date): DateObj => {
@@ -15,6 +16,7 @@ export const shortenDateToString = (date: Date): DateObj => {
       month: splittedDate[1],
       day: splittedDate[2],
       year: splittedDate[3],
+      date: `${splittedDate[3]}-${splittedDate[1]}-${splittedDate[2]}`,
     };
 
     return dateObj;
@@ -24,5 +26,6 @@ export const shortenDateToString = (date: Date): DateObj => {
     month: "unknown",
     day: "unknown",
     year: "unknown",
+    date: "unknown",
   };
 };

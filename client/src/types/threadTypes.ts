@@ -10,4 +10,5 @@ export interface ThreadType {
   creator: string;
   _id?: string;
   info?: Info;
+  created: string;
 }
