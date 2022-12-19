@@ -12,6 +12,9 @@ padding:20px;
 border-radius:5px;
 box-shadow:3px 3px 3px;
 cursor:pointer;
+@media (max-width: 700px) {
+  gap:2vw;
+}
 &:hover{
     transition:0.2s;
     background-color:${colors.primary};
@@ -35,6 +38,7 @@ overflow-wrap: break-word;
 font-size:15px;
 color:white;
 color:${colors.showActiveLink}
+
 `;
 export const Date = styles.h2`
 flex-basis:0;

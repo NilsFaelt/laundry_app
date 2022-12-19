@@ -13,11 +13,13 @@ export const Container = styles(globalStyles.FlexedContainerCollumn)`
 margin:0 auto;
 margin-top:20vh;
 width:clamp(300px, 70%, 800px);
-
 background-color:${colors.primary};
-padding:calc(20px + 2vw);
+padding:10px ;
 border-radius:5px;
 box-shadow:10px 10px 10px;
+@media (max-width: 700px) {
+  width:90%;
+}
 
 `;
 
@@ -31,6 +33,7 @@ margin:0;
 padding:0;
 gap:20px;
 
+
 `;
 export const PostsContainer = styles(globalStyles.FlexedContainerCollumn)`
 margin:0 auto;
@@ -41,15 +44,7 @@ padding:calc(20px + 2vw);
 border-radius:5px;
 box-shadow:3px 3px 3px;
 `;
-// export const ThreadsContainer = styles(globalStyles.FlexedContainerCollumn)`
-// margin:0 auto;
-// min-width:100px;
-// height:70%;
-// background-color:transparent;
-// padding:calc(20px + 2vw);
-// border-radius:5px;
-// overflow:scroll;
-// `;
+
 export const ThreadsContainerScroll = styles(
   globalStyles.FlexedContainerCollumn
 )`
@@ -64,6 +59,7 @@ border-radius:5px;
 overflow: scroll;
 
 
+
 `;
 export const ThreadsContaineWrapper = styles(
   globalStyles.FlexedContainerCollumn
@@ -73,6 +69,7 @@ width:100%;
 height:auto;
 background-color:transparent;
 border-radius:5px;
+
 `;
 
 export const Title = styles.h2`
@@ -97,15 +94,20 @@ box-shadow:3px 3px 3px black;
 `;
 
 export const ThreadsHeader = styles(globalStyles.FlexedContainerRow)`
+padding:calc(20px + 1vw);
 margin-top:50px;
 background-color:transparent;
-width:80%;
+width:73%;
 justify-content:space-between;
 flex-basis:0;
 flex-grow:1;
 overflow-wrap: break-word;
 font-size:15px;
 color:white;
+@media (max-width: 700px) {
+  width:90%;
+}
+
 `;
 export const Input = styles(globalStyles.Input)`
 max-width:500px;
