@@ -88,7 +88,8 @@ text-align:center;
 `;
 
 export const Btn = styles(globalStyles.MainBtn)`
-margin-bottom:10px;
+margin-top:10px;
+margin-bottom:20px;
 box-shadow:3px 3px 3px black;
 
 `;
@@ -105,7 +106,10 @@ overflow-wrap: break-word;
 font-size:15px;
 color:white;
 @media (max-width: 700px) {
-  width:90%;
+  width:60%;
+}
+@media (max-width: 600px) {
+  width:80%;
 }
 
 `;
