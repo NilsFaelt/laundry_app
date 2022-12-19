@@ -3,6 +3,7 @@ export const colors = {
   white: "white",
   positive: "#41f43b",
   bluePositive: "#a6b2e1",
+  deepBlue: "#766eee",
   grey: "#8f919a",
   danger: "#ff201f",
   showActiveLink: "#f8e053",

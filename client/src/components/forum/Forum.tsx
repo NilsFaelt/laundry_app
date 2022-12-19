@@ -49,20 +49,23 @@ const Forum = () => {
         <styles.Title>Bulletin Board</styles.Title>
         <styles.TreadsAndPoststContainer>
           <styles.ThreadsContaineWrapper>
-            {/* <styles.ThreadsContainer> */}
-            <styles.SecondaryTitle>Threads</styles.SecondaryTitle>
             <styles.Input
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setInputSearch(e.target.value)
               }
               placeholder='Search thread'
             />
+            <styles.ThreadsHeader>
+              <styles.SecondaryTitle>Thread:</styles.SecondaryTitle>
+              <styles.SecondaryTitle>Date:</styles.SecondaryTitle>
+              <styles.SecondaryTitle>CreatedBy:</styles.SecondaryTitle>
+            </styles.ThreadsHeader>
             <styles.ThreadsContainerScroll>
               {filteredThreads?.map((thread) => {
                 return <EachThread key={thread._id} thread={thread} />;
               })}
             </styles.ThreadsContainerScroll>
-            {/* </styles.ThreadsContainer> */}
+
             <styles.Btn onClick={() => setTooglePopUpThread(true)}>
               Add Thread
             </styles.Btn>

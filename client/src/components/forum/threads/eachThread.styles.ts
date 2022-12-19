@@ -34,12 +34,22 @@ max-inline-size: 100px;
 overflow-wrap: break-word;
 font-size:15px;
 color:white;
+color:${colors.showActiveLink}
 `;
-export const DateAndEmail = styles.h2`
+export const Date = styles.h2`
 flex-basis:0;
 flex-grow:1;
 overflow-wrap: break-word;
 font-size:15px;
 color:white;
+
 `;
+export const Email = styles.h2`
+flex-basis:0;
+flex-grow:1;
+overflow-wrap: break-word;
+font-size:15px;
+color:${colors.deepBlue}
+`;
+
 export const Text = styles.p``;

@@ -7,8 +7,8 @@ const EachThread: React.FC<Props> = ({ thread }) => {
   return (
     <Styles.Container key={thread._id}>
       <Styles.Title>{thread.title}</Styles.Title>
-      <Styles.DateAndEmail>{thread.created}</Styles.DateAndEmail>
-      <Styles.DateAndEmail>{thread.creator}</Styles.DateAndEmail>
+      <Styles.Date>{thread.created}</Styles.Date>
+      <Styles.Email>{thread.creator}</Styles.Email>
     </Styles.Container>
   );
 };
