@@ -4,8 +4,10 @@ import { ThreadType } from "../../types/threadTypes";
 import AddThreadPopUp from "./addThreadPopUp/AddThreadPopUp";
 import * as styles from "./forum.styles";
 import EachThread from "./threads/EachThread";
+import ThreadsContainer from "./threadsContainer/ThreadsContainer";
 
 const Forum = () => {
+  const [choosenThread, setChoosenThread] = useState<string>("");
   const [threads, setThreads] = useState<ThreadType[]>([]);
   const [filteredThreads, setFilteredThreads] = useState<ThreadType[]>([]);
   const [tooglePopUpThread, setTooglePopUpThread] = useState(false);
@@ -36,7 +38,7 @@ const Forum = () => {
     }, [inputSearch]);
   };
   filterThreads(threads, setFilteredThreads, inputSearch);
-
+  console.log(choosenThread);
   return (
     <styles.BackgroundContainer>
       {tooglePopUpThread ? (
@@ -47,31 +49,15 @@ const Forum = () => {
       ) : null}
       <styles.Container>
         <styles.Title>Bulletin Board</styles.Title>
-        <styles.TreadsAndPoststContainer>
-          <styles.ThreadsContaineWrapper>
-            <styles.Input
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setInputSearch(e.target.value)
-              }
-              placeholder='Search thread'
-            />
-            <styles.ThreadsHeader>
-              <styles.SecondaryTitle>Thread:</styles.SecondaryTitle>
-              <styles.SecondaryTitle>Date:</styles.SecondaryTitle>
-              <styles.SecondaryTitle>CreatedBy:</styles.SecondaryTitle>
-            </styles.ThreadsHeader>
-            <styles.ThreadsContainerScroll>
-              {filteredThreads?.map((thread) => {
-                return <EachThread key={thread._id} thread={thread} />;
-              })}
-            </styles.ThreadsContainerScroll>
-
-            <styles.Btn onClick={() => setTooglePopUpThread(true)}>
-              Add Thread
-            </styles.Btn>
-          </styles.ThreadsContaineWrapper>
-        </styles.TreadsAndPoststContainer>
       </styles.Container>
+      {choosenThread === "" ? (
+        <ThreadsContainer
+          setChoosenThread={setChoosenThread}
+          setInputSearch={setInputSearch}
+          filteredThreads={filteredThreads}
+          setTooglePopUpThread={setTooglePopUpThread}
+        />
+      ) : null}
     </styles.BackgroundContainer>
   );
 };
