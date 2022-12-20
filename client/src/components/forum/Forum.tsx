@@ -48,6 +48,7 @@ const Forum = () => {
         />
       ) : null}
       <styles.Container>
+        <styles.Back onClick={() => setChoosenThread("")} />
         <styles.Title>Bulletin Board</styles.Title>
       </styles.Container>
       {choosenThread === "" ? (

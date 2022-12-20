@@ -1,6 +1,7 @@
 import styles from "styled-components";
 import laundryImg from "../../assets/img/laundry.png";
 import { colors } from "../../styles/colors";
+import { AiOutlineRollback } from "react-icons/ai";
 import * as globalStyles from "../../styles/globalStyles";
 
 export const BackgroundContainer = styles.div`
@@ -10,6 +11,7 @@ background-image:url(${laundryImg});
 padding-bottom:200px;
 `;
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
+position:relative;
 margin:0 auto;
 margin-top:20vh;
 width:clamp(300px, 70%, 800px);
@@ -95,3 +97,11 @@ color:white;
 
 `;
 export const Label = styles(globalStyles.Label)``;
+
+export const Back = styles(AiOutlineRollback)`
+position:absolute;
+left:20px;
+color:white;
+transform:scale(2);
+cursor:pointer
+`;
