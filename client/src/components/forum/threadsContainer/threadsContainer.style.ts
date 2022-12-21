@@ -20,13 +20,12 @@ box-shadow:10px 10px 10px;
 export const TreadsAndPoststContainer = styles(globalStyles.FlexedContainerRow)`
 margin:0 auto;
 width:100%;
-height:70%;
+height:90%;
 background-color:rgba(0,0,0,0);
 border-radius:5px;
 margin:0;
 padding:0;
 gap:20px;
-
 
 `;
 
@@ -36,12 +35,11 @@ export const ThreadsContainerScroll = styles(
 margin:0 auto;
 margin-bottom:30px;
 min-width:100px;
-height:170px;
+height:220px;
 background-color:transparent;
 padding:calc(20px + 2vw);
 padding-top:20px;
 border-radius:5px;
-overflow: scroll;
 @media (max-width: 500px) {
   height:370px;
 }
@@ -103,7 +101,8 @@ color:white;
 `;
 export const Input = styles(globalStyles.Input)`
 max-width:500px;
-margin-top:50px;
+margin-top:10px;
+margin-bottom:30px;
 border-radius:15px;
 border:1px solid black;
 padding:1vh;

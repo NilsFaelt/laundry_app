@@ -45,6 +45,7 @@ const AddThreadPopUp: React.FC<Props> = ({ setTooglePopUpThread, threads }) => {
           <Styles.Warning>Thread name already exsists</Styles.Warning>
         ) : null}
         <Styles.Input
+          maxLength={10}
           placeholder='ThreadName'
           value={threadName}
           required

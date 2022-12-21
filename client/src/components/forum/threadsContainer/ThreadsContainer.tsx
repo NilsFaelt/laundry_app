@@ -1,6 +1,9 @@
 import * as styles from "./threadsContainer.style";
 import EachThread from "../threads/EachThread";
 import { ThreadType } from "../../../types/threadTypes";
+import Pagination from "../pagination/Pagination";
+import { useState } from "react";
+import { getPaginationInfo } from "../pagination/utils/getPaginationInfo";
 
 interface Props {
   setInputSearch: React.Dispatch<React.SetStateAction<string>>;
@@ -15,6 +18,10 @@ const ThreadsContainer = ({
   setTooglePopUpThread,
   setChoosenThread,
 }: Props) => {
+  const [page, setPage] = useState(1);
+  const [pagePerSide, setPagePerSide] = useState(4);
+  const paginatedArray = getPaginationInfo(filteredThreads, page, pagePerSide);
+
   return (
     <styles.TreadsAndPoststContainer>
       <styles.ThreadsContaineWrapper>
@@ -24,13 +31,13 @@ const ThreadsContainer = ({
           }
           placeholder='Search thread'
         />
-        <styles.ThreadsHeader>
+        {/* <styles.ThreadsHeader>
           <styles.SecondaryTitle>Thread:</styles.SecondaryTitle>
           <styles.SecondaryTitle>Date:</styles.SecondaryTitle>
-          <styles.SecondaryTitle>CreatedBy:</styles.SecondaryTitle>
-        </styles.ThreadsHeader>
+          <styles.SecondaryTitle>CreatedBy:</styles.SecondaryTitle> */}
+        {/* </styles.ThreadsHeader> */}
         <styles.ThreadsContainerScroll>
-          {filteredThreads?.map((thread, i) => {
+          {paginatedArray.slicedArray?.map((thread, i) => {
             return (
               <EachThread
                 setChoosenThread={setChoosenThread}
@@ -41,7 +48,12 @@ const ThreadsContainer = ({
             );
           })}
         </styles.ThreadsContainerScroll>
-
+        <Pagination
+          paginatedArray={paginatedArray}
+          setPage={setPage}
+          page={page}
+          pagePerSide={pagePerSide}
+        />
         <styles.Btn onClick={() => setTooglePopUpThread(true)}>
           Add Thread
         </styles.Btn>

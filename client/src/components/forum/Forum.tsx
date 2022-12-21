@@ -22,7 +22,7 @@ const Forum = () => {
   };
   useEffect(() => {
     getAllthreadsFn();
-  }, []);
+  }, [tooglePopUpThread]);
 
   const filterThreads = (
     threads: ThreadType[],
@@ -33,13 +33,15 @@ const Forum = () => {
       const filtererdThreads = threads?.filter((thread) =>
         thread.title.includes(inputSearch)
       );
+
       if (inputSearch !== "" && filtererdThreads.length > 0)
         setFilteredThreads(filtererdThreads);
       else setFilteredThreads(threads);
     }, [inputSearch]);
   };
+
   filterThreads(threads, setFilteredThreads, inputSearch);
-  console.log(choosenThread);
+
   return (
     <styles.BackgroundContainer>
       {tooglePopUpThread ? (
