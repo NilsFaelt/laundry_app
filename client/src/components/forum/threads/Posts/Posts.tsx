@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { addPost } from "../../../../api/addPost";
 import { getAllPosts } from "../../../../api/getAllPosts";
+import { RootState } from "../../../../redux/store";
 import { Post } from "../../../../types/postType";
-import { ThreadType } from "../../../../types/threadTypes";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
 import * as styles from "./posts.styles";
 interface Props {
   thread: string;
 }
 const Posts = ({ thread }: Props) => {
+  const user = useSelector((state: RootState) => state.userReducer.user);
   const [posts, setPosts] = useState<Post[]>([]);
   const [input, setInput] = useState("");
   const chatBox = document.getElementById("chat-feed");
+  console.log(user);
   const postOnClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (input !== "") {
+    if (input !== "" && typeof user?.email === "string") {
       const dateData = shortenDateToString(new Date());
       const post = {
         thread: thread,
         post: input,
-        createdBy: "test",
+        createdBy: user?.email,
         date: dateData.date,
         admin: false,
       };
@@ -54,7 +57,11 @@ const Posts = ({ thread }: Props) => {
       >
         <styles.PostContainer id='chat-feed'>
           {posts.map((post) => {
-            return <styles.Post>{post.post}</styles.Post>;
+            return (
+              <styles.Post>
+                {post.createdBy}: {post.post}
+              </styles.Post>
+            );
           })}
         </styles.PostContainer>
 

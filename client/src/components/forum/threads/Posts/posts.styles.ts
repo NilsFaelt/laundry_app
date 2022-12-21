@@ -1,6 +1,5 @@
 import styles from "styled-components";
 import * as globalStyles from "../../../../styles/globalStyles";
-
 import { colors } from "../../../../styles/colors";
 
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
@@ -29,6 +28,7 @@ margin-top:10px;
 font-size:16px;
 color:black;
 text-align:center;
+word-break: break-word;
 `;
 
 export const PostContainer = styles.div`

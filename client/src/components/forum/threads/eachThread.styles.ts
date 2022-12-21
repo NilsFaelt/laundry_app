@@ -5,11 +5,12 @@ interface Props {
   margin: string;
 }
 export const Container = styles(gloalStyles.FlexedContainerRow)<Props>`
-margin-top:${(props) => props.margin}px;
+margin-top:${(props) => props.margin};
 justify-content:space-between;
 width:100%;
 gap:10vw;
 height:auto;
+margin-top:10px;
 padding:20px;
 border-radius:5px;
 box-shadow:3px 3px 3px;
