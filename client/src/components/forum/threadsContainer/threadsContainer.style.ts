@@ -85,7 +85,6 @@ background-color:${colors.primary};
 border-radius:5px;
 box-shadow:3px 3px 3px black;
 margin-bottom:30px;
-
 width:clamp(300px, 65%, 600px);
 justify-content:space-between;
 align-items:center;

@@ -11,6 +11,7 @@ interface Props {
 const Posts = ({ thread }: Props) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [input, setInput] = useState("");
+  const chatBox = document.getElementById("chat-feed");
   const postOnClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input !== "") {
@@ -34,6 +35,15 @@ const Posts = ({ thread }: Props) => {
   useEffect(() => {
     fetchWrapper();
   }, []);
+
+  if (chatBox) {
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+  useEffect(() => {
+    if (chatBox) {
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  }, [input]);
   return (
     <styles.Container>
       <styles.SecondaryTitle>{}</styles.SecondaryTitle>
@@ -42,7 +52,7 @@ const Posts = ({ thread }: Props) => {
           postOnClick(e);
         }}
       >
-        <styles.PostContainer>
+        <styles.PostContainer id='chat-feed'>
           {posts.map((post) => {
             return <styles.Post>{post.post}</styles.Post>;
           })}

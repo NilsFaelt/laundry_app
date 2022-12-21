@@ -37,12 +37,13 @@ flex-direction:column;
 justify-content:center;
 align-items:flex-start;
 margin-top:30px;
-
 border-radius:15px;
 border:1px solid black;
 background-color:${colors.white};
 height:30vh;
 width:90%;
+overflow:scroll;
+padding-bottom:10px;
 `;
 export const Form = styles.form`
 display:flex;
