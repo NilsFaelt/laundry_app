@@ -46,6 +46,7 @@ overflow: scroll;
   height:370px;
 }
 `;
+
 export const ThreadsContaineWrapper = styles(
   globalStyles.FlexedContainerCollumn
 )`
@@ -54,8 +55,6 @@ width:100%;
 height:auto;
 background-color:transparent;
 border-radius:5px;
-
-
 `;
 
 export const Title = styles.h2`

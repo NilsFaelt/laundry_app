@@ -1,13 +1,15 @@
 import styles from "styled-components";
 import { colors } from "../../../styles/colors";
 import * as gloalStyles from "../../../styles/globalStyles";
-
-export const Container = styles(gloalStyles.FlexedContainerRow)`
+interface Props {
+  margin: string;
+}
+export const Container = styles(gloalStyles.FlexedContainerRow)<Props>`
+margin-top:${(props) => props.margin}px;
 justify-content:space-between;
 width:100%;
 gap:10vw;
 height:auto;
-margin-top:10px;
 padding:20px;
 border-radius:5px;
 box-shadow:3px 3px 3px;

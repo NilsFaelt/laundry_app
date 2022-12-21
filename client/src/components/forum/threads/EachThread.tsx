@@ -3,10 +3,13 @@ import * as Styles from "./eachThread.styles";
 interface Props {
   thread: ThreadType;
   setChoosenThread: React.Dispatch<React.SetStateAction<string>>;
+  index: number;
 }
-const EachThread: React.FC<Props> = ({ thread, setChoosenThread }) => {
+const EachThread: React.FC<Props> = ({ thread, setChoosenThread, index }) => {
+  console.log(index);
   return (
     <Styles.Container
+      margin={index === 0 ? "300" : "10"}
       onClick={() => {
         setChoosenThread(thread.title);
       }}

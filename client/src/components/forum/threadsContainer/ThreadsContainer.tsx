@@ -30,12 +30,13 @@ const ThreadsContainer = ({
           <styles.SecondaryTitle>CreatedBy:</styles.SecondaryTitle>
         </styles.ThreadsHeader>
         <styles.ThreadsContainerScroll>
-          {filteredThreads?.map((thread) => {
+          {filteredThreads?.map((thread, i) => {
             return (
               <EachThread
                 setChoosenThread={setChoosenThread}
                 key={thread._id}
                 thread={thread}
+                index={i}
               />
             );
           })}
