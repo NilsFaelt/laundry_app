@@ -1,7 +1,7 @@
 import styles from "styled-components";
-import * as globalStyles from "../../../styles/globalStyles";
+import * as globalStyles from "../../../../styles/globalStyles";
 
-import { colors } from "../../../styles/colors";
+import { colors } from "../../../../styles/colors";
 
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
 position:relative;
@@ -23,8 +23,21 @@ font-size:16px;
 color:${colors.white};
 text-align:center;
 `;
+export const Post = styles.p`
+margin-left:15px;
+margin-top:10px;
+font-size:16px;
+color:black;
+text-align:center;
+`;
+
 export const PostContainer = styles.div`
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:flex-start;
 margin-top:30px;
+
 border-radius:15px;
 border:1px solid black;
 background-color:${colors.white};

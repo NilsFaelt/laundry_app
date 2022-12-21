@@ -1,10 +1,13 @@
 const Posts = require("../../models/Posts");
 
-const addPost = (req, res, next) => {
+const addPost = async (req, res, next) => {
+  const newPost = new Posts(req.body);
   try {
-    const newPost = new Posts(req.body);
-    res.status(200).json({ post: newPost });
+    const savedPost = await newPost.save();
+    res.status(200).json({ post: savedPost });
   } catch (err) {
     next(err);
   }
 };
+
+module.exports = addPost;
