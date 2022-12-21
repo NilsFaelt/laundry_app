@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllThreads } from "../../api/getAllThreads";
 import { ThreadType } from "../../types/threadTypes";
+import Posts from "../calendar/Posts/Posts";
 import AddThreadPopUp from "./addThreadPopUp/AddThreadPopUp";
 import * as styles from "./forum.styles";
 import EachThread from "./threads/EachThread";
@@ -58,7 +59,9 @@ const Forum = () => {
           filteredThreads={filteredThreads}
           setTooglePopUpThread={setTooglePopUpThread}
         />
-      ) : null}
+      ) : (
+        <Posts />
+      )}
     </styles.BackgroundContainer>
   );
 };

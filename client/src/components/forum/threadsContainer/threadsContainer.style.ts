@@ -87,7 +87,7 @@ border-radius:5px;
 box-shadow:3px 3px 3px black;
 margin-bottom:30px;
 
-width:clamp(300px, 70%, 600px);
+width:clamp(300px, 65%, 600px);
 justify-content:space-between;
 align-items:center;
 flex-basis:0;
@@ -110,7 +110,14 @@ border-radius:15px;
 border:1px solid black;
 padding:1vh;
 box-shadow:3px 3px 3px;
+&:focus {
+  border:1px solid black;
+  outline: none;
+}
 @media (max-width: 500px) {
+  margin-top:200px;
+}
+@media (max-width: 300px) {
   margin-top:100px;
 }
 `;
