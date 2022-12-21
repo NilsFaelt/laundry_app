@@ -9,6 +9,7 @@ const authRoute = require("./routes/auth");
 const usersRoute = require("./routes/users");
 const bookedTimesRoute = require("./routes/bookedtTimes");
 const threadRoute = require("./routes/bulletinBoard");
+const postsRoute = require("./routes/posts");
 const errorHandler = require("./middlewares/errorHandler");
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use("/auth", authRoute);
 app.use("/users", usersRoute);
 app.use("/booked", bookedTimesRoute);
 app.use("/thread", threadRoute);
+app.use("/posts", postsRoute);
 
 app.use(errorHandler);
 

@@ -35,6 +35,13 @@ font-size:20px;
 color:${colors.white};
 text-align:center;
 `;
+export const SecondaryTitle = styles.h4`
+margin-top:0vh;
+margin-top:1vh;
+font-size:16px;
+color:${colors.white};
+text-align:center;
+`;
 
 export const Btn = styles(globalStyles.MainBtn)`
 margin-top:10px;

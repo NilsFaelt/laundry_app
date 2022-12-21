@@ -12,6 +12,7 @@ const Posts = () => {
   console.log(input);
   return (
     <styles.Container>
+      <styles.SecondaryTitle>{}</styles.SecondaryTitle>
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           postOnClick(e);

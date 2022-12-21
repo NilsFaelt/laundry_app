@@ -16,7 +16,13 @@ box-shadow:10px 10px 10px;
   width:90%;
 }
 `;
-
+export const SecondaryTitle = styles.h4`
+margin-top:0vh;
+margin-top:1vh;
+font-size:16px;
+color:${colors.white};
+text-align:center;
+`;
 export const PostContainer = styles.div`
 margin-top:30px;
 border-radius:15px;

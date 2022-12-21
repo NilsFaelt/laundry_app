@@ -51,6 +51,7 @@ const Forum = () => {
       <styles.Container>
         <styles.Back onClick={() => setChoosenThread("")} />
         <styles.Title>Bulletin Board</styles.Title>
+        <styles.SecondaryTitle>Thread: {choosenThread} </styles.SecondaryTitle>
       </styles.Container>
       {choosenThread === "" ? (
         <ThreadsContainer
