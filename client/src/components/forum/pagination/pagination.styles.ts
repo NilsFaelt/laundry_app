@@ -36,11 +36,14 @@ color:white;
 }
 `;
 export const NrContainer = styles(globalStyles.FlexedContainerRow)`
+position:relative;
 background-color:transparent;
 gap:5px;
 width:200px;
 `;
 export const PaginationNr = styles.p<Props>`
 text-decoration:${(props) => props.underline};
+margin-left:0;
+
 color:white;
 `;

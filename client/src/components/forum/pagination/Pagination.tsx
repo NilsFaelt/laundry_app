@@ -20,10 +20,9 @@ const Pagination = ({ setPage, page, paginatedArray }: Props) => {
       setPage((prev) => prev - 1);
     }
   };
+  console.log(paginatedArray.roundedPage);
   const handleClickRight = () => {
-    if (paginatedArray.roundedPage > page) {
-      setPage((prev) => prev + 1);
-    }
+    if (page < paginatedArray.roundedPage) setPage((prev) => prev + 1);
   };
 
   const calcNrsToShowInPafination = (
@@ -31,6 +30,7 @@ const Pagination = ({ setPage, page, paginatedArray }: Props) => {
     paginatedArray: PaginatiomInfo
   ): number[] => {
     let arrayToRender = [];
+
     for (let index = 0; index < paginatedArray.roundedPage; index++) {
       arrayToRender.push(index + 1);
     }
@@ -48,7 +48,7 @@ const Pagination = ({ setPage, page, paginatedArray }: Props) => {
           <styles.PaginationNr
             underline={page === i + 1 ? "underline" : "none"}
             onClick={() => {
-              setPage(i + 1);
+              setPage(nr);
             }}
           >
             {nr}
