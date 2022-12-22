@@ -5,6 +5,10 @@ import { AiOutlineLeftCircle } from "react-icons/ai";
 import { AiOutlineRightCircle } from "react-icons/ai";
 import * as globalStyles from "../../../styles/globalStyles";
 
+interface Props {
+  underline: string;
+}
+
 export const Container = styles(globalStyles.FlexedContainerRow)`
 justify-content:space-between;
 width:300px;
@@ -30,4 +34,13 @@ color:white;
 &:hover{
     color:${colors.showActiveLink}
 }
+`;
+export const NrContainer = styles(globalStyles.FlexedContainerRow)`
+background-color:transparent;
+gap:5px;
+width:200px;
+`;
+export const PaginationNr = styles.p<Props>`
+text-decoration:${(props) => props.underline};
+color:white;
 `;

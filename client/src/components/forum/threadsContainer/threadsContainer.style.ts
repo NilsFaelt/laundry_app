@@ -26,6 +26,9 @@ border-radius:5px;
 margin:0;
 padding:0;
 gap:20px;
+@media (max-width: 500px) {
+  height:80%;
+}
 
 `;
 
@@ -40,9 +43,7 @@ background-color:transparent;
 padding:calc(20px + 2vw);
 padding-top:20px;
 border-radius:5px;
-@media (max-width: 500px) {
-  height:370px;
-}
+
 `;
 
 export const ThreadsContaineWrapper = styles(
@@ -53,6 +54,7 @@ width:100%;
 height:auto;
 background-color:transparent;
 border-radius:5px;
+
 `;
 
 export const Title = styles.h2`
@@ -101,8 +103,8 @@ color:white;
 `;
 export const Input = styles(globalStyles.Input)`
 max-width:500px;
-margin-top:10px;
-margin-bottom:30px;
+margin-top:0px;
+margin-bottom:0px;
 border-radius:15px;
 border:1px solid black;
 padding:1vh;
@@ -110,9 +112,6 @@ box-shadow:3px 3px 3px;
 &:focus {
   border:1px solid black;
   outline: none;
-}
-@media (max-width: 500px) {
-  margin-top:200px;
 }
 @media (max-width: 300px) {
   margin-top:100px;

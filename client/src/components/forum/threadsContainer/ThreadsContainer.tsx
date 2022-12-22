@@ -19,7 +19,7 @@ const ThreadsContainer = ({
   setChoosenThread,
 }: Props) => {
   const [page, setPage] = useState(1);
-  const [pagePerSide, setPagePerSide] = useState(4);
+  const [pagePerSide, setPagePerSide] = useState(2);
   const paginatedArray = getPaginationInfo(filteredThreads, page, pagePerSide);
 
   return (
