@@ -52,7 +52,7 @@ const Pagination = ({ setPage, page, paginatedArray }: Props) => {
       <styles.NrContainer>
         {pages.map((nr, i) => (
           <styles.PaginationNr
-            // underline={page === i + 1 ? "underline" : "none"}
+            underline={page === nr ? "underline" : "none"}
             onClick={() => {
               setPage(nr);
             }}
