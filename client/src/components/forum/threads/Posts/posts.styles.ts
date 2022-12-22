@@ -22,12 +22,39 @@ font-size:16px;
 color:${colors.white};
 text-align:center;
 `;
+
+export const EachPostContainer = styles(globalStyles.FlexedContainerCollumn)`
+align-items:flex-start;
+background-color:white;
+width:100%;
+`;
+export const DateAndUserContaienr = styles(globalStyles.FlexedContainerRow)`
+justify-content:space-between;
+background-color:white;
+width:100%;
+`;
 export const Post = styles.p`
 margin-left:15px;
-margin-top:10px;
+margin-top:3px;
 font-size:16px;
 color:black;
 text-align:center;
+word-break: break-word;
+`;
+export const User = styles.p`
+margin-left:15px;
+margin-top:3px;
+font-size:14px;
+color:black;
+word-break: break-word;
+text-decoration:underline;
+`;
+export const Date = styles.p`
+margin-left:15px;
+margin-top:3px;
+font-size:12px;
+margin-right:10px;
+color:black;
 word-break: break-word;
 `;
 
@@ -36,15 +63,21 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:flex-start;
+gap:10px;
 margin-top:30px;
-border-radius:15px;
-border:1px solid black;
-background-color:${colors.white};
-height:30vh;
+background-color:transparent;
+height:300px;
 width:90%;
-overflow:scroll;
 padding-bottom:10px;
 `;
+export const InnerPostContainer = styles.div`
+border-radius:15px;
+border:1px solid black;
+width:100%;
+overflow:scroll;
+height:auto
+`;
+
 export const Form = styles.form`
 display:flex;
 flex-direction:column;

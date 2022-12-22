@@ -55,14 +55,20 @@ const Posts = ({ thread }: Props) => {
           postOnClick(e);
         }}
       >
-        <styles.PostContainer id='chat-feed'>
-          {posts.map((post) => {
-            return (
-              <styles.Post>
-                {post.createdBy}: {post.post}
-              </styles.Post>
-            );
-          })}
+        <styles.PostContainer>
+          <styles.InnerPostContainer id='chat-feed'>
+            {posts.map((post) => {
+              return (
+                <styles.EachPostContainer>
+                  <styles.DateAndUserContaienr>
+                    <styles.User>{post.createdBy} says:</styles.User>
+                    <styles.Date>{post.date} </styles.Date>
+                  </styles.DateAndUserContaienr>
+                  <styles.Post>{post.post}</styles.Post>
+                </styles.EachPostContainer>
+              );
+            })}
+          </styles.InnerPostContainer>
         </styles.PostContainer>
 
         <styles.Input
