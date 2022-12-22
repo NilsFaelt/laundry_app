@@ -31,10 +31,10 @@ const Pagination = ({ setPage, page, paginatedArray }: Props) => {
     paginatedArray: PaginatiomInfo
   ): number[] => {
     let arrayToRender = [];
-    if (paginatedArray.roundedPage < 6) {
-      arrayToRender = new Array(paginatedArray.roundedPage).fill("");
+    for (let index = 0; index < paginatedArray.roundedPage; index++) {
+      arrayToRender.push(index + 1);
     }
-    console.log(arrayToRender);
+
     return arrayToRender;
   };
 
@@ -44,16 +44,17 @@ const Pagination = ({ setPage, page, paginatedArray }: Props) => {
     <styles.Container>
       <styles.Left onClick={() => handleClickLeft()} />
       <styles.NrContainer>
-        {pages.map((_, i) => (
+        {pages.map((nr, i) => (
           <styles.PaginationNr
             underline={page === i + 1 ? "underline" : "none"}
             onClick={() => {
               setPage(i + 1);
             }}
           >
-            {[i + 1]}
+            {nr}
           </styles.PaginationNr>
         ))}
+        {page + 3 < pages.length ? "..." : ""}
       </styles.NrContainer>
       <styles.Right onClick={() => handleClickRight()} />
     </styles.Container>
