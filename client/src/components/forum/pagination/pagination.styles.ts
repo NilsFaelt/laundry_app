@@ -6,7 +6,7 @@ import { AiOutlineRightCircle } from "react-icons/ai";
 import * as globalStyles from "../../../styles/globalStyles";
 
 interface Props {
-  underline: string;
+  underline?: string;
 }
 
 export const Container = styles(globalStyles.FlexedContainerRow)`

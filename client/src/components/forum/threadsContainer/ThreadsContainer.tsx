@@ -19,7 +19,7 @@ const ThreadsContainer = ({
   setChoosenThread,
 }: Props) => {
   const [page, setPage] = useState(1);
-  const [pagePerSide, setPagePerSide] = useState(3);
+  const [pagePerSide, setPagePerSide] = useState(1);
   const paginatedArray = getPaginationInfo(filteredThreads, page, pagePerSide);
 
   return (
@@ -31,11 +31,6 @@ const ThreadsContainer = ({
           }
           placeholder='Search thread'
         />
-        {/* <styles.ThreadsHeader>
-          <styles.SecondaryTitle>Thread:</styles.SecondaryTitle>
-          <styles.SecondaryTitle>Date:</styles.SecondaryTitle>
-          <styles.SecondaryTitle>CreatedBy:</styles.SecondaryTitle> */}
-        {/* </styles.ThreadsHeader> */}
         <styles.ThreadsContainerScroll>
           {paginatedArray.slicedArray?.map((thread, i) => {
             return (

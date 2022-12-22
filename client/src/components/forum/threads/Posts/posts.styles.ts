@@ -75,7 +75,9 @@ border-radius:15px;
 border:1px solid black;
 width:100%;
 overflow:scroll;
-height:auto
+height:300px;
+background-color:white;
+padding-bottom:30px;
 `;
 
 export const Form = styles.form`
