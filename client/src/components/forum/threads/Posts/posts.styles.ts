@@ -1,6 +1,7 @@
 import styles from "styled-components";
 import * as globalStyles from "../../../../styles/globalStyles";
 import { colors } from "../../../../styles/colors";
+import { AiOutlineDelete } from "react-icons/ai";
 
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
 position:relative;
@@ -24,6 +25,7 @@ text-align:center;
 `;
 
 export const EachPostContainer = styles(globalStyles.FlexedContainerCollumn)`
+position:relative;
 align-items:flex-start;
 background-color:transparent;
 border-radius:15px;
@@ -75,6 +77,7 @@ word-break: break-word;
 `;
 
 export const PostContainer = styles.div`
+position:relative;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -132,3 +135,13 @@ margin-top:20px;
 margin-bottom:20px;
 box-shadow:3px 3px 3px black;
 `;
+
+export const Delete = styles(AiOutlineDelete)`
+color:red;
+position:absolute;
+right:18px;
+transform:scale(1);
+&:hover{
+cursor:pointer;
+
+};`;

@@ -48,11 +48,23 @@ const Posts = ({ thread }: Props) => {
     }
   }, [input]);
 
-  console.log(checkIfLastPostIsFromSameUser(posts));
+  const isAllowedTodelete = (
+    admin: boolean,
+    email: string,
+    emailOnPost: string
+  ) => {};
+
+  const deletePost = (
+    setPosts: React.Dispatch<React.SetStateAction<Post[]>>,
+    id: string
+  ) => {
+    setPosts((prev) => {
+      return prev.filter((post) => post._id !== id);
+    });
+  };
 
   return (
     <styles.Container>
-      <styles.SecondaryTitle>{}</styles.SecondaryTitle>
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           postOnClick(e);
@@ -63,6 +75,13 @@ const Posts = ({ thread }: Props) => {
             {posts.map((post) => {
               return (
                 <styles.EachPostContainer key={post._id}>
+                  {user?.email === post.createdBy || user?.admin ? (
+                    <styles.Delete
+                      onClick={() => {
+                        deletePost(setPosts, post._id!);
+                      }}
+                    />
+                  ) : null}
                   <styles.DateAndUserContaienr>
                     <styles.User>{post.createdBy} says:</styles.User>
                     <styles.Date>{post.date} </styles.Date>
