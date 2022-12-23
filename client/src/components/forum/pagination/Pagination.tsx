@@ -56,6 +56,10 @@ const Pagination = ({
     <styles.Container>
       <styles.Left onClick={() => handleClickLeft()} />
       <styles.NrContainer>
+        <styles.PaginationNr onClick={() => setPage(1)}>
+          {page >= 4 ? 1 : ""}
+        </styles.PaginationNr>
+        <styles.PaginationNr>{page >= 4 ? "...." : ""}</styles.PaginationNr>
         {pages.map((nr, i) => (
           <styles.PaginationNr
             underline={page === nr ? "underline" : "none"}
