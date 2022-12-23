@@ -48,6 +48,7 @@ const ThreadsContainer = ({
           setPage={setPage}
           page={page}
           pagePerSide={pagePerSide}
+          filteredThreads={filteredThreads}
         />
         <styles.Btn onClick={() => setTooglePopUpThread(true)}>
           Add Thread

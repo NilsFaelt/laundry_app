@@ -12,8 +12,14 @@ interface Props {
   page: number;
   pagePerSide: number;
   paginatedArray: PaginatiomInfo;
+  filteredThreads: ThreadType[];
 }
-const Pagination = ({ setPage, page, paginatedArray }: Props) => {
+const Pagination = ({
+  setPage,
+  page,
+  paginatedArray,
+  filteredThreads,
+}: Props) => {
   console.log(paginatedArray.roundedPage);
   const handleClickLeft = () => {
     if (page > 1) {
@@ -45,7 +51,7 @@ const Pagination = ({ setPage, page, paginatedArray }: Props) => {
   };
 
   const pages = calcNrsToShowInPafination(page, paginatedArray);
-  console.log(page);
+  console.log(filteredThreads.length - 3, pages.length);
   return (
     <styles.Container>
       <styles.Left onClick={() => handleClickLeft()} />
@@ -60,7 +66,17 @@ const Pagination = ({ setPage, page, paginatedArray }: Props) => {
             {nr}
           </styles.PaginationNr>
         ))}
-        {page + 3 < pages.length ? "..." : ""}
+        <styles.PaginationNr>
+          {page < paginatedArray.roundedPage - 3 && filteredThreads.length > 5
+            ? ".... "
+            : ""}
+        </styles.PaginationNr>
+        <styles.PaginationNr onClick={() => setPage(filteredThreads.length)}>
+          {page < paginatedArray.roundedPage - 3 &&
+          paginatedArray.roundedPage > 5
+            ? paginatedArray.roundedPage
+            : ""}
+        </styles.PaginationNr>
       </styles.NrContainer>
       <styles.Right onClick={() => handleClickRight()} />
     </styles.Container>
