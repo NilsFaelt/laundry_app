@@ -55,6 +55,7 @@ font-size:16px;
 color:black;
 text-align:center;
 word-break: break-word;
+
 `;
 export const User = styles.p`
 margin-left:15px;
@@ -84,6 +85,11 @@ background-color:transparent;
 height:300px;
 width:90%;
 padding-bottom:10px;
+@media (max-width: 400px) {
+  margin-top:0px;
+  width:100%;
+  
+}
 `;
 export const InnerPostContainer = styles.div`
 border-radius:15px;

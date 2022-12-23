@@ -103,7 +103,7 @@ color:white;
 `;
 export const Input = styles(globalStyles.Input)`
 max-width:500px;
-margin-top:0px;
+margin-top:30px;
 margin-bottom:0px;
 border-radius:15px;
 border:1px solid black;
