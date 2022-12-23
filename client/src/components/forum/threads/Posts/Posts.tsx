@@ -6,6 +6,7 @@ import { RootState } from "../../../../redux/store";
 import { Post } from "../../../../types/postType";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
 import * as styles from "./posts.styles";
+import { checkIfLastPostIsFromSameUser } from "./utils/checkIfLastPostIsFromSameUser";
 interface Props {
   thread: string;
 }
@@ -14,7 +15,6 @@ const Posts = ({ thread }: Props) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [input, setInput] = useState("");
   const chatBox = document.getElementById("chat-feed");
-  console.log(user);
   const postOnClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input !== "" && typeof user?.email === "string") {
@@ -47,6 +47,9 @@ const Posts = ({ thread }: Props) => {
       chatBox.scrollTop = chatBox.scrollHeight;
     }
   }, [input]);
+
+  console.log(checkIfLastPostIsFromSameUser(posts));
+
   return (
     <styles.Container>
       <styles.SecondaryTitle>{}</styles.SecondaryTitle>
@@ -59,7 +62,7 @@ const Posts = ({ thread }: Props) => {
           <styles.InnerPostContainer id='chat-feed'>
             {posts.map((post) => {
               return (
-                <styles.EachPostContainer>
+                <styles.EachPostContainer key={post._id}>
                   <styles.DateAndUserContaienr>
                     <styles.User>{post.createdBy} says:</styles.User>
                     <styles.Date>{post.date} </styles.Date>

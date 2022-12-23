@@ -20,13 +20,12 @@ const Pagination = ({
   paginatedArray,
   filteredThreads,
 }: Props) => {
-  console.log(paginatedArray.roundedPage);
   const handleClickLeft = () => {
     if (page > 1) {
       setPage((prev) => prev - 1);
     }
   };
-  console.log(paginatedArray.roundedPage);
+
   const handleClickRight = () => {
     if (page < paginatedArray.roundedPage) setPage((prev) => prev + 1);
   };
@@ -51,7 +50,7 @@ const Pagination = ({
   };
 
   const pages = calcNrsToShowInPafination(page, paginatedArray);
-  console.log(filteredThreads.length - 3, pages.length);
+
   return (
     <styles.Container>
       <styles.Left onClick={() => handleClickLeft()} />
@@ -62,6 +61,7 @@ const Pagination = ({
         <styles.PaginationNr>{page >= 4 ? "...." : ""}</styles.PaginationNr>
         {pages.map((nr, i) => (
           <styles.PaginationNr
+            key={nr}
             underline={page === nr ? "underline" : "none"}
             onClick={() => {
               setPage(nr);

@@ -25,15 +25,30 @@ text-align:center;
 
 export const EachPostContainer = styles(globalStyles.FlexedContainerCollumn)`
 align-items:flex-start;
-background-color:white;
-width:100%;
+background-color:transparent;
+border-radius:15px;
+padding:5px;
+margin-top:5px;
+width:96%;
+@media (max-width: 400px) {
+  margin-right:10px;
+  
+}
+
+
 `;
 export const DateAndUserContaienr = styles(globalStyles.FlexedContainerRow)`
 justify-content:space-between;
-background-color:white;
+background-color:transparent;
 width:100%;
 `;
 export const Post = styles.p`
+background-color:${colors.bluePositive};
+border-radius:10px;
+width:96%;
+padding-top:15px;
+padding-bottom:15px;
+margin-left:1%;
 margin-left:15px;
 margin-top:3px;
 font-size:16px;
@@ -47,7 +62,7 @@ margin-top:3px;
 font-size:14px;
 color:black;
 word-break: break-word;
-text-decoration:underline;
+
 `;
 export const Date = styles.p`
 margin-left:15px;
@@ -93,15 +108,15 @@ export const Input = styles(globalStyles.Input)`
 width:80%;
 margin-top:30px;
 border-radius:15px;
+height:auto;
+word-break: break-word;
 border:1px solid black;
 padding:1vh;
 &:focus {
   border:1px solid black;
   outline: none;
 }
-@media (max-width: 500px) {
-  margin-top:200px;
-}
+
 @media (max-width: 300px) {
   margin-top:100px;
 }
