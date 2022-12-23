@@ -5,8 +5,8 @@ import { getAllPosts } from "../../../../api/getAllPosts";
 import { RootState } from "../../../../redux/store";
 import { Post } from "../../../../types/postType";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
+import DeletePopUp from "./deletePopUp/DeletePopUp";
 import * as styles from "./posts.styles";
-import { checkIfLastPostIsFromSameUser } from "./utils/checkIfLastPostIsFromSameUser";
 interface Props {
   thread: string;
 }
@@ -48,12 +48,6 @@ const Posts = ({ thread }: Props) => {
     }
   }, [input]);
 
-  const isAllowedTodelete = (
-    admin: boolean,
-    email: string,
-    emailOnPost: string
-  ) => {};
-
   const deletePost = (
     setPosts: React.Dispatch<React.SetStateAction<Post[]>>,
     id: string
@@ -71,6 +65,7 @@ const Posts = ({ thread }: Props) => {
         }}
       >
         <styles.PostContainer>
+          <DeletePopUp />
           <styles.InnerPostContainer id='chat-feed'>
             {posts.map((post) => {
               return (
