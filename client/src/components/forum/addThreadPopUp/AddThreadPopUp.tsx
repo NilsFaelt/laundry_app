@@ -10,12 +10,17 @@ import { filterThreadsNoDuplicates } from "./utils/filterThreadDuplicate";
 interface Props {
   setTooglePopUpThread: React.Dispatch<React.SetStateAction<boolean>>;
   threads: ThreadType[];
+  setChoosenThread: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const AddThreadPopUp: React.FC<Props> = ({ setTooglePopUpThread, threads }) => {
+const AddThreadPopUp: React.FC<Props> = ({
+  setTooglePopUpThread,
+  threads,
+  setChoosenThread,
+}) => {
   const [threadDuplicate, setThreadDuplicate] = useState(true);
   const user = useSelector((state: RootState) => state.userReducer.user);
-  const [threadName, setThreadName] = useState("nils");
+  const [threadName, setThreadName] = useState("non choosen");
 
   console.log(threadDuplicate, "duplicate");
   const readAbleDate = shortenDateToString(new Date());
@@ -30,6 +35,7 @@ const AddThreadPopUp: React.FC<Props> = ({ setTooglePopUpThread, threads }) => {
       });
       setThreadDuplicate(false);
       setTooglePopUpThread(false);
+      setChoosenThread(threadName);
     }
   };
 

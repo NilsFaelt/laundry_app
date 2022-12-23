@@ -46,6 +46,7 @@ const Forum = () => {
     <styles.BackgroundContainer>
       {tooglePopUpThread ? (
         <AddThreadPopUp
+          setChoosenThread={setChoosenThread}
           setTooglePopUpThread={setTooglePopUpThread}
           threads={threads}
         />

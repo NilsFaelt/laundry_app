@@ -9,7 +9,7 @@ width:clamp(250px, 50%, 500px);
 top: 55%;
 left: 50%;
 padding:20px 50px 20px 50px;
-background-color:black;
+background-color:${colors.primary};
 transform: translate(-50%, -50%);
 border-radius:5px;
 box-shadow:3px 3px 3px;
