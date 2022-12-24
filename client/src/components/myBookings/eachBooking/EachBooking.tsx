@@ -17,6 +17,7 @@ const EachBooking: React.FC<Props> = ({
   rerenderBookings,
 }) => {
   const dispatch = useDispatch();
+
   const time = fixBookingHoursToMoreReadble(info);
   const deleteOnClick = async (info: BookedLaundrytimes) => {
     deleteBookTimeById(info._id);

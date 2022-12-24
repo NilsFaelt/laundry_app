@@ -12,7 +12,9 @@ interface Props {
 }
 const Posts = ({ thread }: Props) => {
   const user = useSelector((state: RootState) => state.userReducer.user);
+  const [deletePostsPopUp, setDeletepostsPopUp] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [postId, setPostId] = useState<string>("");
   const [input, setInput] = useState("");
   const chatBox = document.getElementById("chat-feed");
   const postOnClick = (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,13 +50,9 @@ const Posts = ({ thread }: Props) => {
     }
   }, [input]);
 
-  const deletePost = (
-    setPosts: React.Dispatch<React.SetStateAction<Post[]>>,
-    id: string
-  ) => {
-    setPosts((prev) => {
-      return prev.filter((post) => post._id !== id);
-    });
+  const deletePost = (id: string) => {
+    setPostId(id);
+    setDeletepostsPopUp(true);
   };
 
   return (
@@ -65,7 +63,13 @@ const Posts = ({ thread }: Props) => {
         }}
       >
         <styles.PostContainer>
-          <DeletePopUp />
+          {deletePostsPopUp ? (
+            <DeletePopUp
+              postId={postId}
+              setPosts={setPosts}
+              setDeletepostsPopUp={setDeletepostsPopUp}
+            />
+          ) : null}
           <styles.InnerPostContainer id='chat-feed'>
             {posts.map((post) => {
               return (
@@ -73,7 +77,7 @@ const Posts = ({ thread }: Props) => {
                   {user?.email === post.createdBy || user?.admin ? (
                     <styles.Delete
                       onClick={() => {
-                        deletePost(setPosts, post._id!);
+                        deletePost(post._id!);
                       }}
                     />
                   ) : null}
