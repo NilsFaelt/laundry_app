@@ -5,7 +5,7 @@ export const getAllPosts = async (query: string): Promise<Post[]> => {
   try {
     const data = await axios(`http://localhost:8080/posts/${query}`);
     return data.data.posts;
-  } catch (err) {
-    throw { msg: err };
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };

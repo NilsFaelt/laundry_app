@@ -25,10 +25,10 @@ export const handleSubmit = async (
     }>
   >
 ) => {
-  console.log(admin, "im func");
   e.preventDefault();
   // setCreateUserInfo((prev) => ({ ...prev, admin: admin }));
   const user = await getOneUser(createUserInfo.email);
+  console.log(user, "im func");
   if (user) {
     setUserexsists(true);
   } else {

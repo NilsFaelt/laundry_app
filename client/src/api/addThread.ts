@@ -8,7 +8,7 @@ export const addThread = async (threadInfo: ThreadType): Promise<void> => {
       `http://${apiConfig.url}:${apiConfig.port}/thread/addNew`,
       threadInfo
     );
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };

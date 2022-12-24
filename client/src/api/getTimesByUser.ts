@@ -11,7 +11,7 @@ export const getBookedTimesByUser = async (
       { email: userEmail }
     );
     return bookedTimes.data.bookings;
-  } catch (err) {
-    throw { message: "Couldnt get booked times", status: 500 };
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };

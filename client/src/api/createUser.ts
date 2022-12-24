@@ -13,8 +13,8 @@ export async function createUser(
     const returnData = user.data.user;
     console.log(returnData, "user");
     return returnData;
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
   return null;
 }

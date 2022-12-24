@@ -9,8 +9,8 @@ export const getAllThreads = async (): Promise<ThreadType[] | null> => {
       `http://${apiConfig.url}:${apiConfig.port}/thread`
     );
     return data.data.threads;
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
   return null;
 };

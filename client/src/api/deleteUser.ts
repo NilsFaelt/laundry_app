@@ -8,7 +8,7 @@ export const deleteUser = async (id: string) => {
     );
 
     return user;
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };

@@ -2,10 +2,14 @@ import axios from "axios";
 import { Post } from "../types/postType";
 import { apiConfig } from "./apiConifig";
 
-export const addPost = async (post: Post) => {
+export const addPost = async (post: Post): Promise<Post> => {
   try {
-    axios.post(`http://${apiConfig.url}:${apiConfig.port}/posts/addPost`, post);
-  } catch (err) {
-    throw { msg: err };
+    const data = await axios.post(
+      `http://${apiConfig.url}:${apiConfig.port}/posts/addPost`,
+      post
+    );
+    return data.data.post;
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };

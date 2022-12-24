@@ -18,7 +18,7 @@ export const bookALaundryTime = async (bookingInfo: BookingInfo) => {
       { bookingInfo }
     );
     return bookedTime.data;
-  } catch (err) {
-    throw { message: "Couldnt book time", status: 500 };
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };

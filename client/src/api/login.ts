@@ -13,8 +13,8 @@ export const login = async (
     );
     console.log(user.data.user, "user");
     return user.data.user;
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
   return null;
 };

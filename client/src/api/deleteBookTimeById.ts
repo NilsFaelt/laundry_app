@@ -8,7 +8,7 @@ export const deleteBookTimeById = async (id: string) => {
     );
 
     return bookedTime;
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };

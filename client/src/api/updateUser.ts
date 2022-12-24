@@ -15,8 +15,8 @@ export async function updateUser(
     const returnData = user.data.user;
 
     return returnData;
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
   return null;
 }

@@ -7,7 +7,7 @@ export const deletePost = async (id: string) => {
       `http://${apiConfig.url}:${apiConfig.port}/posts/deletePost/${id}`
     );
     return data;
-  } catch (err) {
-    throw { msg: err };
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };

@@ -7,7 +7,7 @@ export const getAllUsers = async () => {
       `http://${apiConfig.url}:${apiConfig.port}/users`
     );
     return allUsers.data;
-  } catch (err) {
-    throw { message: "Couldnt get users", status: 500 };
+  } catch (err: any) {
+    throw { msg: err, stack: err.stack };
   }
 };
