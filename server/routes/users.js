@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/checkIfauth", verifyToken);
 router.get("/", getAllUsers);
-router.get("/getOne", findById);
+router.get("/getOne/:email", findById);
 router.put("/:id", updateUser);
 router.post("/", postNewUser);
 router.delete("/:id", deleteUser);
