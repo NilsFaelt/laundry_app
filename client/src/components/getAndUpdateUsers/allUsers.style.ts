@@ -29,8 +29,10 @@ background-color:transparent;
 
 export const Label = styles(globalStyles.Label)`
 margin-top:3vh;
+margin-bottom:vh;
 color:white;`;
 export const Input = styles(globalStyles.Input)`
+margin-top:3vh;
 `;
 export const P = styles.p`
 text-decoration:underline;

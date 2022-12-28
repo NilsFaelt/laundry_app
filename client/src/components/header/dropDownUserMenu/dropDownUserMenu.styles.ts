@@ -65,7 +65,7 @@ box-shadow:10px 10px 10px  black;
 animation-name: ${(props) => props.animation};
 animation-duration: 0.5s;
 animation-fill-mode: forwards;
-z-index:2;
+z-index:4;
 
 
 @keyframes open-animation {

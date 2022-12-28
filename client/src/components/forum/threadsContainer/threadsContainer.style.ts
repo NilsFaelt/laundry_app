@@ -1,5 +1,4 @@
 import styles from "styled-components";
-import laundryImg from "../../../assets/img/laundry.png";
 import { colors } from "../../../styles/colors";
 import * as globalStyles from "../../../styles/globalStyles";
 

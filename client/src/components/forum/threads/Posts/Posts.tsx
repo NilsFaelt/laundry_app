@@ -11,6 +11,8 @@ interface Props {
   thread: string;
 }
 const Posts = ({ thread }: Props) => {
+  const [firstToogle, setFirstToggle] = useState(false);
+  const [toogleMenu, setToogleMenu] = useState(false);
   const user = useSelector((state: RootState) => state.userReducer.user);
   const [deletePostsPopUp, setDeletepostsPopUp] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
@@ -55,8 +57,34 @@ const Posts = ({ thread }: Props) => {
     setDeletepostsPopUp(true);
   };
 
+  const toogleMenuOnClick = () => {
+    setFirstToggle(true);
+    setToogleMenu(!toogleMenu);
+  };
+
   return (
     <styles.Container>
+      <styles.HamBurger onClick={() => toogleMenuOnClick()} />
+      {firstToogle ? (
+        <styles.UserMenu
+          animation={toogleMenu ? "open-animation" : "close-animation"}
+        >
+          <styles.Link
+            animation={
+              toogleMenu ? "open-animation-nav" : "close-animation-nav"
+            }
+          >
+            Delete Thread
+          </styles.Link>
+          <styles.Link
+            animation={
+              toogleMenu ? "open-animation-nav" : "close-animation-nav"
+            }
+          >
+            Add Popup
+          </styles.Link>
+        </styles.UserMenu>
+      ) : null}
       <styles.Form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           postOnClick(e);

@@ -2,6 +2,15 @@ import styles from "styled-components";
 import * as globalStyles from "../../../../styles/globalStyles";
 import { colors } from "../../../../styles/colors";
 import { AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
+
+interface MenuProps {
+  animation: string;
+}
+
+interface NavProps {
+  animation: string;
+}
 
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
 position:relative;
@@ -45,6 +54,7 @@ background-color:transparent;
 width:100%;
 `;
 export const Post = styles.p`
+box-shadow:1px 1px 1px;
 background-color:${colors.bluePositive};
 border-radius:10px;
 width:96%;
@@ -89,7 +99,7 @@ height:300px;
 width:90%;
 padding-bottom:10px;
 @media (max-width: 400px) {
-  margin-top:0px;
+  margin-top:25px;
   width:100%;
   
 }
@@ -145,3 +155,104 @@ transform:scale(1);
 cursor:pointer;
 
 };`;
+
+export const HamBurger = styles(AiOutlineMenu)`
+position:absolute;
+top:10px;
+right:15px;
+color:white;
+position:absolute;
+transform:scale(1.5);
+z-index:3;
+&:hover{
+cursor:pointer;
+color:${colors.hover};
+};`;
+
+export const UserDark = styles(AiOutlineMenu)`
+color:grey;
+`;
+
+export const UserMenu = styles(globalStyles.FlexedContainerCollumn)<MenuProps>`
+z-index:2;
+position:absolute;
+top:40px;
+right:0px;
+gap:5px;
+padding:5px;
+height:10vh;
+width:clamp(300px, 30vw, 500px);
+border-radius:5px 0px 0px 5px;
+background-color:${colors.primary};
+box-shadow:10px 10px 10px  black;
+animation-name: ${(props) => props.animation};
+animation-duration: 0.5s;
+animation-fill-mode: forwards;
+@keyframes open-animation {
+    0% { height: 0vh;
+         width: 0vw; }
+
+    100% {
+        height:auto;
+        width:clamp(300px, 30vw, 500px)
+        box-shadow:10px 10px 10px grey;
+        ; }
+   }
+@keyframes close-animation {
+    0% { height:auto;
+        width:clamp(300px, 30vw, 500px); }
+    1% { height: 0vh;
+         width: 0vw;
+         gap:0px;
+         padding:0px;
+        }
+    100% { height: 0vh;
+         width: 0vw;
+         gap:0px;
+         padding:0px;
+        }
+
+   }
+`;
+
+export const Link = styles.div<NavProps>`
+width:84%;
+padding:8%;
+border-bottom:1px solid black;
+border-radius:5px;
+font-size:15px ;
+background-color:grey;
+color:${colors.primaryText};
+text-decoration:none;
+animation-name: ${(props) => props.animation};
+animation-duration: 0.5s;
+animation-fill-mode: forwards;
+&:hover{
+  transition:0.2s;
+  background-color:${colors.primary};
+  text-decoration:underline 1px solid   ${colors.activePositive};
+  border:1px solid white;
+  cursor:pointer;
+}
+&:active{
+  transition:0.2s;
+  background-color:${colors.primary};
+  box-shadow:0px 0px 0px  white;
+  text-decoration:underline 1px solid   ${colors.activePositive};
+
+}
+
+@keyframes open-animation-nav {
+    0% {opacity:0;}
+    0%{opacity:0;}
+    100% {opacity:1;
+    }
+   }
+@keyframes close-animation-nav {
+    0% {opacity:1;}
+    1%{opacity:0;}
+    100% {opacity:0;}
+   }
+ 
+   }
+`;
