@@ -180,44 +180,20 @@ top:40px;
 right:0px;
 gap:5px;
 padding:5px;
-height:10vh;
-width:clamp(300px, 30vw, 500px);
+height:max-conent;
+width:max-content;
 border-radius:5px 0px 0px 5px;
 background-color:${colors.primary};
 box-shadow:10px 10px 10px  black;
 animation-name: ${(props) => props.animation};
-animation-duration: 0.5s;
+animation-duration: 0s;
 animation-fill-mode: forwards;
-@keyframes open-animation {
-    0% { height: 0vh;
-         width: 0vw; }
 
-    100% {
-        height:auto;
-        width:clamp(300px, 30vw, 500px)
-        box-shadow:10px 10px 10px grey;
-        ; }
-   }
-@keyframes close-animation {
-    0% { height:auto;
-        width:clamp(300px, 30vw, 500px); }
-    1% { height: 0vh;
-         width: 0vw;
-         gap:0px;
-         padding:0px;
-        }
-    100% { height: 0vh;
-         width: 0vw;
-         gap:0px;
-         padding:0px;
-        }
-
-   }
 `;
 
-export const Link = styles.div<NavProps>`
-width:84%;
-padding:8%;
+export const PostsLink = styles.div<NavProps>`
+width:120px;
+padding:15px;
 border-bottom:1px solid black;
 border-radius:5px;
 font-size:15px ;
@@ -225,7 +201,7 @@ background-color:grey;
 color:${colors.primaryText};
 text-decoration:none;
 animation-name: ${(props) => props.animation};
-animation-duration: 0.5s;
+animation-duration: 0s;
 animation-fill-mode: forwards;
 &:hover{
   transition:0.2s;

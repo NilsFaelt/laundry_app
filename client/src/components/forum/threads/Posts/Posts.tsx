@@ -7,6 +7,7 @@ import { Post } from "../../../../types/postType";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
 import DeletePopUp from "./deletePopUp/DeletePopUp";
 import * as styles from "./posts.styles";
+
 interface Props {
   thread: string;
 }
@@ -69,20 +70,20 @@ const Posts = ({ thread }: Props) => {
         <styles.UserMenu
           animation={toogleMenu ? "open-animation" : "close-animation"}
         >
-          <styles.Link
+          <styles.PostsLink
             animation={
               toogleMenu ? "open-animation-nav" : "close-animation-nav"
             }
           >
             Delete Thread
-          </styles.Link>
-          <styles.Link
+          </styles.PostsLink>
+          <styles.PostsLink
             animation={
               toogleMenu ? "open-animation-nav" : "close-animation-nav"
             }
           >
             Add Popup
-          </styles.Link>
+          </styles.PostsLink>
         </styles.UserMenu>
       ) : null}
       <styles.Form
