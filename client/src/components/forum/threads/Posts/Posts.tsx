@@ -5,6 +5,7 @@ import { getAllPosts } from "../../../../api/getAllPosts";
 import { RootState } from "../../../../redux/store";
 import { Post } from "../../../../types/postType";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
+import DeleteAllPostsPopUp from "./deletePopUp/DeleteAllPostsPopUp";
 import DeletePopUp from "./deletePopUp/DeletePopUp";
 import * as styles from "./posts.styles";
 
@@ -16,6 +17,7 @@ const Posts = ({ thread }: Props) => {
   const [toogleMenu, setToogleMenu] = useState(false);
   const user = useSelector((state: RootState) => state.userReducer.user);
   const [deletePostsPopUp, setDeletepostsPopUp] = useState(false);
+  const [deleteAllPostsPopUp, setDeleteAllPostsPopUp] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
   const [postId, setPostId] = useState<string>("");
   const [input, setInput] = useState("");
@@ -41,8 +43,9 @@ const Posts = ({ thread }: Props) => {
     if (data) setPosts(data);
   };
   useEffect(() => {
+    console.log("hej");
     fetchWrapper();
-  }, []);
+  }, [deleteAllPostsPopUp]);
 
   if (chatBox) {
     chatBox.scrollTop = chatBox.scrollHeight;
@@ -56,6 +59,15 @@ const Posts = ({ thread }: Props) => {
   const deletePost = (id: string) => {
     setPostId(id);
     setDeletepostsPopUp(true);
+    setToogleMenu(false);
+  };
+
+  const deleteAllPosts = async (
+    thread: string,
+    setToogleMenu: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    setDeleteAllPostsPopUp(true);
+    setToogleMenu(false);
   };
 
   const toogleMenuOnClick = () => {
@@ -65,7 +77,9 @@ const Posts = ({ thread }: Props) => {
 
   return (
     <styles.Container>
-      <styles.HamBurger onClick={() => toogleMenuOnClick()} />
+      {user?.admin ? (
+        <styles.HamBurger onClick={() => toogleMenuOnClick()} />
+      ) : null}
       {firstToogle ? (
         <styles.UserMenu
           animation={toogleMenu ? "open-animation" : "close-animation"}
@@ -76,6 +90,14 @@ const Posts = ({ thread }: Props) => {
             }
           >
             Delete Thread
+          </styles.PostsLink>
+          <styles.PostsLink
+            onClick={() => deleteAllPosts(thread, setToogleMenu)}
+            animation={
+              toogleMenu ? "open-animation-nav" : "close-animation-nav"
+            }
+          >
+            Delete Posts
           </styles.PostsLink>
           <styles.PostsLink
             animation={
@@ -97,6 +119,12 @@ const Posts = ({ thread }: Props) => {
               postId={postId}
               setPosts={setPosts}
               setDeletepostsPopUp={setDeletepostsPopUp}
+            />
+          ) : null}
+          {deleteAllPostsPopUp ? (
+            <DeleteAllPostsPopUp
+              threadName={thread}
+              setDeleteAllPostsPopUp={setDeleteAllPostsPopUp}
             />
           ) : null}
           <styles.InnerPostContainer id='chat-feed'>
