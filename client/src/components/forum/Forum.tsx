@@ -8,6 +8,7 @@ import EachThread from "./threads/EachThread";
 import ThreadsContainer from "./threadsContainer/ThreadsContainer";
 
 const Forum = () => {
+  const [activateFetchPosts, setactivateFetchPosts] = useState(0);
   const [choosenThread, setChoosenThread] = useState<string>("");
   const [threads, setThreads] = useState<ThreadType[]>([]);
   const [filteredThreads, setFilteredThreads] = useState<ThreadType[]>([]);
@@ -22,7 +23,7 @@ const Forum = () => {
   };
   useEffect(() => {
     getAllthreadsFn();
-  }, [tooglePopUpThread]);
+  }, [tooglePopUpThread, activateFetchPosts]);
 
   const filterThreads = (
     threads: ThreadType[],
@@ -66,7 +67,11 @@ const Forum = () => {
           setTooglePopUpThread={setTooglePopUpThread}
         />
       ) : (
-        <Posts thread={choosenThread} />
+        <Posts
+          setactivateFetchPosts={setactivateFetchPosts}
+          thread={choosenThread}
+          setChoosenThread={setChoosenThread}
+        />
       )}
     </styles.BackgroundContainer>
   );

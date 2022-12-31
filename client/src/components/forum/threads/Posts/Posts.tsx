@@ -7,16 +7,20 @@ import { Post } from "../../../../types/postType";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
 import DeleteAllPostsPopUp from "./deletePopUp/DeleteAllPostsPopUp";
 import DeletePopUp from "./deletePopUp/DeletePopUp";
+import DeleteThreadPopUp from "./deletePopUp/DeleteThreadPopUp";
 import * as styles from "./posts.styles";
 
 interface Props {
+  setactivateFetchPosts: React.Dispatch<React.SetStateAction<number>>;
+  setChoosenThread: React.Dispatch<React.SetStateAction<string>>;
   thread: string;
 }
-const Posts = ({ thread }: Props) => {
+const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
   const [firstToogle, setFirstToggle] = useState(false);
   const [toogleMenu, setToogleMenu] = useState(false);
   const user = useSelector((state: RootState) => state.userReducer.user);
   const [deletePostsPopUp, setDeletepostsPopUp] = useState(false);
+  const [deleteThreadPopUp, setDeleteThreadPopUp] = useState(false);
   const [deleteAllPostsPopUp, setDeleteAllPostsPopUp] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
   const [postId, setPostId] = useState<string>("");
@@ -70,6 +74,13 @@ const Posts = ({ thread }: Props) => {
     setToogleMenu(false);
   };
 
+  const deleteThread = (
+    setDeleteThreadPopUp: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    setToogleMenu(false);
+    setDeleteThreadPopUp(true);
+  };
+
   const toogleMenuOnClick = () => {
     setFirstToggle(true);
     setToogleMenu(!toogleMenu);
@@ -80,32 +91,17 @@ const Posts = ({ thread }: Props) => {
       {user?.admin ? (
         <styles.HamBurger onClick={() => toogleMenuOnClick()} />
       ) : null}
-      {firstToogle ? (
-        <styles.UserMenu
-          animation={toogleMenu ? "open-animation" : "close-animation"}
-        >
-          <styles.PostsLink
-            animation={
-              toogleMenu ? "open-animation-nav" : "close-animation-nav"
-            }
-          >
+      {toogleMenu ? (
+        <styles.UserMenu>
+          <styles.PostsLink onClick={() => deleteThread(setDeleteThreadPopUp)}>
             Delete Thread
           </styles.PostsLink>
           <styles.PostsLink
             onClick={() => deleteAllPosts(thread, setToogleMenu)}
-            animation={
-              toogleMenu ? "open-animation-nav" : "close-animation-nav"
-            }
           >
             Delete Posts
           </styles.PostsLink>
-          <styles.PostsLink
-            animation={
-              toogleMenu ? "open-animation-nav" : "close-animation-nav"
-            }
-          >
-            Add Popup
-          </styles.PostsLink>
+          <styles.PostsLink>Add Popup</styles.PostsLink>
         </styles.UserMenu>
       ) : null}
       <styles.Form
@@ -114,6 +110,14 @@ const Posts = ({ thread }: Props) => {
         }}
       >
         <styles.PostContainer>
+          {deleteThreadPopUp ? (
+            <DeleteThreadPopUp
+              setactivateFetchPosts={setactivateFetchPosts}
+              setChoosenThread={setChoosenThread}
+              setDeleteThreadPopUp={setDeleteThreadPopUp}
+              threadName={thread}
+            />
+          ) : null}
           {deletePostsPopUp ? (
             <DeletePopUp
               postId={postId}

@@ -173,7 +173,7 @@ export const UserDark = styles(AiOutlineMenu)`
 color:grey;
 `;
 
-export const UserMenu = styles(globalStyles.FlexedContainerCollumn)<MenuProps>`
+export const UserMenu = styles(globalStyles.FlexedContainerCollumn)`
 z-index:2;
 position:absolute;
 top:40px;
@@ -185,13 +185,12 @@ width:max-content;
 border-radius:5px 0px 0px 5px;
 background-color:${colors.primary};
 box-shadow:10px 10px 10px  black;
-animation-name: ${(props) => props.animation};
 animation-duration: 0s;
 animation-fill-mode: forwards;
 
 `;
 
-export const PostsLink = styles.div<NavProps>`
+export const PostsLink = styles.div`
 width:120px;
 padding:15px;
 border-bottom:1px solid black;
@@ -200,7 +199,6 @@ font-size:15px ;
 background-color:grey;
 color:${colors.primaryText};
 text-decoration:none;
-animation-name: ${(props) => props.animation};
 animation-duration: 0s;
 animation-fill-mode: forwards;
 &:hover{
@@ -218,17 +216,5 @@ animation-fill-mode: forwards;
 
 }
 
-@keyframes open-animation-nav {
-    0% {opacity:0;}
-    0%{opacity:0;}
-    100% {opacity:1;
-    }
-   }
-@keyframes close-animation-nav {
-    0% {opacity:1;}
-    1%{opacity:0;}
-    100% {opacity:0;}
-   }
- 
-   }
+
 `;
