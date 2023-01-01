@@ -4,6 +4,7 @@ import { ThreadType } from "../../../types/threadTypes";
 import Pagination from "../pagination/Pagination";
 import { useState } from "react";
 import { getPaginationInfo } from "../pagination/utils/getPaginationInfo";
+import Spinner from "../../../ui/loadingSpinner/Spinner";
 
 interface Props {
   setInputSearch: React.Dispatch<React.SetStateAction<string>>;
@@ -31,6 +32,7 @@ const ThreadsContainer = ({
           }
           placeholder='Search thread'
         />
+        {filteredThreads.length >= 1 ? null : <Spinner />}
         <styles.ThreadsContainerScroll>
           {paginatedArray.slicedArray?.map((thread, i) => {
             return (

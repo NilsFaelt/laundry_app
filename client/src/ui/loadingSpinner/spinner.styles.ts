@@ -8,6 +8,7 @@ const spin = keyframes`
 `;
 
 export const Container = styles.div`
+
 margin:50px;
 width:50px;
 height:50px;
