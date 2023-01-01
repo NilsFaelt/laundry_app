@@ -5,6 +5,7 @@ import { RootState } from "../../redux/store";
 import { loginUser } from "../../redux/userSlice";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import Header from "../header/Header";
+import Head from "../Helmet/Head";
 import Login from "../login/login/Login";
 import Navbar from "../navbar/Navbar";
 import * as styles from "./root.styles";
@@ -28,6 +29,7 @@ const Root = () => {
   }, [user]);
   return (
     <styles.Container>
+      <Head />
       {user ? <Header /> : null}
       {user ? <Outlet /> : <Login />}
       {user ? <Navbar /> : null}

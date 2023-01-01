@@ -6,6 +6,7 @@ import AddThreadPopUp from "./addThreadPopUp/AddThreadPopUp";
 import * as styles from "./forum.styles";
 import EachThread from "./threads/EachThread";
 import ThreadsContainer from "./threadsContainer/ThreadsContainer";
+import Head from "../Helmet/Head";
 
 const Forum = () => {
   const [activateFetchPosts, setactivateFetchPosts] = useState(0);
@@ -45,6 +46,7 @@ const Forum = () => {
 
   return (
     <styles.BackgroundContainer>
+      <Head title='bulletinboard' />
       {tooglePopUpThread ? (
         <AddThreadPopUp
           setChoosenThread={setChoosenThread}

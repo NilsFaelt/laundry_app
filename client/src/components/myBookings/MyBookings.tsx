@@ -8,6 +8,7 @@ import { RootState } from "../../redux/store";
 import { BookedLaundrytimes } from "../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import Spinner from "../../ui/loadingSpinner/Spinner";
+import Head from "../Helmet/Head";
 import EachBooking from "./eachBooking/EachBooking";
 import { useGetTimeByUser } from "./hook/useGetTimeByUser";
 import * as styles from "./myBookings.style";
@@ -39,6 +40,7 @@ const MyBookings = () => {
 
   return (
     <styles.BackgroundContainer>
+      <Head title='My booked times' description='My booked  laundry times' />
       <styles.Container>
         <styles.Title>
           My booked laundrytimes {bookedTimes?.data?.length || 0}/3

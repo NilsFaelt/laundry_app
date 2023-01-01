@@ -10,6 +10,7 @@ import ShowAvilibleTimes from "./showAvilibleTimes/ShowAvilibleTimes";
 import BookTimePopUp from "./bookTimePopUp/BookTimePopUp";
 import { shortenDateToString } from "../../utils/shortenDateToString";
 import Spinner from "../../ui/loadingSpinner/Spinner";
+import Head from "../Helmet/Head";
 
 const CalendarComp = () => {
   const [choosenTime, setChoosenTime] = useState<LaundryTimes | null>(null);
@@ -30,6 +31,7 @@ const CalendarComp = () => {
 
   return (
     <styles.Container>
+      <Head title='calendar' description='booking calendar' />
       <styles.CalendarWrapper>
         <Calendar onChange={setDate} value={date} />
         {toogleBookPopUp ? (
