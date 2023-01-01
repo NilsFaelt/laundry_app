@@ -1,7 +1,10 @@
 import * as styles from "./spinner.styles";
 
-const Spinner = () => {
-  return <styles.Container></styles.Container>;
+interface Props {
+  color?: string;
+}
+const Spinner = ({ color }: Props) => {
+  return <styles.Container color={color ? color : "white"}></styles.Container>;
 };
 
 export default Spinner;

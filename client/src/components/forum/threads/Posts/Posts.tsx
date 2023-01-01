@@ -4,11 +4,13 @@ import { addPost } from "../../../../api/addPost";
 import { getAllPosts } from "../../../../api/getAllPosts";
 import { RootState } from "../../../../redux/store";
 import { Post } from "../../../../types/postType";
+import Spinner from "../../../../ui/loadingSpinner/Spinner";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
 import DeleteAllPostsPopUp from "./deletePopUp/DeleteAllPostsPopUp";
 import DeletePopUp from "./deletePopUp/DeletePopUp";
 import DeleteThreadPopUp from "./deletePopUp/DeleteThreadPopUp";
 import * as styles from "./posts.styles";
+import { useGetPosts } from "./utils/useGetPosts";
 
 interface Props {
   setactivateFetchPosts: React.Dispatch<React.SetStateAction<number>>;
@@ -16,6 +18,7 @@ interface Props {
   thread: string;
 }
 const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
+  const [loadingPosts, setLoadingPosts] = useState(false);
   const [firstToogle, setFirstToggle] = useState(false);
   const [toogleMenu, setToogleMenu] = useState(false);
   const user = useSelector((state: RootState) => state.userReducer.user);
@@ -43,11 +46,16 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
     }
   };
   const fetchWrapper = async () => {
+    setLoadingPosts(true);
     const data = await getAllPosts(thread);
-    if (data) setPosts(data);
+
+    if (data) {
+      setPosts(data);
+      setLoadingPosts(false);
+    }
   };
+
   useEffect(() => {
-    console.log("hej");
     fetchWrapper();
   }, [deleteAllPostsPopUp]);
 
@@ -132,6 +140,16 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
             />
           ) : null}
           <styles.InnerPostContainer id='chat-feed'>
+            {loadingPosts ? (
+              <styles.SpinnerWrapper>
+                <Spinner color='black' />
+              </styles.SpinnerWrapper>
+            ) : null}
+            {!loadingPosts && posts.length < 1 ? (
+              <styles.Info color='black'>No posts</styles.Info>
+            ) : (
+              ""
+            )}
             {posts.map((post) => {
               return (
                 <styles.EachPostContainer key={post._id}>

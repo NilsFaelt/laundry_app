@@ -33,6 +33,14 @@ color:${colors.white};
 text-align:center;
 `;
 
+export const Info = styles.h3`
+margin-top:0vh;
+margin-top:10vh;
+font-size:16px;
+color:black;
+text-align:center;
+`;
+
 export const EachPostContainer = styles(globalStyles.FlexedContainerCollumn)`
 position:relative;
 align-items:flex-start;
@@ -86,6 +94,13 @@ color:black;
 word-break: break-word;
 `;
 
+export const SpinnerWrapper = styles.div`
+position: absolute;
+top: 50%;  
+left: 50%; 
+transform: translate(-50%, -50%);
+
+`;
 export const PostContainer = styles.div`
 position:relative;
 display:flex;

@@ -32,7 +32,7 @@ const ThreadsContainer = ({
           }
           placeholder='Search thread'
         />
-        {filteredThreads.length >= 1 ? null : <Spinner />}
+        {filteredThreads.length >= 1 ? null : <Spinner color='black' />}
         <styles.ThreadsContainerScroll>
           {paginatedArray.slicedArray?.map((thread, i) => {
             return (
