@@ -63,6 +63,7 @@ const Forum = () => {
       </styles.Container>
       {choosenThread === "" ? (
         <ThreadsContainer
+          inputSearch={inputSearch}
           setChoosenThread={setChoosenThread}
           setInputSearch={setInputSearch}
           filteredThreads={filteredThreads}

@@ -2,11 +2,12 @@ import * as styles from "./threadsContainer.style";
 import EachThread from "../threads/EachThread";
 import { ThreadType } from "../../../types/threadTypes";
 import Pagination from "../pagination/Pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getPaginationInfo } from "../pagination/utils/getPaginationInfo";
 import Spinner from "../../../ui/loadingSpinner/Spinner";
 
 interface Props {
+  inputSearch: string;
   setInputSearch: React.Dispatch<React.SetStateAction<string>>;
   filteredThreads: ThreadType[];
   setTooglePopUpThread: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,10 +19,15 @@ const ThreadsContainer = ({
   filteredThreads,
   setTooglePopUpThread,
   setChoosenThread,
+  inputSearch,
 }: Props) => {
   const [page, setPage] = useState(1);
   const [pagePerSide, setPagePerSide] = useState(3);
   const paginatedArray = getPaginationInfo(filteredThreads, page, pagePerSide);
+
+  useEffect(() => {
+    setPage(1);
+  }, [inputSearch]);
 
   return (
     <styles.TreadsAndPoststContainer>
