@@ -119,7 +119,7 @@ padding-bottom:10px;
 }
 `;
 export const InnerPostContainer = styles.div`
-border-radius:15px;
+border-radius:5px;
 border:1px solid black;
 width:100%;
 overflow:scroll;
@@ -163,7 +163,7 @@ box-shadow:3px 3px 3px black;
 export const Delete = styles(AiOutlineDelete)`
 color:red;
 position:absolute;
-right:0px;
+right:-3px;
 top:30px;
 transform:scale(1);
 &:hover{

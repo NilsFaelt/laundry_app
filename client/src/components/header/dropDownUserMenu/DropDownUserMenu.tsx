@@ -44,9 +44,9 @@ const DropDownUserMenu = () => {
           <styles.Link
             onClick={() => dispatch(handelDropDownClick())}
             animation={userMenu ? "open-animation-nav" : "close-animation-nav"}
-            to={"/settings"}
+            to={"/myinfo"}
           >
-            Settings
+            MyInfo
           </styles.Link>
           {admin ? (
             <styles.Link

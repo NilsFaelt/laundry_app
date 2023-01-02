@@ -8,7 +8,7 @@ import CreateUser from "./components/createUser/CreateUser";
 import AllUsers from "./components/getAndUpdateUsers/AllUsers";
 import CalendarComp from "./components/calendar/Calendar";
 import Forum from "./components/forum/Forum";
-import Settings from "./components/settings/Settings";
+import MyInfo from "./components/settings/MyInfo";
 import Root from "./components/root/Root";
 import "./index.css";
 import store from "./redux/store";
@@ -36,8 +36,8 @@ const router = createBrowserRouter([
         element: <CreateUser />,
       },
       {
-        path: "settings",
-        element: <Settings />,
+        path: "myinfo",
+        element: <MyInfo />,
       },
       {
         path: "allUsers",
