@@ -1,0 +1,30 @@
+{
+  "name": "laundry_app",
+  "version": "1.0.0",
+  "description": "This is a fullstack laundry booking-app that i made as my final project in school.",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "start": "yarn workspace client dev",
+    "start:server": "yarn workspace server start",
+    "start:all": "concurrently \"yarn start:server\" \" yarn start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NilsFaelt/laundry_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NilsFaelt/laundry_app/issues"
+  },
+  "homepage": "https://github.com/NilsFaelt/laundry_app#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

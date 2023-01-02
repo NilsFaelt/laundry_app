@@ -4,6 +4,7 @@ import { addPost } from "../../../../api/addPost";
 import { getAllPosts } from "../../../../api/getAllPosts";
 import { RootState } from "../../../../redux/store";
 import { Post } from "../../../../types/postType";
+import { UserTypeWithNestedAdress } from "../../../../types/userType";
 import Spinner from "../../../../ui/loadingSpinner/Spinner";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
 import DeleteAllPostsPopUp from "./deletePopUp/DeleteAllPostsPopUp";
@@ -29,6 +30,7 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
   const [postId, setPostId] = useState<string>("");
   const [input, setInput] = useState("");
   const chatBox = document.getElementById("chat-feed");
+
   const postOnClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input !== "" && typeof user?.email === "string") {
