@@ -9,10 +9,8 @@
     "server"
   ],
   "scripts": {
-    "start": "yarn workspace client dev",
-    "start:server": "yarn workspace server start",
-    "start:build":"yarn workspace client build",
-    "start:all": "concurrently \"yarn start:server\" \" yarn start\""
+    "start": "yarn workspace client build"
+   
   },
   "repository": {
     "type": "git",
