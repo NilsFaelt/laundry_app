@@ -11,11 +11,9 @@ export const login = async (
       `http://${apiConfig.url}:${apiConfig.port}/auth`,
       loginInfo
     );
-    console.log(user.data.user, "user");
     return user.data.user;
   } catch (err: any) {
-    throw { msg: err, stack: err.stack };
+    return null;
   }
-  return null;
 };
 axios;

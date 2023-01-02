@@ -4,7 +4,6 @@ import { ThreadType } from "../../types/threadTypes";
 import Posts from "./threads/Posts/Posts";
 import AddThreadPopUp from "./addThreadPopUp/AddThreadPopUp";
 import * as styles from "./forum.styles";
-import EachThread from "./threads/EachThread";
 import ThreadsContainer from "./threadsContainer/ThreadsContainer";
 import Head from "../Helmet/Head";
 
@@ -15,6 +14,7 @@ const Forum = () => {
   const [filteredThreads, setFilteredThreads] = useState<ThreadType[]>([]);
   const [tooglePopUpThread, setTooglePopUpThread] = useState(false);
   const [inputSearch, setInputSearch] = useState("");
+
   const getAllthreadsFn = async () => {
     const data: ThreadType[] | null = await getAllThreads();
     if (data !== null) {
@@ -33,7 +33,9 @@ const Forum = () => {
   ) => {
     useEffect(() => {
       const filtererdThreads = threads?.filter((thread) =>
-        thread.title.includes(inputSearch)
+        thread.title
+          .toLocaleLowerCase()
+          .includes(inputSearch.toLocaleLowerCase())
       );
 
       if (inputSearch !== "" && filtererdThreads.length > 0)

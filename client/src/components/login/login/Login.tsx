@@ -14,12 +14,16 @@ const Login = () => {
     email: null,
     password: null,
   });
-  console.log(user, "user");
+  console.log(showLoginFailed);
+  console.log(user);
+
   return (
     <styles.BackgroundContainer>
       <styles.Container>
         <styles.Title>Login</styles.Title>
-        {showLoginFailed ? <styles.P>Couldnt Login</styles.P> : null}
+        {showLoginFailed ? (
+          <styles.P>Make sure credentials are correct</styles.P>
+        ) : null}
         <styles.Form
           onSubmit={(e) =>
             handleLogin(e, loginInfo, setsShowLoginFailed, dispatch)

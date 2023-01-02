@@ -14,13 +14,17 @@ export const handleLogin: HandleLogin = async (
   setsShowLoginFailed,
   dispatch
 ) => {
-  e.preventDefault();
-  const user = await login(loginInfo);
-  const jsonUser = JSON.stringify(user);
-  localStorage.setItem("user", jsonUser);
-  if (user) {
-    dispatch(loginUser(user));
-    setsShowLoginFailed(false);
+  try {
+    e.preventDefault();
+    const user = await login(loginInfo);
+    const jsonUser = JSON.stringify(user);
+    localStorage.setItem("user", jsonUser);
+    if (user) {
+      dispatch(loginUser(user));
+      setsShowLoginFailed(false);
+    }
+    setsShowLoginFailed(true);
+  } catch (err) {
+    throw new Error("something went wrong in login");
   }
-  setsShowLoginFailed(true);
 };
