@@ -12,7 +12,7 @@
     "start": "yarn workspace client dev",
     "start:server": "yarn workspace server start",
     "start:build":"yarn workspace client build",
-    "start:all": "concurrently \"yarn start:server\" \" yarn start\""
+    "start:all": "concurrently \"yarn start:server\" \" yarn star:build\""
   },
   "repository": {
     "type": "git",
