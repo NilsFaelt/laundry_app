@@ -11,7 +11,7 @@ box-shadow:10px 10px 10px;
 height:auto;
 border-radius:5px;
 padding:5vw;
-background-color:${colors.primary};
+background-color:black;
 `;
 
 export const P = styles.p`

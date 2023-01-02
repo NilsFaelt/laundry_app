@@ -6,7 +6,6 @@ interface Props {
   index: number;
 }
 const EachThread: React.FC<Props> = ({ thread, setChoosenThread, index }) => {
-  console.log(index);
   return (
     <Styles.Container
       margin={index === 0 ? "300" : "10"}

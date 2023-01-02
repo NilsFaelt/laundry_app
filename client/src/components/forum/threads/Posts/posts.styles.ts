@@ -65,9 +65,8 @@ export const Post = styles.p`
 box-shadow:1px 1px 1px;
 background-color:${colors.bluePositive};
 border-radius:10px;
-width:96%;
-padding-top:15px;
-padding-bottom:15px;
+width:90%;
+padding:25px 5px 25px 5px;
 margin-left:1%;
 margin-left:15px;
 margin-top:3px;
@@ -89,7 +88,7 @@ export const Date = styles.p`
 margin-left:15px;
 margin-top:3px;
 font-size:12px;
-margin-right:10px;
+margin-right:0px;
 color:black;
 word-break: break-word;
 `;
@@ -164,7 +163,8 @@ box-shadow:3px 3px 3px black;
 export const Delete = styles(AiOutlineDelete)`
 color:red;
 position:absolute;
-right:18px;
+right:0px;
+top:30px;
 transform:scale(1);
 &:hover{
 cursor:pointer;
