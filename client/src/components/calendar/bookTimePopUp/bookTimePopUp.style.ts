@@ -6,7 +6,7 @@ import * as loginStyles from "../../login/login/login.styles";
 export const Container = styles(globalStyles.FlexedContainerCollumn)`
 position:absolute;
 z-index:3;
-width:clamp(300px, 50vw, 50vw);
+width:clamp(300px, 40vw, 50vw);
 box-shadow:10px 10px 10px;
 height:auto;
 border-radius:5px;
