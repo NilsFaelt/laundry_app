@@ -54,36 +54,43 @@ export const CreateUser = () => {
           )
         }
       >
+        <styles.Label>Name:</styles.Label>
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
           name='name'
           placeholder='Name'
         ></styles.Input>
+        <styles.Label>Lastname:</styles.Label>
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
           name='lastName'
           placeholder='LastName'
         ></styles.Input>
+        <styles.Label>Password:</styles.Label>
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
           name='password'
           placeholder='Password'
         ></styles.Input>
+        <styles.Label>Email:</styles.Label>
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
           name='email'
+          type='email'
           placeholder='Email'
         ></styles.Input>
+        <styles.Label>Brf:</styles.Label>
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
           name='brf'
           placeholder='Brf'
         ></styles.Input>
+        <styles.Label>Apartment:</styles.Label>
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
@@ -91,6 +98,7 @@ export const CreateUser = () => {
           placeholder='Apartment'
           type={"number"}
         ></styles.Input>
+        <styles.Label>Adress:</styles.Label>
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
@@ -110,6 +118,7 @@ export const CreateUser = () => {
           placeholder='Postal'
           type={"number"}
         ></styles.Input>
+        <styles.Label>Bookingnr:</styles.Label>
         <styles.Input
           required={true}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}

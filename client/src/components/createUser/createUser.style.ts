@@ -11,6 +11,13 @@ padding-bottom:5vh;
 box-shadow:10px 10px 10px;
 `;
 export const Title = styles(loginStyles.Title)``;
+export const Label = styles.label`
+align-self:flex-start;
+margin-left:18px;
+color:white;
+font-size:12px;
+`;
+
 export const Input = styles(loginStyles.Input)`
 font-family:serif;
 font-size:16px;
