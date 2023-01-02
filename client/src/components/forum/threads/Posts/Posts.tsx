@@ -4,15 +4,15 @@ import { addPost } from "../../../../api/addPost";
 import { getAllPosts } from "../../../../api/getAllPosts";
 import { RootState } from "../../../../redux/store";
 import { Post } from "../../../../types/postType";
-import { UserTypeWithNestedAdress } from "../../../../types/userType";
 import Spinner from "../../../../ui/loadingSpinner/Spinner";
 import { shortenDateToString } from "../../../../utils/shortenDateToString";
 import DeleteAllPostsPopUp from "./deletePopUp/DeleteAllPostsPopUp";
 import DeletePopUp from "./deletePopUp/DeletePopUp";
 import DeleteThreadPopUp from "./deletePopUp/DeleteThreadPopUp";
+import EachPost from "./EachPost";
 import * as styles from "./posts.styles";
-import { useGetPosts } from "./utils/useGetPosts";
 
+// Sorry for the mess in this component
 interface Props {
   setactivateFetchPosts: React.Dispatch<React.SetStateAction<number>>;
   setChoosenThread: React.Dispatch<React.SetStateAction<string>>;
@@ -47,6 +47,7 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
       setInput("");
     }
   };
+
   const fetchWrapper = async () => {
     setLoadingPosts(true);
     const data = await getAllPosts(thread);
@@ -69,12 +70,6 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
       chatBox.scrollTop = chatBox.scrollHeight;
     }
   }, [input]);
-
-  const deletePost = (id: string) => {
-    setPostId(id);
-    setDeletepostsPopUp(true);
-    setToogleMenu(false);
-  };
 
   const deleteAllPosts = async (
     thread: string,
@@ -154,20 +149,13 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
             )}
             {posts.map((post) => {
               return (
-                <styles.EachPostContainer key={post._id}>
-                  {user?.email === post.createdBy || user?.admin ? (
-                    <styles.Delete
-                      onClick={() => {
-                        deletePost(post._id!);
-                      }}
-                    />
-                  ) : null}
-                  <styles.DateAndUserContaienr>
-                    <styles.User>{post.createdBy} says:</styles.User>
-                    <styles.Date>{post.date} </styles.Date>
-                  </styles.DateAndUserContaienr>
-                  <styles.Post>{post.post}</styles.Post>
-                </styles.EachPostContainer>
+                <EachPost
+                  post={post}
+                  user={user}
+                  setPostId={setPostId}
+                  setDeletepostsPopUp={setDeletepostsPopUp}
+                  setToogleMenu={setToogleMenu}
+                />
               );
             })}
           </styles.InnerPostContainer>

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { activateBooking } from "../../../redux/menuSlice";
+import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { colors } from "../../../styles/colors";
-import { BookedLaundrytimes, LaundryTimes } from "../../../types/laundryTypes";
+import { BookedLaundrytimes } from "../../../types/laundryTypes";
 import { ShowAvailibleTimesProps } from "../../../types/ShowAvilibleTimesProps";
 import { UserTypeWithNestedAdress } from "../../../types/userType";
 import { checkSoDateIsStillRelevant } from "../utils/checkSodateIsStillRelevant";
@@ -18,7 +17,6 @@ const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: RootState) => state.userReducer.user
   );
-
   const [usersBookedLimit, setusersBookedLimit] = useState<
     BookedLaundrytimes[]
   >([]);

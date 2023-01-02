@@ -37,6 +37,7 @@ gap:4vw;`;
 export const Btn = styles(loginStyles.Btn)`
 margin-top:3vh;
 `;
+
 export const DangerBtn = styles(globalStyles.DangerBUtton)``;
 export const PstvBtn = styles(globalStyles.MainBtn)`
 background-color:${colors.positive}`;

@@ -1,17 +1,13 @@
+import { PaginationInfo } from "../../../types/paginationTypes";
 import { ThreadType } from "../../../types/threadTypes";
 import * as styles from "./pagination.styles";
+import { calcNrsToShowInPagination } from "./utils/calcNrsToShowInPagination";
 
-interface PaginatiomInfo {
-  lastIndex: number;
-  firstIndex: number;
-  roundedPage: number;
-  slicedArray: ThreadType[];
-}
 interface Props {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   page: number;
   pagePerSide: number;
-  paginatedArray: PaginatiomInfo;
+  paginatedArray: PaginationInfo;
   filteredThreads: ThreadType[];
 }
 const Pagination = ({
@@ -30,26 +26,7 @@ const Pagination = ({
     if (page < paginatedArray.roundedPage) setPage((prev) => prev + 1);
   };
 
-  const calcNrsToShowInPafination = (
-    page: number,
-    paginatedArray: PaginatiomInfo
-  ): number[] => {
-    let arrayToRender = [];
-
-    for (let index = 0; index < paginatedArray.roundedPage; index++) {
-      arrayToRender.push(index + 1);
-    }
-    if (page >= 3) {
-      arrayToRender = arrayToRender.slice(page - 3, page + 3);
-    } else if (page < 3 && page > 1) {
-      arrayToRender = arrayToRender.slice(page - 2, page + 4);
-    } else if (page === 1) {
-      arrayToRender = arrayToRender.slice(page - 1, page + 4);
-    }
-    return arrayToRender;
-  };
-
-  const pages = calcNrsToShowInPafination(page, paginatedArray);
+  const pages = calcNrsToShowInPagination(page, paginatedArray);
 
   return (
     <styles.Container>

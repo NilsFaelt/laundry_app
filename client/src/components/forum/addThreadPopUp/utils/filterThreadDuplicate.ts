@@ -10,7 +10,6 @@ export const filterThreadsNoDuplicates = (
     (thread) =>
       thread.title.toLocaleLowerCase() === threadName.toLocaleLowerCase()
   );
-  console.log(threadCheck, "check");
   if (threadCheck) {
     setThreadDuplicate(false);
     returnBoolean = false;

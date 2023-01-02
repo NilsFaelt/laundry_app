@@ -22,7 +22,6 @@ const AddThreadPopUp: React.FC<Props> = ({
   const user = useSelector((state: RootState) => state.userReducer.user);
   const [threadName, setThreadName] = useState("non choosen");
 
-  console.log(threadDuplicate, "duplicate");
   const readAbleDate = shortenDateToString(new Date());
 
   const sendThreadOnClick = async (e: React.FormEvent<HTMLFormElement>) => {

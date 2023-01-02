@@ -1,10 +1,8 @@
 import { Dispatch } from "react";
 import { NavigateFunction } from "react-router-dom";
 import { bookALaundryTime } from "../../../../api/bookALaundryTime";
-
 import { activateBooking } from "../../../../redux/menuSlice";
 import { BookingInfo } from "../../../../types/laundryTypes";
-import { ShowActiveMenuSlice } from "../../../../types/reduxTypes";
 import { UserTypeWithNestedAdress } from "../../../../types/userType";
 
 export const handleBookingOnClick = async (

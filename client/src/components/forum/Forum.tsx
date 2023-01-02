@@ -6,6 +6,7 @@ import AddThreadPopUp from "./addThreadPopUp/AddThreadPopUp";
 import * as styles from "./forum.styles";
 import ThreadsContainer from "./threadsContainer/ThreadsContainer";
 import Head from "../Helmet/Head";
+import { filterThreads } from "./utils/filterThreads";
 
 const Forum = () => {
   const [activateFetchPosts, setactivateFetchPosts] = useState(0);
@@ -25,24 +26,6 @@ const Forum = () => {
   useEffect(() => {
     getAllthreadsFn();
   }, [tooglePopUpThread, activateFetchPosts]);
-
-  const filterThreads = (
-    threads: ThreadType[],
-    setFilteredThreads: React.Dispatch<React.SetStateAction<ThreadType[]>>,
-    inputSearch: string
-  ) => {
-    useEffect(() => {
-      const filtererdThreads = threads?.filter((thread) =>
-        thread.title
-          .toLocaleLowerCase()
-          .includes(inputSearch.toLocaleLowerCase())
-      );
-
-      if (inputSearch !== "" && filtererdThreads.length > 0)
-        setFilteredThreads(filtererdThreads);
-      else setFilteredThreads(threads);
-    }, [inputSearch]);
-  };
 
   filterThreads(threads, setFilteredThreads, inputSearch);
 
