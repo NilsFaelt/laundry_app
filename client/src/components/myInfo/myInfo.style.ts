@@ -1,5 +1,6 @@
 import styles from "styled-components";
 import laundryImg from "../../assets/img/laundry.png";
+import * as globalStyles from "../../styles/globalStyles";
 import { colors } from "../../styles/colors";
 
 export const BackgroundContainer = styles.div`
@@ -8,15 +9,17 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 width:100vw;
-height:100vh;
+height:100%;
 background-image:url(${laundryImg});
 `;
 
 export const InfoContainer = styles.div`
+margin-top:20vh;
+margin-bottom:20vh;
 display:flex;
 flex-direction:column;
 align-items:center;
-width:clamp(300px, 30vw, 800px);
+width:clamp(300px, 50vw, 500px);
 height:auto;
 padding:20px;
 padding-bottom:60px;
@@ -56,4 +59,35 @@ font-weight:bolder;
 margin-top:8px;
 margin-left:8px;
 color:black;
+`;
+
+export const Form = styles.form`
+margin-top:10px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+`;
+
+export const Label = styles.label`
+align-self:flex-start;
+margin-top:10px;
+color:white;
+font-size:12px`;
+export const LabelWarning = styles.label`
+
+margin-top:10px;
+color:${colors.activeDanger};
+font-size:16px`;
+
+export const Input = styles(globalStyles.Input)`
+width:100%;
+border-radius:5px;
+border:1px solid black;
+padding:1px;
+font-size:14px;`;
+
+export const Btn = styles(globalStyles.MainBtn)`
+margin-top:15px;
+box-shadow:1px 1px 1px grey;
 `;

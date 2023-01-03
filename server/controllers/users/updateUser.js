@@ -1,7 +1,6 @@
 const Users = require("../../models/Users");
 
 const updateUser = async (req, res, next) => {
-  console.log("in updaete backend");
   try {
     const newUser = await Users.findByIdAndUpdate(
       req.params.id,

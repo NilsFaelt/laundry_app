@@ -1,10 +1,42 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { preview } from "vite";
+import { updatePassword } from "../../api/updatePassword";
 import { RootState } from "../../redux/store";
 import * as styles from "./myInfo.style";
 
 const MyInfo = () => {
+  const [tooglePassword, setTooglePassword] = useState(false);
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [updateStatus, setUpdateStatus] = useState<null | number>(null);
+
+  const [credentials, setCredentials] = useState({
+    password: "",
+    confirmPassword: "",
+    newPassword: "",
+  });
+
   const user = useSelector((state: RootState) => state.userReducer.user);
-  console.log(user);
+
+  const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (credentials.password !== credentials.confirmPassword) {
+      setPasswordsMatch(false);
+    } else if (
+      credentials.password === credentials.confirmPassword &&
+      credentials.newPassword
+    ) {
+      if (typeof user?._id === "string") {
+        setUpdateStatus(null);
+        setPasswordsMatch(true);
+        const data = await updatePassword(user?._id, credentials);
+        if (data) setUpdateStatus(data.status);
+        else setUpdateStatus(404);
+        setCredentials({ password: "", confirmPassword: "", newPassword: "" });
+      }
+    }
+  };
+
   return (
     <styles.BackgroundContainer>
       <styles.InfoContainer>
@@ -26,7 +58,73 @@ const MyInfo = () => {
           <styles.P>Apartment: {user?.apartment}</styles.P>
           <styles.P>Brf: {user?.brf}</styles.P>
         </styles.AdressContainer>
-        <styles.ClickableTitle>Change Password?</styles.ClickableTitle>
+        <styles.ClickableTitle
+          onClick={() => setTooglePassword(!tooglePassword)}
+        >
+          Change Password?
+        </styles.ClickableTitle>
+        {updateStatus === 200 ? (
+          <styles.Title>Password updated</styles.Title>
+        ) : null}
+        {updateStatus === 404 ? (
+          <styles.LabelWarning>Something went wrong</styles.LabelWarning>
+        ) : null}
+        {tooglePassword ? (
+          <styles.Form
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleClick(e)}
+          >
+            <styles.Label>Password:</styles.Label>
+            {!passwordsMatch ? (
+              <styles.LabelWarning>Password didnt match</styles.LabelWarning>
+            ) : null}
+            <styles.Input
+              required
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCredentials((prev) => ({
+                  ...prev,
+                  [e.target.name]: e.target.value,
+                }))
+              }
+              value={credentials.password}
+              type='password'
+              name='password'
+              placeholder='Password'
+            />
+            <styles.Label>Confirm Password:</styles.Label>{" "}
+            {!passwordsMatch ? (
+              <styles.LabelWarning>Password didnt match</styles.LabelWarning>
+            ) : null}
+            <styles.Input
+              required
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCredentials((prev) => ({
+                  ...prev,
+                  [e.target.name]: e.target.value,
+                }))
+              }
+              value={credentials.confirmPassword}
+              type='password'
+              name='confirmPassword'
+              placeholder='Confirm Password'
+            />
+            <styles.Label>New Password:</styles.Label>
+            <styles.Input
+              required
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCredentials((prev) => ({
+                  ...prev,
+                  [e.target.name]: e.target.value,
+                }))
+              }
+              value={credentials.newPassword}
+              minLength={5}
+              type='password'
+              name='newPassword'
+              placeholder='New Password'
+            />
+            <styles.Btn>Update</styles.Btn>
+          </styles.Form>
+        ) : null}
       </styles.InfoContainer>
     </styles.BackgroundContainer>
   );
