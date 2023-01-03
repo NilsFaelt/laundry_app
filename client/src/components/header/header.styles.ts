@@ -1,6 +1,7 @@
 import styles from "styled-components";
 import * as globalStyles from "../../styles/globalStyles";
 import { CiUser } from "react-icons/ci";
+import { AiOutlineMail } from "react-icons/ai";
 import { colors } from "../../styles/colors";
 
 interface MenuProps {
@@ -26,6 +27,16 @@ position:absolute;
 right:1px;
 transform:scale(2.8);
 margin-right:30px;
+&:hover{
+cursor:pointer;
+color:${colors.hover};
+};`;
+
+export const Mail = styles(AiOutlineMail)`
+color:white;
+position:absolute;
+left:25px;
+transform:scale(2.8);
 &:hover{
 cursor:pointer;
 color:${colors.hover};

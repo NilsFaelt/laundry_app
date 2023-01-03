@@ -26,10 +26,9 @@ const updateUserPassword = async (req, res, next) => {
       );
       res.status(200).json({ user: newUser });
     }
-
-    res.status(404).json({ msg: "couldnt update user" });
+    console.log("hej");
+    res.status(404).json({ msg: "couldnt update user", status: 404 });
   } catch (err) {
-    console.log(err);
     next(err);
   }
 };

@@ -6,6 +6,7 @@ import { RootState } from "../../redux/store";
 import * as styles from "./myInfo.style";
 
 const MyInfo = () => {
+  const [wrongPassword, setWrongPassword] = useState(false);
   const [tooglePassword, setTooglePassword] = useState(false);
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [updateStatus, setUpdateStatus] = useState<null | number>(null);
@@ -29,14 +30,20 @@ const MyInfo = () => {
       if (typeof user?._id === "string") {
         setUpdateStatus(null);
         setPasswordsMatch(true);
-        const data = await updatePassword(user?._id, credentials);
+        const data = await updatePassword(
+          user?._id,
+          credentials,
+          setWrongPassword
+        );
         if (data) setUpdateStatus(data.status);
         else setUpdateStatus(404);
+        setWrongPassword(false);
         setCredentials({ password: "", confirmPassword: "", newPassword: "" });
       }
     }
   };
 
+  console.log(wrongPassword);
   return (
     <styles.BackgroundContainer>
       <styles.InfoContainer>
@@ -65,6 +72,11 @@ const MyInfo = () => {
         </styles.ClickableTitle>
         {updateStatus === 200 ? (
           <styles.Title>Password updated</styles.Title>
+        ) : null}
+        {wrongPassword ? (
+          <styles.LabelWarning>
+            Make sure passwords are correct
+          </styles.LabelWarning>
         ) : null}
         {updateStatus === 404 ? (
           <styles.LabelWarning>Something went wrong</styles.LabelWarning>

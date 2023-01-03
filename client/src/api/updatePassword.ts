@@ -15,7 +15,8 @@ interface Credentials {
 
 export async function updatePassword(
   id: string,
-  credentials: Credentials
+  credentials: Credentials,
+  setWrongPassword: React.Dispatch<React.SetStateAction<boolean>>
 ): Promise<ReturnData> {
   try {
     const data = await axios.put(
@@ -25,6 +26,7 @@ export async function updatePassword(
 
     return data;
   } catch (err: any) {
+    setWrongPassword(true);
     throw { msg: err, stack: err.stack };
   }
 }
