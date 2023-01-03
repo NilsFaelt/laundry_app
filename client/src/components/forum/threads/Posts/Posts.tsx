@@ -106,7 +106,6 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
           >
             Delete Posts
           </styles.PostsLink>
-          <styles.PostsLink>Add Popup</styles.PostsLink>
         </styles.UserMenu>
       ) : null}
       <styles.Form

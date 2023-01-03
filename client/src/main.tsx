@@ -8,7 +8,7 @@ import CreateUser from "./components/createUser/CreateUser";
 import AllUsers from "./components/getAndUpdateUsers/AllUsers";
 import CalendarComp from "./components/calendar/Calendar";
 import Forum from "./components/forum/Forum";
-import MyInfo from "./components/settings/MyInfo";
+import MyInfo from "./components/myInfo/MyInfo";
 import Root from "./components/root/Root";
 import "./index.css";
 import store from "./redux/store";

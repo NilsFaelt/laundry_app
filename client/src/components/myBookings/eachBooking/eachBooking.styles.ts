@@ -9,6 +9,8 @@ align-self:center;
 width:90%;
 margin-top:5px;
 padding-bottom:2vh;
+background-color:black;
+box-shadow:3px 3px 3px;
 `;
 
 export const Title = styles.h2`
@@ -17,6 +19,9 @@ margin-bottom:1vh;
 font-size:15px;
 color:${colors.white};
 text-align:center;
+`;
+export const Span = styles.span`
+color:${colors.showActiveLink}
 `;
 export const TitleBooked = styles.h2`
 margin-top:1vh;

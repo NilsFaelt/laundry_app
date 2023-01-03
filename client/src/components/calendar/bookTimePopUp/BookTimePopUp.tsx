@@ -44,9 +44,12 @@ const BookTimePopUp: React.FC<Props> = ({
 
   return (
     <styles.Container>
-      <styles.P>Book time: {bookedTime?.timeAsString}</styles.P>
+      <styles.P>
+        <styles.Span>Time:</styles.Span> {bookedTime?.timeAsString}
+      </styles.P>
       <styles.Pdate>
-        Date: {readebleDate.day}-{readebleDate.month}-{readebleDate.year}
+        <styles.Span>Date:</styles.Span> {readebleDate.day}-{readebleDate.month}
+        -{readebleDate.year}
       </styles.Pdate>
       <styles.BtnDiv>
         <styles.PstvBtn

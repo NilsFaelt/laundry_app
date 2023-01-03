@@ -31,9 +31,22 @@ export const Label = styles(globalStyles.Label)`
 margin-top:3vh;
 margin-bottom:vh;
 color:white;`;
-export const Input = styles(globalStyles.Input)`
-margin-top:3vh;
+export const Input = styles.input`
+width:80%;
+margin-top:30px;
+margin-bottom:0px;
+border-radius:15px;
+border:1px solid black;
+padding:1vh;
+&:focus {
+  border:1px solid black;
+  outline: none;
+}
+@media (max-width: 300px) {
+  margin-top:100px;
+}
 `;
+
 export const P = styles.p`
 text-decoration:underline;
 font-size:20px;

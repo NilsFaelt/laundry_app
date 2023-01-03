@@ -20,9 +20,10 @@ width:clamp(300px, 30vw, 800px);
 height:auto;
 padding:20px;
 padding-bottom:60px;
-background-color:${colors.primary};
+background-color:black;
 border-radius:5px;
 box-shadow:10px 10px 10px;
+border:1px solid white;
 `;
 export const AdressContainer = styles.div`
 width:96%;
@@ -35,6 +36,7 @@ align-items:flex-start;
 background-color:${colors.activePositive};
 border-radius:5px;
 padding-bottom:10px;
+border:1px solid ${colors.showActiveLink};
 `;
 export const Title = styles.h2`
 font-size:16px;

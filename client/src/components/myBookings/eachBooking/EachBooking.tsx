@@ -29,8 +29,14 @@ const EachBooking: React.FC<Props> = ({
   return (
     <styles.container>
       <styles.Delete onClick={() => deleteOnClick(info)}></styles.Delete>
-      <styles.Title>Time: {time}</styles.Title>
-      <styles.Title>Date: {readabelDate}</styles.Title>
+      <styles.Title>
+        <styles.Span> Time: </styles.Span>
+        {time}
+      </styles.Title>
+      <styles.Title>
+        {" "}
+        <styles.Span> Date: </styles.Span> {readabelDate}
+      </styles.Title>
       <styles.TitleBooked></styles.TitleBooked>
     </styles.container>
   );
