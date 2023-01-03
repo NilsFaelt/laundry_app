@@ -11,7 +11,7 @@ const PopUpCreatedUser: React.FC<Props> = ({ user, setCreatedUser, text }) => {
   return (
     <styles.Container onClick={() => setCreatedUser(null)}>
       <styles.Title>
-        ${user?.email} ${text}
+        {user?.email}: {text}
       </styles.Title>
     </styles.Container>
   );
