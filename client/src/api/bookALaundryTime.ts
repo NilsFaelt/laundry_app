@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LaundryTimes } from "../types/laundryTypes";
+import { BookedLaundrytimes } from "../types/laundryTypes";
 import { apiConfig } from "./apiConifig";
 
 interface BookingInfo {
@@ -11,12 +11,15 @@ interface BookingInfo {
   dateAsMilisecs?: number;
 }
 
-export const bookALaundryTime = async (bookingInfo: BookingInfo) => {
+export const bookALaundryTime = async (
+  bookingInfo: BookingInfo
+): Promise<BookedLaundrytimes> => {
   try {
     const bookedTime = await axios.post(
       `http://${apiConfig.url}:${apiConfig.port}/booked`,
       { bookingInfo }
     );
+
     return bookedTime.data;
   } catch (err: any) {
     throw { msg: err, stack: err.stack };

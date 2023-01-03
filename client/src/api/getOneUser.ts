@@ -8,6 +8,7 @@ export const getOneUser = async (email: string) => {
     const data = await axios.get(
       `http://${apiConfig.url}:${apiConfig.port}/users/getOne/${email}`
     );
+
     return data;
   } catch (err: any) {
     throw { msg: err, stack: err.stack };
