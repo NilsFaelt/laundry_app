@@ -2,9 +2,7 @@ import axios from "axios";
 import { BookedLaundrytimes } from "../types/laundryTypes";
 import { apiConfig } from "./apiConifig";
 
-export const getBookedTimesByDate = async (
-  date: string
-): Promise<BookedLaundrytimes[]> => {
+export const getBookedTimesByDate = async (date: string) => {
   try {
     const bookedTimes = await axios.post(
       `http://${apiConfig.url}:${apiConfig.port}/booked/byDay`,

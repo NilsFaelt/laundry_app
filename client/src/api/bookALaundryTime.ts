@@ -11,9 +11,7 @@ interface BookingInfo {
   dateAsMilisecs?: number;
 }
 
-export const bookALaundryTime = async (
-  bookingInfo: BookingInfo
-): Promise<BookedLaundrytimes> => {
+export const bookALaundryTime = async (bookingInfo: BookingInfo) => {
   try {
     const bookedTime = await axios.post(
       `http://${apiConfig.url}:${apiConfig.port}/booked`,

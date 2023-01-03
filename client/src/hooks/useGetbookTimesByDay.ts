@@ -12,10 +12,8 @@ interface ReturnData {
   error: Error | null;
 }
 
-// delete ?
-
 export const useGetbookTimesByDay = (dateString: string): ReturnData => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<BookedLaundrytimes[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
 
