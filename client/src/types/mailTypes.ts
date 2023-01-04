@@ -5,4 +5,5 @@ export interface MailType {
   date: string;
   subject: string;
   read?: boolean;
+  _id?: string;
 }

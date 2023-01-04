@@ -18,5 +18,4 @@ export async function updateUser(
   } catch (err: any) {
     throw { msg: err, stack: err.stack };
   }
-  return null;
 }

@@ -6,7 +6,9 @@ import { RootState } from "../../redux/store";
 import { MailType } from "../../types/mailTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import { shortenDateToString } from "../../utils/shortenDateToString";
+import AllMails from "./allMails/AllMails";
 import * as styles from "./mailPopUp.style";
+import ReadMailPopUp from "./readMailPopUp/ReadMailPopUp";
 
 interface Props {
   setToogleMailPopUp: React.Dispatch<React.SetStateAction<boolean>>;
@@ -32,6 +34,7 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
     subject: "",
     read: false,
   });
+  const [choosenMail, setChoosenMail] = useState<MailType | null>(null);
   const [mailIsPerfectMatch, setmailIsPerfectMatch] = useState(false);
   const [correctMail, setCorrectMail] = useState(false);
   const [sentSucees, setSentSucees] = useState(false);
@@ -41,7 +44,7 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
   const [toogleMailWriteMail, setToogleMailWriteMail] = useState(false);
 
   const date = shortenDateToString(new Date());
-  console.log(mailInfo);
+  console.log(choosenMail);
 
   const fetchWrapper = async () => {
     const data = await getAllUsers();
@@ -113,50 +116,68 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
     }, 2000);
   }
 
+  const tooglePenOnClick = () => {
+    if (choosenMail !== null) {
+      setTo(choosenMail.from);
+      setSubject(`RE: ${choosenMail.subject}`);
+    }
+    setToogleMailWriteMail(true);
+    setChoosenMail(null);
+  };
+
   return (
     <styles.Container>
       <styles.Back onClick={() => setToogleMailPopUp(false)} />
-      <styles.Pen onClick={() => setToogleMailWriteMail(true)} />
+      <styles.Pen onClick={() => tooglePenOnClick()} />
       <styles.Mail onClick={() => setToogleMailWriteMail(false)} />
       <styles.MailContainer>
-        <styles.Form
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => sendMailOnClick(e)}
-        >
-          <styles.TextArea
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-              setText(e.target.value)
+        {choosenMail !== null ? <ReadMailPopUp mail={choosenMail} /> : null}
+        {toogleMailWriteMail ? (
+          <styles.Form
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+              sendMailOnClick(e)
             }
-            required
-            value={text}
-          ></styles.TextArea>
-          {sentSucees ? <styles.Label>Mail sent</styles.Label> : null}
-          <styles.Input
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSubject(e.target.value)
-            }
-            value={subject}
-            placeholder='Subject'
-            required
-          />
-          {correctMail ? (
-            <styles.LabelWarning>Invalid mail</styles.LabelWarning>
-          ) : null}
-          <styles.Input
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setTo(e.target.value)
-            }
-            placeholder='To'
-            value={to}
-          />
-          <styles.Btn>Send</styles.Btn>
-          {allMailsFiltered.length > 0 && to !== "" && !mailIsPerfectMatch ? (
-            <styles.ShowMailAdresses>
-              {allMailsFiltered.map((mail) => {
-                return <styles.P onClick={() => setTo(mail)}>{mail}</styles.P>;
-              })}
-            </styles.ShowMailAdresses>
-          ) : null}
-        </styles.Form>
+          >
+            <styles.TextArea
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setText(e.target.value)
+              }
+              required
+              value={text}
+            ></styles.TextArea>
+            {sentSucees ? <styles.Label>Mail sent</styles.Label> : null}
+            <styles.Input
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSubject(e.target.value)
+              }
+              value={subject}
+              placeholder='Subject'
+              required
+            />
+            {correctMail ? (
+              <styles.LabelWarning>Invalid mail</styles.LabelWarning>
+            ) : null}
+            <styles.Input
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setTo(e.target.value)
+              }
+              placeholder='To'
+              value={to}
+            />
+            <styles.Btn>Send</styles.Btn>
+            {allMailsFiltered.length > 0 && to !== "" && !mailIsPerfectMatch ? (
+              <styles.ShowMailAdresses>
+                {allMailsFiltered.map((mail) => {
+                  return (
+                    <styles.P onClick={() => setTo(mail)}>{mail}</styles.P>
+                  );
+                })}
+              </styles.ShowMailAdresses>
+            ) : null}
+          </styles.Form>
+        ) : (
+          <AllMails setChoosenMail={setChoosenMail} />
+        )}
       </styles.MailContainer>
       {sentSucees ? <styles.SentMail key={Math.random()} /> : null}
     </styles.Container>
