@@ -6,6 +6,7 @@ import { RootState } from "../../redux/store";
 import { MailType } from "../../types/mailTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import { shortenDateToString } from "../../utils/shortenDateToString";
+import Head from "../Helmet/Head";
 import AllMails from "./allMails/AllMails";
 import * as styles from "./mailPopUp.style";
 import ReadMailPopUp from "./readMailPopUp/ReadMailPopUp";
@@ -134,6 +135,7 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
 
   return (
     <styles.Container>
+      <Head title='Mail' description='send mail' />
       <styles.Back onClick={() => setToogleMailPopUp(false)} />
       <styles.Pen onClick={() => tooglePenOnClick()} />
       <styles.Mail onClick={() => setToogleMailWriteMail(false)} />

@@ -3,6 +3,7 @@ import { redirect } from "react-router-dom";
 
 import { useGetAllUsers } from "../../hooks/useGetAllUsers";
 import { UserTypeWithNestedAdress } from "../../types/userType";
+import Head from "../Helmet/Head";
 import * as styles from "./allUsers.style";
 import UpdatePopUp from "./updatePopUp/UpdatePopUp";
 import { chooseUserOnClick } from "./utils/chooseUserOnClick";
@@ -31,6 +32,7 @@ const AllUsers = () => {
 
   return (
     <styles.BackgroundContainer>
+      <Head title='Search/update users' />
       {choosenUser ? (
         <UpdatePopUp setChoosenUser={setChoosenUser} user={choosenUser} />
       ) : null}

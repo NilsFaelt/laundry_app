@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { UserType } from "../../types/userType";
+import Head from "../Helmet/Head";
 import * as styles from "./createUser.style";
 import PopUpCreatedUser from "./popUp/PopUpCreatedUser";
 import { handleSubmit } from "./utils/handleSubmit";
@@ -32,6 +33,7 @@ export const CreateUser = () => {
 
   return (
     <styles.Container onClick={() => setCreatedUser(null)}>
+      <Head title='Create User' />
       {createdUser ? (
         <PopUpCreatedUser
           user={createdUser}

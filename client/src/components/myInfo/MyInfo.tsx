@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { preview } from "vite";
 import { updatePassword } from "../../api/updatePassword";
 import { RootState } from "../../redux/store";
+import Head from "../Helmet/Head";
 import * as styles from "./myInfo.style";
 
 const MyInfo = () => {
@@ -46,6 +47,7 @@ const MyInfo = () => {
   console.log(wrongPassword);
   return (
     <styles.BackgroundContainer>
+      <Head title='My info' />
       <styles.InfoContainer>
         <styles.Title>Adress</styles.Title>
         <styles.AdressContainer>
