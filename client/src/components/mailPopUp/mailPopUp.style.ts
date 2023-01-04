@@ -6,6 +6,9 @@ import { TfiEmail } from "react-icons/tfi";
 import { SlPencil } from "react-icons/sl";
 import { colors } from "../../styles/colors";
 
+interface MailProps {
+  animation: string;
+}
 export const Container = styled.div`
   z-index: 4;
   position: absolute;
@@ -54,15 +57,14 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
-  align-self: flex-start;
   margin-top: 10px;
   color: white;
-  font-size: 12px;
+  font-size: 16px;
 `;
 export const LabelWarning = styled.label`
-  margin-top: 10px;
-  color: ${colors.activeDanger};
-  font-size: 16px;
+  margin-top: 5px;
+  color: red;
+  font-size: 14px;
 `;
 
 export const Input = styled(globalStyles.Input)`
@@ -107,6 +109,40 @@ export const Mail = styled(TfiEmail)`
   &:hover {
     cursor: pointer;
     color: ${colors.hover};
+  }
+`;
+export const SentMail = styled(TfiEmail)`
+  color: white;
+  position: absolute;
+  left: 50px;
+  bottom: 50px;
+  scale: 3;
+  opacity: 1;
+  transform: scale(2);
+  color: ${colors.showActiveLink};
+  animation: mailAni 2s forwards;
+  @keyframes mailAni {
+    0% {
+      opacity: 1;
+      bottom: 50px;
+      left: 50px;
+      transform: rotate(0deg);
+    }
+    80% {
+      color: ${colors.showActiveLink};
+      scale: 3;
+      opacity: 1;
+      bottom: 300px;
+      left: 300px;
+      transform: rotate(360deg);
+    }
+    100% {
+      scale: 5;
+      color: pink;
+      bottom: 500px;
+      left: 500px;
+      opacity: 0;
+    }
   }
 `;
 

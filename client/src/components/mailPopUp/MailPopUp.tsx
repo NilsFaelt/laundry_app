@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { getAllUsers } from "../../api/getAllUsers";
+import { sendMail } from "../../api/sendMail";
+import { RootState } from "../../redux/store";
+import { MailType } from "../../types/mailTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
+import { shortenDateToString } from "../../utils/shortenDateToString";
 import * as styles from "./mailPopUp.style";
 
 interface Props {
@@ -8,13 +13,27 @@ interface Props {
 }
 
 const MailPopUp = ({ setToogleMailPopUp }: Props) => {
+  const user = useSelector((state: RootState) => state.userReducer.user);
   const [text, setText] = useState("");
   const [subject, setSubject] = useState("");
+  const [mailInfo, setMailInfo] = useState<MailType>({
+    from: "",
+    to: "",
+    text: "",
+    date: "",
+    subject: "",
+    read: false,
+  });
   const [mailIsPerfectMatch, setmailIsPerfectMatch] = useState(false);
+  const [correctMail, setCorrectMail] = useState(false);
+  const [sentSucees, setSentSucees] = useState(false);
   const [to, setTo] = useState("");
   const [allMails, setAllMails] = useState<string[]>([]);
   const [allMailsFiltered, setAllMailsFiltered] = useState<string[]>([]);
   const [toogleMailWriteMail, setToogleMailWriteMail] = useState(false);
+
+  const date = shortenDateToString(new Date());
+  console.log(date);
 
   const fetchWrapper = async () => {
     const data = await getAllUsers();
@@ -44,16 +63,65 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
       setmailIsPerfectMatch(false);
     }
   }, [to]);
-  console.log(mailIsPerfectMatch);
+
+  const sendMailOnClick = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSentSucees(false);
+    if (user?.email)
+      setMailInfo({
+        from: user?.email,
+        to: to,
+        text: text,
+        date: date.date,
+        subject: subject,
+        read: false,
+      });
+    if (!mailIsPerfectMatch) {
+      setCorrectMail(true);
+    } else {
+      sendMail(mailInfo);
+      setCorrectMail(false);
+      setText("");
+      setSubject("");
+      setTo("");
+      setSentSucees(true);
+    }
+  };
+
+  if (sentSucees) {
+    setTimeout(() => {
+      setSentSucees(false);
+    }, 2000);
+  }
+
   return (
     <styles.Container>
       <styles.Back onClick={() => setToogleMailPopUp(false)} />
       <styles.Pen onClick={() => setToogleMailWriteMail(true)} />
       <styles.Mail onClick={() => setToogleMailWriteMail(false)} />
       <styles.MailContainer>
-        <styles.Form>
-          <styles.TextArea></styles.TextArea>
-          <styles.Input placeholder='Subject' />
+        <styles.Form
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => sendMailOnClick(e)}
+        >
+          <styles.TextArea
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+              setText(e.target.value)
+            }
+            required
+            value={text}
+          ></styles.TextArea>
+          {sentSucees ? <styles.Label>Mail sent</styles.Label> : null}
+          <styles.Input
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSubject(e.target.value)
+            }
+            value={subject}
+            placeholder='Subject'
+            required
+          />
+          {correctMail ? (
+            <styles.LabelWarning>Invalid mail</styles.LabelWarning>
+          ) : null}
           <styles.Input
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setTo(e.target.value)
@@ -71,6 +139,7 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
           ) : null}
         </styles.Form>
       </styles.MailContainer>
+      {sentSucees ? <styles.SentMail key={Math.random()} /> : null}
     </styles.Container>
   );
 };

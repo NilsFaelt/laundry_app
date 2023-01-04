@@ -16,6 +16,9 @@ const MailSchema = new Schema({
   date: {
     type: String,
   },
+  subject: {
+    type: String,
+  },
   read: {
     type: Boolean,
     default: false,
