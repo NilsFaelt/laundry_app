@@ -13,6 +13,14 @@ interface Props {
 }
 
 const MailPopUp = ({ setToogleMailPopUp }: Props) => {
+  const resetMailInfo = {
+    from: "",
+    to: "",
+    text: "",
+    date: "",
+    subject: "",
+    read: false,
+  };
   const user = useSelector((state: RootState) => state.userReducer.user);
   const [text, setText] = useState("");
   const [subject, setSubject] = useState("");
@@ -33,7 +41,7 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
   const [toogleMailWriteMail, setToogleMailWriteMail] = useState(false);
 
   const date = shortenDateToString(new Date());
-  console.log(date);
+  console.log(mailInfo);
 
   const fetchWrapper = async () => {
     const data = await getAllUsers();
@@ -78,13 +86,24 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
       });
     if (!mailIsPerfectMatch) {
       setCorrectMail(true);
-    } else {
-      sendMail(mailInfo);
+    } else if (to !== "") {
+      if (user?.email)
+        sendMail({
+          from: user?.email,
+          to: to,
+          text: text,
+          date: date.date,
+          subject: subject,
+          read: false,
+        });
+
       setCorrectMail(false);
       setText("");
       setSubject("");
       setTo("");
       setSentSucees(true);
+      setMailInfo(resetMailInfo);
+      console.log(mailInfo);
     }
   };
 

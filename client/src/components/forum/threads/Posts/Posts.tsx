@@ -149,6 +149,7 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
             {posts.map((post) => {
               return (
                 <EachPost
+                  key={post._id}
                   post={post}
                   user={user}
                   setPostId={setPostId}
