@@ -1,7 +1,6 @@
 const BookedTimes = require("../../models/BookedTimes");
 
 const getBookingsByUser = async (req, res, next) => {
-  console.log("in");
   try {
     const bookedTimes = await BookedTimes.find({
       email: req.body.email,

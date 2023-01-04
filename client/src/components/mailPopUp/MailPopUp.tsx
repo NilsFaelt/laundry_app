@@ -10,6 +10,7 @@ interface Props {
 const MailPopUp = ({ setToogleMailPopUp }: Props) => {
   const [text, setText] = useState("");
   const [subject, setSubject] = useState("");
+  const [mailIsPerfectMatch, setmailIsPerfectMatch] = useState(false);
   const [to, setTo] = useState("");
   const [allMails, setAllMails] = useState<string[]>([]);
   const [allMailsFiltered, setAllMailsFiltered] = useState<string[]>([]);
@@ -33,9 +34,17 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
         mail.toLocaleLowerCase().includes(to.toLocaleLowerCase())
       )
     );
-    console.log("allMailsFiltered");
+
+    const ifMailIsPerfectMatch = allMails.find(
+      (mail) => mail.toLocaleLowerCase() === to.toLocaleLowerCase()
+    );
+    if (ifMailIsPerfectMatch) {
+      setmailIsPerfectMatch(true);
+    } else if (!ifMailIsPerfectMatch) {
+      setmailIsPerfectMatch(false);
+    }
   }, [to]);
-  console.log(allMailsFiltered);
+  console.log(mailIsPerfectMatch);
   return (
     <styles.Container>
       <styles.Back onClick={() => setToogleMailPopUp(false)} />
@@ -53,14 +62,14 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
             value={to}
           />
           <styles.Btn>Send</styles.Btn>
+          {allMailsFiltered.length > 0 && to !== "" && !mailIsPerfectMatch ? (
+            <styles.ShowMailAdresses>
+              {allMailsFiltered.map((mail) => {
+                return <styles.P onClick={() => setTo(mail)}>{mail}</styles.P>;
+              })}
+            </styles.ShowMailAdresses>
+          ) : null}
         </styles.Form>
-        {allMailsFiltered.length > 0 && to !== "" ? (
-          <styles.ShowMailAdresses>
-            {allMailsFiltered.map((mail) => {
-              return <styles.P onClick={() => setTo(mail)}>{mail}</styles.P>;
-            })}
-          </styles.ShowMailAdresses>
-        ) : null}
       </styles.MailContainer>
     </styles.Container>
   );

@@ -1,5 +1,5 @@
 const BookedTimes = require("../../models/BookedTimes");
-const postNewBooking = async (req, res) => {
+const postNewBooking = async (req, res, next) => {
   const newBooking = new BookedTimes(req.body.bookingInfo);
   try {
     const savedNewBooking = await newBooking.save();

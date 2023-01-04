@@ -10,6 +10,7 @@ const usersRoute = require("./routes/users");
 const bookedTimesRoute = require("./routes/bookedtTimes");
 const threadRoute = require("./routes/bulletinBoard");
 const postsRoute = require("./routes/posts");
+const mailRoute = require("./routes/mail");
 const errorHandler = require("./middlewares/errorHandler");
 dotenv.config();
 
@@ -38,6 +39,7 @@ app.use("/users", usersRoute);
 app.use("/booked", bookedTimesRoute);
 app.use("/thread", threadRoute);
 app.use("/posts", postsRoute);
+app.use("/mail", mailRoute);
 
 app.use(errorHandler);
 
