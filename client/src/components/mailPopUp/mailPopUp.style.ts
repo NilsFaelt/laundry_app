@@ -74,6 +74,7 @@ export const Input = styled(globalStyles.Input)`
   margin-top: 10px;
   padding: 1px;
   font-size: 14px;
+  font-family: italic;
 `;
 
 export const Btn = styled(globalStyles.MainBtn)`

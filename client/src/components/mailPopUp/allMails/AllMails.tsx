@@ -16,8 +16,8 @@ const AllMails = ({ setChoosenMail }: Props) => {
   const fetchWrapper = async () => {
     if (typeof user?.email === "string") {
       const data = await getAllMails(user?.email);
-      setAllMails(data.data.mails);
-      console.log(data.data.mails);
+      const reversedArray = data.data.mails.reverse();
+      setAllMails(reversedArray);
     }
   };
 

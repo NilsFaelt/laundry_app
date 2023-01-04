@@ -10,7 +10,7 @@ export const AllMailsContainer = styled(FlexedContainerCollumn)`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 4;
-  width: clamp(300px, 60vw, 800px);
+  width: clamp(300px, 70vw, 800px);
   height: 50vh;
   background-color: ${colors.white};
   border-radius: 5px;

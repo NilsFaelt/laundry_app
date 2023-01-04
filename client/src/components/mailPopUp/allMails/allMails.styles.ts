@@ -6,4 +6,6 @@ export const AllMailsContainer = styled.div`
   background-color: ${colors.white};
   border-radius: 5px;
   border: 1px solid "black";
+  overflow: scroll;
+  padding: 5px;
 `;

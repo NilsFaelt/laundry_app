@@ -9,6 +9,7 @@ import { shortenDateToString } from "../../utils/shortenDateToString";
 import AllMails from "./allMails/AllMails";
 import * as styles from "./mailPopUp.style";
 import ReadMailPopUp from "./readMailPopUp/ReadMailPopUp";
+import { checkIfmaiStartsWithRE } from "./utils/checkIfmaiStartsWithRE";
 
 interface Props {
   setToogleMailPopUp: React.Dispatch<React.SetStateAction<boolean>>;
@@ -116,10 +117,16 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
     }, 2000);
   }
 
+  checkIfmaiStartsWithRE("RE: test");
   const tooglePenOnClick = () => {
     if (choosenMail !== null) {
       setTo(choosenMail.from);
-      setSubject(`RE: ${choosenMail.subject}`);
+
+      if (checkIfmaiStartsWithRE(choosenMail.subject)) {
+        setSubject(`${choosenMail.subject}`);
+      } else if (!checkIfmaiStartsWithRE(choosenMail.subject)) {
+        setSubject(`RE: ${choosenMail.subject}`);
+      }
     }
     setToogleMailWriteMail(true);
     setChoosenMail(null);
