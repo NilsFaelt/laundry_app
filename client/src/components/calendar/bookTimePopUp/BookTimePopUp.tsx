@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { bookALaundryTime } from "../../../api/bookALaundryTime";
-import { activateBooking } from "../../../redux/menuSlice";
 import { RootState } from "../../../redux/store";
 import { DateObj } from "../../../types/dateTypes";
 import { BookingInfo, LaundryTimes } from "../../../types/laundryTypes";

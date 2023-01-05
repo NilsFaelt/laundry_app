@@ -7,7 +7,8 @@ interface Props {
 }
 const EachMail = ({ mail, setChoosenMail }: Props) => {
   const handleClick = (mail: MailType) => {
-    if (typeof mail._id === "string") updatedMail(mail._id);
+    if (typeof mail._id === "string" && !mail.read) updatedMail(mail._id);
+
     setChoosenMail(mail);
   };
   return (
