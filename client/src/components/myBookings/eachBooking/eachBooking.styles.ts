@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { colors } from "../../../styles/colors";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { BsAlarm } from "react-icons/bs";
 
 export const container = styled.div`
+  position: relative;
   border: 1px solid white;
   border-radius: 5px;
   align-self: center;
@@ -39,5 +41,16 @@ export const Delete = styled(AiFillCloseCircle)`
   cursor: pointer;
   &:hover {
     color: ${colors.danger};
+  }
+`;
+export const Alarm = styled(BsAlarm)`
+  position: absolute;
+  right: 20px;
+  top: 3vh;
+  color: white;
+  transform: scale(1.7);
+  cursor: pointer;
+  &:hover {
+    color: ${colors.showActiveLink};
   }
 `;

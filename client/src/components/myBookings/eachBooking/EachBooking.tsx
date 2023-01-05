@@ -38,6 +38,7 @@ const EachBooking: React.FC<Props> = ({
         <styles.Span> Date: </styles.Span> {readabelDate}
       </styles.Title>
       <styles.TitleBooked></styles.TitleBooked>
+      <styles.Alarm />
     </styles.container>
   );
 };

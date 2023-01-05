@@ -8,6 +8,7 @@ import Pagination from "./pagination/Pagination";
 import { getPaginationInfo } from "./pagination/utils/getPaginationInfo";
 import EachMail from "../eachMail/EachMail";
 import * as styles from "./allMails.styles";
+import Spinner from "../../../ui/loadingSpinner/Spinner";
 
 interface Props {
   setChoosenMail: React.Dispatch<React.SetStateAction<MailType | null>>;
