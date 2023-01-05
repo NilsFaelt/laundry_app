@@ -36,7 +36,13 @@ const AllMails = ({ setChoosenMail }: Props) => {
     <>
       <styles.AllMailsContainer>
         {paginatedArray.slicedArray?.map((mail) => {
-          return <EachMail setChoosenMail={setChoosenMail} mail={mail} />;
+          return (
+            <EachMail
+              setAllMails={setAllMails}
+              setChoosenMail={setChoosenMail}
+              mail={mail}
+            />
+          );
         })}
       </styles.AllMailsContainer>
       <Pagination

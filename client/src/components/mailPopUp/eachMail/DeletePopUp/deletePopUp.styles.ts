@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import * as globalStyles from "../../../../../styles/globalStyles";
-
-import { colors } from "../../../../../styles/colors";
+import { colors } from "../../../../styles/colors";
+import * as globalStyles from "../../../../styles/globalStyles";
 
 export const container = styled(globalStyles.FlexedContainerCollumn)`
   position: absolute;

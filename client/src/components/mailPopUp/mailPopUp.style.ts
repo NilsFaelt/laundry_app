@@ -24,7 +24,7 @@ export const Container = styled.div`
   background-color: grey;
   border-radius: 5px;
   box-shadow: 10px 10px 10px;
-  border: 1px solid "black";
+  border: 1px solid black;
 `;
 
 export const Title = styled.h2`

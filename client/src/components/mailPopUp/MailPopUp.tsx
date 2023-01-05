@@ -140,7 +140,9 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
       <styles.Pen onClick={() => tooglePenOnClick()} />
       <styles.Mail onClick={() => setToogleMailWriteMail(false)} />
       <styles.MailContainer>
-        {choosenMail !== null ? <ReadMailPopUp mail={choosenMail} /> : null}
+        {choosenMail !== null ? (
+          <ReadMailPopUp mail={choosenMail} setChoosenMail={setChoosenMail} />
+        ) : null}
         {toogleMailWriteMail ? (
           <styles.Form
             onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
