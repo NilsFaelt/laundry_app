@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteBookTimeById } from "../../../api/deleteBookTimeById";
 import { BookedLaundrytimes } from "../../../types/laundryTypes";
+import AlarmPopUp from "./alarmPopUp/AlarmPopUp";
 import * as styles from "./eachBooking.styles";
 import { fixBookingHoursToMoreReadble } from "./utils/fixBookingHoursToMoreReadble";
 import { makeDateReadeable } from "./utils/makeDateReadeble";
@@ -16,8 +18,7 @@ const EachBooking: React.FC<Props> = ({
   setRerenderBookings,
   rerenderBookings,
 }) => {
-  const dispatch = useDispatch();
-
+  const [toogleAlarm, setToolgeAlarm] = useState(false);
   const time = fixBookingHoursToMoreReadble(info);
   const deleteOnClick = async (info: BookedLaundrytimes) => {
     deleteBookTimeById(info._id);
@@ -28,6 +29,7 @@ const EachBooking: React.FC<Props> = ({
   const readabelDate = makeDateReadeable(info.dateForBooking);
   return (
     <styles.container>
+      {toogleAlarm ? <AlarmPopUp setToolgeAlarm={setToolgeAlarm} /> : null}
       <styles.Delete onClick={() => deleteOnClick(info)}></styles.Delete>
       <styles.Title>
         <styles.Span> Time: </styles.Span>
@@ -38,7 +40,7 @@ const EachBooking: React.FC<Props> = ({
         <styles.Span> Date: </styles.Span> {readabelDate}
       </styles.Title>
       <styles.TitleBooked></styles.TitleBooked>
-      <styles.Alarm />
+      <styles.Alarm onClick={() => setToolgeAlarm(true)} />
     </styles.container>
   );
 };
