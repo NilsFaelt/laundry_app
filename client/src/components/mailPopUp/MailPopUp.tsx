@@ -187,7 +187,7 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
             ) : null}
           </styles.Form>
         ) : (
-          <AllMails setChoosenMail={setChoosenMail} />
+          <AllMails choosenMail={choosenMail} setChoosenMail={setChoosenMail} />
         )}
       </styles.MailContainer>
       {sentSucees ? <styles.SentMail key={Math.random()} /> : null}

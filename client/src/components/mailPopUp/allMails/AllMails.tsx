@@ -11,8 +11,9 @@ import * as styles from "./allMails.styles";
 
 interface Props {
   setChoosenMail: React.Dispatch<React.SetStateAction<MailType | null>>;
+  choosenMail: MailType | null;
 }
-const AllMails = ({ setChoosenMail }: Props) => {
+const AllMails = ({ setChoosenMail, choosenMail }: Props) => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(7);
 
@@ -27,10 +28,9 @@ const AllMails = ({ setChoosenMail }: Props) => {
   };
 
   const paginatedArray = getPaginationInfo(allMails, page, perPage);
-  console.log(paginatedArray);
   useEffect(() => {
     fetchWrapper();
-  }, []);
+  }, [choosenMail]);
 
   return (
     <>
