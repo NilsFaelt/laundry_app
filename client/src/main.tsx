@@ -7,6 +7,7 @@ import MyBookings from "./components/myBookings/MyBookings";
 import CreateUser from "./components/createUser/CreateUser";
 import AllUsers from "./components/getAndUpdateUsers/AllUsers";
 import CalendarComp from "./components/calendar/Calendar";
+import Laundryrooms from "./components/laundryRooms/LaundryRooms";
 import Forum from "./components/forum/Forum";
 import MyInfo from "./components/myInfo/MyInfo";
 import Root from "./components/root/Root";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "forum",
         element: <Forum />,
+      },
+      {
+        path: "laundryrooms",
+        element: <Laundryrooms />,
       },
     ],
   },

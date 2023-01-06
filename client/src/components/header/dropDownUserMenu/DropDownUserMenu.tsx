@@ -70,6 +70,17 @@ const DropDownUserMenu = () => {
               Add User
             </styles.Link>
           ) : null}
+          {admin ? (
+            <styles.Link
+              onClick={() => dispatch(handelDropDownClick())}
+              animation={
+                userMenu ? "open-animation-nav" : "close-animation-nav"
+              }
+              to={"/laundryrooms"}
+            >
+              LaundryRooms
+            </styles.Link>
+          ) : null}
           <styles.Link
             onClick={handleLoggout}
             animation={userMenu ? "open-animation-nav" : "close-animation-nav"}

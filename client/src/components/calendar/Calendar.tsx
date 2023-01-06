@@ -13,6 +13,7 @@ import Spinner from "../../ui/loadingSpinner/Spinner";
 import Head from "../Helmet/Head";
 
 const CalendarComp = () => {
+  const [toogleMenu, setToogleMenu] = useState(false);
   const [choosenTime, setChoosenTime] = useState<LaundryTimes | null>(null);
   const [toogleBookPopUp, setToogleBookPopUp] = useState(false);
   const [bookingTimes, setBookingTimes] = useState<LaundryTimes[] | null>(null);
@@ -33,6 +34,19 @@ const CalendarComp = () => {
     <styles.Container>
       <Head title='calendar' description='booking calendar' />
       <styles.CalendarWrapper>
+        <styles.Title>
+          <span>LaundryRoom:</span> Main
+        </styles.Title>
+        <styles.ChooseTitle onClick={() => setToogleMenu(!toogleMenu)}>
+          Change Laundry room?
+        </styles.ChooseTitle>
+
+        {toogleMenu ? (
+          <styles.UserMenu>
+            <styles.PostsLink></styles.PostsLink>
+          </styles.UserMenu>
+        ) : null}
+
         <Calendar onChange={setDate} value={date} />
         {toogleBookPopUp ? (
           <BookTimePopUp
@@ -43,11 +57,9 @@ const CalendarComp = () => {
             setToogleBookPopUp={setToogleBookPopUp}
           />
         ) : null}
-
         {bookingTimes ? (
           <>
             <styles.Title>Availible times today</styles.Title>
-
             <styles.Title>
               {readebleDate.day}-{readebleDate.month}-{readebleDate.year}
             </styles.Title>
@@ -56,7 +68,6 @@ const CalendarComp = () => {
           <styles.Title>Choose a date</styles.Title>
         )}
         {bookingTimes ? null : <Spinner />}
-
         {bookingTimes?.map((time) => {
           return (
             <ShowAvilibleTimes
