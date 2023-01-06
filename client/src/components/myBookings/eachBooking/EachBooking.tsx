@@ -27,6 +27,7 @@ const EachBooking: React.FC<Props> = ({
     }, 50);
   };
   const readabelDate = makeDateReadeable(info.dateForBooking);
+
   return (
     <styles.container>
       {toogleAlarm ? <AlarmPopUp setToolgeAlarm={setToolgeAlarm} /> : null}
