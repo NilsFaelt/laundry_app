@@ -11,6 +11,7 @@ const bookedTimesRoute = require("./routes/bookedtTimes");
 const threadRoute = require("./routes/bulletinBoard");
 const postsRoute = require("./routes/posts");
 const mailRoute = require("./routes/mail");
+const laundryRoomsRouter = require("./routes/laundryRooms");
 const errorHandler = require("./middlewares/errorHandler");
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use("/booked", bookedTimesRoute);
 app.use("/thread", threadRoute);
 app.use("/posts", postsRoute);
 app.use("/mail", mailRoute);
+app.use("/laundryroom", laundryRoomsRouter);
 
 app.use(errorHandler);
 

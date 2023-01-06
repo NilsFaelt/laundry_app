@@ -46,15 +46,20 @@ export const EachRoomContainer = styled(FlexedContainerRow)`
   position: relative;
   justify-content: space-between;
   margin-top: 2px;
-  background-color: ${colors.white};
+  background-color: ${colors.primary};
   border: 1px solid black;
   padding: 10px;
+  color: white;
+  span {
+    color: ${colors.showActiveLink};
+  }
 `;
 export const Delete = styled(AiOutlineDelete)`
   top: 15px;
   color: black;
   scale: 0.7;
   transform: scale(2);
+  color: ${colors.white};
   &:hover {
     color: red;
     cursor: pointer;
@@ -67,6 +72,13 @@ export const Label = styled.label`
   height: 30px;
   width: 250px;
   color: ${colors.white};
+`;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
 `;
 export const Input = styled.input`
   margin-top: 5px;
