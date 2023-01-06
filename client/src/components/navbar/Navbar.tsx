@@ -12,6 +12,10 @@ const Navbar = () => {
   const { calendar, bookings, chat } = useSelector(
     (state: RootState) => state.showActiveMenuReducer
   );
+  const bookeTimes = useSelector(
+    (state: RootState) => state.bookedTimesReducer.bookedTimes
+  );
+  console.log(bookeTimes);
   const dispatch = useDispatch();
 
   return (
@@ -23,6 +27,9 @@ const Navbar = () => {
         ></styles.Calendar>
       </styles.Link>
       <styles.Link to={"/myBooking"}>
+        {bookeTimes.length > 0 ? (
+          <styles.ShowBookingDiv>{bookeTimes.length}</styles.ShowBookingDiv>
+        ) : null}
         <styles.MyBookings
           onClick={() => dispatch(activateBooking())}
           color={bookings ? colors.showActiveLink : "white"}

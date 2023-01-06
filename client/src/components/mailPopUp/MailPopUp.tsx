@@ -137,7 +137,7 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
     <styles.Container>
       <Head title='Mail' description='send mail' />
       <styles.Back onClick={() => setToogleMailPopUp(false)} />
-      <styles.Pen onClick={() => tooglePenOnClick()} />
+      <styles.Pen onClick={() => tooglePenOnClick()} />{" "}
       <styles.Mail onClick={() => setToogleMailWriteMail(false)} />
       <styles.MailContainer>
         {choosenMail !== null ? (
