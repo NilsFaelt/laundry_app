@@ -1,10 +1,22 @@
-import { configureStore, Middleware, combineReducers } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  Middleware,
+  combineReducers,
+  ThunkAction,
+  AnyAction,
+} from "@reduxjs/toolkit";
 import showActiveMenuSlice from "./menuSlice";
 import bookedTimesSlice from "./bookedTimesSlice";
 import userSlice from "./userSlice";
 import laundryRoomSlice from "./laundryRoomsSlice";
 import logger from "redux-logger";
 
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  AnyAction
+>;
 const reducer = {
   bookedTimesReducer: bookedTimesSlice,
   showActiveMenuReducer: showActiveMenuSlice,
