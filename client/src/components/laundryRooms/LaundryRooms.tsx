@@ -1,39 +1,41 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { addRoom } from "../../api/addLaundryRoom";
-import { getAllRooms } from "../../api/getAllRooms";
-import { LaundryRoom } from "../../types/laundryRoom";
+import { RootState } from "../../redux/store";
+import DeletePopUp from "./deletePopUp/DeletePopUp";
 import * as styles from "./laundryRooms.style";
 
 const Laundryrooms = () => {
-  const [rooms, setRooms] = useState<LaundryRoom[]>([]);
+  const [tooglePopUp, setTooglePopUp] = useState(false);
+  const [roomId, setRoomId] = useState("");
   const [roomInput, setRoomInput] = useState("");
-  const dummy = ["room1", "room1", "room1", "room1"];
 
-  const fetchWrapper = async () => {
-    const data = await getAllRooms();
-    setRooms(data);
-    console.log(data);
+  const rooms = useSelector(
+    (state: RootState) => state.laundryRoomReducer.laundryRooms
+  );
+
+  const deleteLaundryRoom = async (id: string) => {
+    setTooglePopUp(true);
+    setRoomId(id);
   };
 
-  useEffect(() => {
-    fetchWrapper();
-  }, []);
-  const deleteLaundryRoom = () => {
-    console.log("delete");
-  };
   const addLaundryRoom = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addRoom(roomInput);
+    const data = await addRoom(roomInput);
   };
   return (
     <styles.BackgroundContainer>
       <styles.Container>
+        {" "}
+        {tooglePopUp ? (
+          <DeletePopUp roomId={roomId} setTooglePopUp={setTooglePopUp} />
+        ) : null}
         <styles.LaundryRoomsContainer>
-          {rooms.map((room) => {
+          {rooms?.map((room) => {
             return (
               <styles.EachRoomContainer>
                 <span>LaundryRoom:</span> {room.laundryRoom}
-                <styles.Delete onClick={() => deleteLaundryRoom()} />
+                <styles.Delete onClick={() => deleteLaundryRoom(room._id)} />
               </styles.EachRoomContainer>
             );
           })}

@@ -11,8 +11,11 @@ import BookTimePopUp from "./bookTimePopUp/BookTimePopUp";
 import { shortenDateToString } from "../../utils/shortenDateToString";
 import Spinner from "../../ui/loadingSpinner/Spinner";
 import Head from "../Helmet/Head";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const CalendarComp = () => {
+  const [choosenRoom, setChoosenRoom] = useState("");
   const [toogleMenu, setToogleMenu] = useState(false);
   const [choosenTime, setChoosenTime] = useState<LaundryTimes | null>(null);
   const [toogleBookPopUp, setToogleBookPopUp] = useState(false);
@@ -20,6 +23,10 @@ const CalendarComp = () => {
   const [date, setDate] = useState(new Date());
   const dateString = splitAndConCatDateString(date);
   const readebleDate = shortenDateToString(date);
+
+  const laundryRooms = useSelector(
+    (state: RootState) => state.laundryRoomReducer.laundryRooms
+  );
 
   useEffect(() => {
     loopThruLaundryTimes(laundryTimes, setBookingTimes, dateString);
@@ -30,20 +37,36 @@ const CalendarComp = () => {
     setToogleBookPopUp(true);
   };
 
+  const chooseLaundryRoomOnClick = (room: string) => {
+    setChoosenRoom(room);
+    setToogleMenu(false);
+  };
   return (
     <styles.Container>
       <Head title='calendar' description='booking calendar' />
       <styles.CalendarWrapper>
         <styles.Title>
-          <span>LaundryRoom:</span> Main
+          <span>LaundryRoom:</span>{" "}
+          {laundryRooms?.length < 1 ? "Main" : choosenRoom}
         </styles.Title>
-        <styles.ChooseTitle onClick={() => setToogleMenu(!toogleMenu)}>
-          Change Laundry room?
-        </styles.ChooseTitle>
+        {laundryRooms?.length < 1 ? null : (
+          <styles.ChooseTitle onClick={() => setToogleMenu(!toogleMenu)}>
+            Change Laundry room?
+          </styles.ChooseTitle>
+        )}
 
         {toogleMenu ? (
           <styles.UserMenu>
-            <styles.PostsLink></styles.PostsLink>
+            {laundryRooms.map((room) => {
+              return (
+                <styles.PostsLink
+                  onClick={() => chooseLaundryRoomOnClick(room.laundryRoom)}
+                  key={room._id}
+                >
+                  {room.laundryRoom}
+                </styles.PostsLink>
+              );
+            })}
           </styles.UserMenu>
         ) : null}
 

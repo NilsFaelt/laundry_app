@@ -14,8 +14,6 @@ const Login = () => {
     email: null,
     password: null,
   });
-  console.log(showLoginFailed);
-  console.log(user);
 
   return (
     <styles.BackgroundContainer>

@@ -30,6 +30,7 @@ export const TimesWrapper = styled(globalStyles.FlexedContainerCollumn)`
 
 export const Title = styled.h2`
   margin-top: 2vh;
+  margin-bottom: 10px;
   font-size: 15px;
   color: ${colors.white};
   text-align: center;
