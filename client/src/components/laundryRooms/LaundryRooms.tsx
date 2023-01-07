@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addRoom } from "../../api/addLaundryRoom";
+import { addSingleLaundryRoom } from "../../redux/laundryRoomsSlice";
 import { RootState } from "../../redux/store";
 import DeletePopUp from "./deletePopUp/DeletePopUp";
 import * as styles from "./laundryRooms.style";
@@ -9,6 +10,8 @@ const Laundryrooms = () => {
   const [tooglePopUp, setTooglePopUp] = useState(false);
   const [roomId, setRoomId] = useState("");
   const [roomInput, setRoomInput] = useState("");
+
+  const dispatch = useDispatch();
 
   const rooms = useSelector(
     (state: RootState) => state.laundryRoomReducer.laundryRooms
@@ -22,7 +25,9 @@ const Laundryrooms = () => {
   const addLaundryRoom = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = await addRoom(roomInput);
+    if (data) dispatch(addSingleLaundryRoom(data));
   };
+
   return (
     <styles.BackgroundContainer>
       <styles.Container>

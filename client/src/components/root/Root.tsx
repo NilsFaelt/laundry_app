@@ -2,10 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getAllRooms } from "../../api/getAllRooms";
-import {
-  addLaundryRooms,
-  getLaundryRoomsThunk,
-} from "../../redux/laundryRoomsSlice";
+import { addLaundryRoom, addLaundryRooms } from "../../redux/laundryRoomsSlice";
 import { RootState } from "../../redux/store";
 import { loginUser } from "../../redux/userSlice";
 import { UserTypeWithNestedAdress } from "../../types/userType";
@@ -29,13 +26,12 @@ const Root = () => {
     }
   }, []);
 
-  // const fetchWrapper = async () => {
-  //   const data = await getAllRooms();
-  //   dispatch(getLaundryRoomsThunk());
-  // };
+  const fetchWrapper = async () => {
+    const data = await getAllRooms();
+    if (data) dispatch(addLaundryRooms(data));
+  };
   useEffect(() => {
-    dispatch(getLaundryRoomsThunk());
-    // fetchWrapper();
+    fetchWrapper();
     navigate("/calendar");
   }, [user]);
   return (
