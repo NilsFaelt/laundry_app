@@ -31,6 +31,12 @@ const CalendarComp = () => {
   useEffect(() => {
     loopThruLaundryTimes(laundryTimes, setBookingTimes, dateString);
   }, [date]);
+  useEffect(() => {
+    if (laundryRooms.length > 0) setChoosenRoom(laundryRooms[0]?.laundryRoom);
+    else {
+      setChoosenRoom("Main");
+    }
+  }, [laundryRooms]);
 
   const handleBookTimeClick = (time: LaundryTimes) => {
     setChoosenTime(time);
@@ -73,6 +79,7 @@ const CalendarComp = () => {
         <Calendar onChange={setDate} value={date} />
         {toogleBookPopUp ? (
           <BookTimePopUp
+            choosenRoom={choosenRoom}
             date={date}
             dateString={dateString}
             bookedTime={choosenTime}

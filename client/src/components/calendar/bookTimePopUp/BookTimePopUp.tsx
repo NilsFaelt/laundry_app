@@ -9,6 +9,7 @@ import * as styles from "./bookTimePopUp.style";
 import { handleBookingOnClick } from "./utils/handkeBookingOnclick";
 
 interface Props {
+  choosenRoom: string;
   date: Date;
   dateString: string;
   bookedTime: LaundryTimes | null;
@@ -22,6 +23,7 @@ const BookTimePopUp: React.FC<Props> = ({
   readebleDate,
   setToogleBookPopUp,
   date,
+  choosenRoom,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -32,7 +34,7 @@ const BookTimePopUp: React.FC<Props> = ({
     (state: any) => state.userReducer.user
   );
   const [bookingInfo, setBookingInfo] = useState<BookingInfo>({
-    laundryRoom: "default",
+    laundryRoom: choosenRoom || "Main",
     dateForBooking: dateString,
     email: user?.email || "no mail found",
     name: user?.name || "no name found",

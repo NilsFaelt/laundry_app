@@ -32,6 +32,10 @@ const EachBooking: React.FC<Props> = ({
     <styles.container>
       {toogleAlarm ? <AlarmPopUp setToolgeAlarm={setToolgeAlarm} /> : null}
       <styles.Delete onClick={() => deleteOnClick(info)}></styles.Delete>
+      <styles.TitleTop>
+        <styles.Span> LaundryRoom: </styles.Span>
+        {info.laundryRoom}
+      </styles.TitleTop>
       <styles.Title>
         <styles.Span> Time: </styles.Span>
         {time}

@@ -10,13 +10,20 @@ export const container = styled.div`
   align-self: center;
   width: 90%;
   margin-top: 5px;
-  padding-bottom: 2vh;
+  padding-bottom: 4vh;
   background-color: black;
   box-shadow: 3px 3px 3px;
 `;
 
 export const Title = styled.h2`
   margin-top: 1.5vh;
+  margin-bottom: 1vh;
+  font-size: 15px;
+  color: ${colors.white};
+  text-align: center;
+`;
+export const TitleTop = styled.h2`
+  margin-top: 30px;
   margin-bottom: 1vh;
   font-size: 15px;
   color: ${colors.white};
