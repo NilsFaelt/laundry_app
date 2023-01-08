@@ -16,9 +16,10 @@ export const Container = styled(globalStyles.FlexedContainerCollumn)`
 `;
 
 export const P = styled.p`
-  font-size: 25px;
+  font-size: 16px;
   text-align: center;
   color: ${colors.white};
+  margin-bottom: 10px;
 `;
 export const Span = styled.span`
   color: ${colors.showActiveLink};

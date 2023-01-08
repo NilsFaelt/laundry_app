@@ -15,6 +15,7 @@ const BookingLimitPopUp = ({ setToogleBookingLimit }: Props) => {
   };
   return (
     <styles.Container>
+      <styles.P>Change BookingLimit</styles.P>
       <styles.Input
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setInput(e.target.valueAsNumber)
