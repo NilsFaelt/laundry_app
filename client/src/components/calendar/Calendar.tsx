@@ -15,6 +15,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
 const CalendarComp = () => {
+  const [laundryTimesState, setLaundryTimesState] =
+    useState<LaundryTimes[]>(laundryTimes);
   const [choosenRoom, setChoosenRoom] = useState("");
   const [toogleMenu, setToogleMenu] = useState(false);
   const [choosenTime, setChoosenTime] = useState<LaundryTimes | null>(null);
@@ -28,9 +30,17 @@ const CalendarComp = () => {
     (state: RootState) => state.laundryRoomReducer.laundryRooms
   );
 
+  console.log(laundryTimesState);
+
   useEffect(() => {
-    loopThruLaundryTimes(laundryTimes, setBookingTimes, dateString);
-  }, [date]);
+    loopThruLaundryTimes(
+      laundryTimes,
+      setBookingTimes,
+      dateString,
+      choosenRoom
+    );
+  }, [date, choosenRoom]);
+
   useEffect(() => {
     if (laundryRooms.length > 0) setChoosenRoom(laundryRooms[0]?.laundryRoom);
     else {

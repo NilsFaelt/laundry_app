@@ -5,7 +5,7 @@ import { colors } from "../../styles/colors";
 
 export const Container = styled(globalStyles.FlexedContainerRow)`
   padding-top: 20vh;
-  padding-bottom: 20vh;
+  padding-bottom: 40vh;
   align-items: flex-start;
   width: 100vw;
   height: 120vh;
