@@ -39,6 +39,7 @@ const AllMails = ({ setChoosenMail, choosenMail }: Props) => {
         {paginatedArray.slicedArray?.map((mail) => {
           return (
             <EachMail
+              key={mail._id}
               setAllMails={setAllMails}
               setChoosenMail={setChoosenMail}
               mail={mail}

@@ -17,6 +17,10 @@ const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: RootState) => state.userReducer.user
   );
+  const bookingLimit = useSelector(
+    (state: RootState) => state.settingsReducer.bookingLimit
+  );
+  console.log(bookingLimit, "limit");
   const [usersBookedLimit, setusersBookedLimit] = useState<
     BookedLaundrytimes[]
   >([]);
@@ -30,7 +34,9 @@ const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
     <styles.container
       onClick={() => handleBookTimeClick(bookedTime)}
       cursor={
-        bookedTime.availible && usersBookedLimit?.length < 3 && dateRelevance
+        bookedTime.availible &&
+        usersBookedLimit?.length < bookingLimit &&
+        dateRelevance
           ? "pointer"
           : "none"
       }
@@ -46,7 +52,7 @@ const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
       ) : (
         <styles.TitleBooked>Booked</styles.TitleBooked>
       )}
-      {usersBookedLimit.length === 3 ? (
+      {usersBookedLimit.length === bookingLimit ? (
         <>
           <styles.TitleBooked>Your bookings limit is full</styles.TitleBooked>
         </>

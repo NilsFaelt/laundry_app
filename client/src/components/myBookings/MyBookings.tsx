@@ -9,6 +9,7 @@ import { BookedLaundrytimes } from "../../types/laundryTypes";
 import { UserTypeWithNestedAdress } from "../../types/userType";
 import Spinner from "../../ui/loadingSpinner/Spinner";
 import Head from "../Helmet/Head";
+import BookingLimitPopUp from "./bookingLimitPopUp/BookingLimitPopUp";
 import EachBooking from "./eachBooking/EachBooking";
 import { useGetTimeByUser } from "./hook/useGetTimeByUser";
 import * as styles from "./myBookings.style";
@@ -22,10 +23,13 @@ interface Data {
 
 const MyBookings = () => {
   const dispacth = useDispatch();
-
+  const [toogleBookingLimit, setToogleBookingLimit] = useState(false);
   const [rerenderBookings, setRerenderBookings] = useState<boolean>(false);
   const user: UserTypeWithNestedAdress | null = useSelector(
     (state: any) => state.userReducer.user
+  );
+  const bookingLimit = useSelector(
+    (state: RootState) => state.settingsReducer.bookingLimit
   );
 
   let bookedTimes: Data | null = null;
@@ -42,9 +46,17 @@ const MyBookings = () => {
     <styles.BackgroundContainer>
       <Head title='My booked times' description='My booked  laundry times' />
       <styles.Container>
+        {toogleBookingLimit && (
+          <BookingLimitPopUp setToogleBookingLimit={setToogleBookingLimit} />
+        )}
         <styles.Title>
-          My booked laundrytimes {bookedTimes?.data?.length || 0}/3
+          My booked laundrytimes {bookedTimes?.data?.length || 0}/{bookingLimit}
         </styles.Title>
+        <styles.ChooseTitle
+          onClick={() => setToogleBookingLimit(!toogleBookingLimit)}
+        >
+          Change Booking Limit?
+        </styles.ChooseTitle>
         {bookedTimes?.loading ? <Spinner /> : null}
         {bookedTimes?.data?.map((each: BookedLaundrytimes) => (
           <EachBooking

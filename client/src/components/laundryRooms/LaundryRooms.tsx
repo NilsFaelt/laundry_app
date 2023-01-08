@@ -31,14 +31,13 @@ const Laundryrooms = () => {
   return (
     <styles.BackgroundContainer>
       <styles.Container>
-        {" "}
         {tooglePopUp ? (
           <DeletePopUp roomId={roomId} setTooglePopUp={setTooglePopUp} />
         ) : null}
         <styles.LaundryRoomsContainer>
           {rooms?.map((room) => {
             return (
-              <styles.EachRoomContainer>
+              <styles.EachRoomContainer key={room._id}>
                 <span>LaundryRoom:</span> {room.laundryRoom}
                 <styles.Delete onClick={() => deleteLaundryRoom(room._id)} />
               </styles.EachRoomContainer>

@@ -1,14 +1,14 @@
-import { ThreadType } from "../../../../types/threadTypes";
+import { MailType } from "../../../../../types/mailTypes";
 
 export const getPaginationInfo = (
-  threads: ThreadType[],
+  threads: MailType[],
   page: number,
   perPage: number
 ): {
   lastIndex: number;
   firstIndex: number;
   roundedPage: number;
-  slicedArray: ThreadType[];
+  slicedArray: MailType[];
 } => {
   const lastIndex = page * perPage;
   const firstIndex = lastIndex - perPage;

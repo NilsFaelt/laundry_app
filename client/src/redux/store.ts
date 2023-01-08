@@ -10,6 +10,7 @@ import bookedTimesSlice from "./bookedTimesSlice";
 import userSlice from "./userSlice";
 import laundryRoomSlice from "./laundryRoomsSlice";
 import logger from "redux-logger";
+import settingsSlice from "./settingsSlice";
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
@@ -22,6 +23,7 @@ const reducer = {
   showActiveMenuReducer: showActiveMenuSlice,
   userReducer: userSlice,
   laundryRoomReducer: laundryRoomSlice,
+  settingsReducer: settingsSlice,
 };
 const store = configureStore({
   reducer,

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { laundryTimes } from "../components/calendar/laundryTimes";
 import { BookedLaundrytimes } from "../types/laundryTypes";
 
 interface BookedTimesState {

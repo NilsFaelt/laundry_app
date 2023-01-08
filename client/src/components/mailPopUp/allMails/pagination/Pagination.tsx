@@ -1,12 +1,19 @@
 import { MailType } from "../../../../types/mailTypes";
-import { PaginationInfo } from "../../../../types/paginationTypes";
+import { ThreadType } from "../../../../types/threadTypes";
 import * as styles from "./pagination.styles";
 import { calcNrsToShowInPagination } from "./utils/calcNrsToShowInPagination";
+
+export interface PaginationInfoMail {
+  lastIndex: number;
+  firstIndex: number;
+  roundedPage: number;
+  slicedArray: MailType[];
+}
 
 interface Props {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   page: number;
-  paginatedArray: PaginationInfo;
+  paginatedArray: PaginationInfoMail;
   filteredThreads: MailType[];
 }
 const Pagination = ({
