@@ -9,12 +9,12 @@ export const container = styled(globalStyles.FlexedContainerCollumn)`
   top: 55%;
   left: 50%;
   padding: 20px 50px 20px 50px;
-  background-color: black;
+  background-color: ${colors.primaryDark};
   transform: translate(-50%, -50%);
   border-radius: 5px;
   box-shadow: 3px 3px 3px;
   z-index: 1;
-  border: 1px solid white;
+  border: 1px solid black;
 `;
 export const title = styled(globalStyles.ThhirdTitle)`
   color: white;
