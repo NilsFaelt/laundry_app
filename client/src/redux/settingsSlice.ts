@@ -5,7 +5,7 @@ interface SettingsState {
 }
 
 const initialState: SettingsState = {
-  bookingLimit: 10,
+  bookingLimit: 3,
 };
 
 export const settingsSlice = createSlice({

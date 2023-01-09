@@ -16,7 +16,7 @@ export const Container = styled(FlexedContainerCollumn)`
   height: 150px;
   border-radius: 5px;
   padding: 5vw;
-  background-color: black;
+  background-color: rgba(22, 22, 22, 0.96);
   border: 1px solid white;
 `;
 

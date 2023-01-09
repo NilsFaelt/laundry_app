@@ -5,6 +5,7 @@ import * as globalStyles from "../../styles/globalStyles";
 
 export const BackgroundContainer = styled.div`
   width: 100vw;
+  min-height: 100vh;
   height: auto;
   background-image: url(${laundryImg});
   padding-bottom: 30vh;

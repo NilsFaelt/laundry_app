@@ -46,7 +46,8 @@ const Forum = () => {
         <styles.Title>Bulletin Board</styles.Title>
         {choosenThread ? (
           <styles.SecondaryTitle>
-            Thread: {choosenThread}{" "}
+            <span>Thread: </span>
+            {choosenThread}{" "}
           </styles.SecondaryTitle>
         ) : null}
       </styles.Container>

@@ -37,7 +37,7 @@ const AllUsers = () => {
         <UpdatePopUp setChoosenUser={setChoosenUser} user={choosenUser} />
       ) : null}
       <styles.UserContainer>
-        <styles.Refresh onClick={refresh}></styles.Refresh>
+        {/* <styles.Refresh onClick={refresh}></styles.Refresh> */}
         <styles.Label>Search User</styles.Label>
         {userData.error?.message && !userData.data ? (
           <styles.Error>{userData.error?.message}</styles.Error>

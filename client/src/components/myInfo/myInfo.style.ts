@@ -23,10 +23,10 @@ export const InfoContainer = styled.div`
   height: auto;
   padding: 20px;
   padding-bottom: 60px;
-  background-color: black;
+  background-color: ${colors.primary};
   border-radius: 5px;
   box-shadow: 10px 10px 10px;
-  border: 1px solid white;
+  border: 1px solid black;
 `;
 export const AdressContainer = styled.div`
   width: 96%;

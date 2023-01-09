@@ -26,7 +26,7 @@ export const Container = styled.div`
   width: clamp(330px, 50vw, 500px);
   height: 75vh;
   padding: 20px;
-  background-color: grey;
+  background-color: ${colors.primary};
   border-radius: 5px;
   box-shadow: 10px 10px 10px;
   border: 1px solid black;
@@ -35,7 +35,7 @@ export const Container = styled.div`
 export const LaundryRoomsContainer = styled.div`
   width: 100%;
   height: 90%;
-  background-color: ${colors.white};
+  background-color: ${colors.primary};
   border-radius: 5px;
   border: 1px solid black;
   overflow: scroll;
@@ -45,10 +45,12 @@ export const LaundryRoomsContainer = styled.div`
 export const EachRoomContainer = styled(FlexedContainerRow)`
   position: relative;
   justify-content: space-between;
-  margin-top: 2px;
+  margin-top: 5px;
   background-color: ${colors.primary};
-  border: 1px solid black;
+  border: 1px solid white;
+  border-radius: 5px;
   padding: 10px;
+  box-shadow: 3px 3px 3px black;
   color: white;
   span {
     color: ${colors.showActiveLink};
