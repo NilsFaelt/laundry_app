@@ -4,14 +4,14 @@ import { RootState } from "../../../redux/store";
 import { useRef } from "react";
 import { useClickOustsideToClose } from "../../../hooks/useClickOustsideToClose";
 import { loggOutUser } from "../../../redux/userSlice";
-import { Navigate } from "react-router-dom";
 import { activateBooking, handelDropDownClick } from "../../../redux/menuSlice";
 
 const DropDownUserMenu = () => {
-  const { admin } = useSelector((state: any) => state.userReducer.user);
-
+  const user = useSelector((state: RootState) => state.userReducer.user);
+  let admin = false;
+  if (typeof user?.admin === "boolean") admin = user?.admin;
   const dispatch = useDispatch();
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLInputElement>(null!);
   const { userMenu, firstTooglge } = useSelector(
     (state: RootState) => state.showActiveMenuReducer
   );

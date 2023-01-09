@@ -26,7 +26,7 @@ const MyBookings = () => {
   const [toogleBookingLimit, setToogleBookingLimit] = useState(false);
   const [rerenderBookings, setRerenderBookings] = useState<boolean>(false);
   const user: UserTypeWithNestedAdress | null = useSelector(
-    (state: any) => state.userReducer.user
+    (state: RootState) => state.userReducer.user
   );
   const bookingLimit = useSelector(
     (state: RootState) => state.settingsReducer.bookingLimit
@@ -52,11 +52,13 @@ const MyBookings = () => {
         <styles.Title>
           My booked laundrytimes {bookedTimes?.data?.length || 0}/{bookingLimit}
         </styles.Title>
-        <styles.ChooseTitle
-          onClick={() => setToogleBookingLimit(!toogleBookingLimit)}
-        >
-          Change Booking Limit?
-        </styles.ChooseTitle>
+        {user?.admin && (
+          <styles.ChooseTitle
+            onClick={() => setToogleBookingLimit(!toogleBookingLimit)}
+          >
+            Change Booking Limit?
+          </styles.ChooseTitle>
+        )}
         {bookedTimes?.loading ? <Spinner /> : null}
         {bookedTimes?.data?.map((each: BookedLaundrytimes) => (
           <EachBooking

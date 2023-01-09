@@ -11,7 +11,7 @@ export const Container = styled(globalStyles.FlexedContainerCollumn)`
   height: auto;
   border-radius: 5px;
   padding: 5vw;
-  background-color: black;
+  background-color: ${colors.primaryDark};
   border: 1px solid white;
 `;
 

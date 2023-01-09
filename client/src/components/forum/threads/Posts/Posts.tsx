@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { addPost } from "../../../../api/addPost";
 import { getAllPosts } from "../../../../api/getAllPosts";
+import { useClickOustsideToClose } from "../../../../hooks/useClickOustsideToClose";
 import { RootState } from "../../../../redux/store";
 import { Post } from "../../../../types/postType";
 import Spinner from "../../../../ui/loadingSpinner/Spinner";
@@ -30,6 +31,7 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
   const [postId, setPostId] = useState<string>("");
   const [input, setInput] = useState("");
   const chatBox = document.getElementById("chat-feed");
+  const menuRef = useRef<HTMLInputElement>(null!);
 
   const postOnClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -90,6 +92,7 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
     setFirstToggle(true);
     setToogleMenu(!toogleMenu);
   };
+  useClickOustsideToClose(menuRef, setToogleMenu);
 
   return (
     <styles.Container>
@@ -97,7 +100,7 @@ const Posts = ({ setChoosenThread, thread, setactivateFetchPosts }: Props) => {
         <styles.HamBurger onClick={() => toogleMenuOnClick()} />
       ) : null}
       {toogleMenu ? (
-        <styles.UserMenu>
+        <styles.UserMenu ref={menuRef}>
           <styles.PostsLink onClick={() => deleteThread(setDeleteThreadPopUp)}>
             Delete Thread
           </styles.PostsLink>

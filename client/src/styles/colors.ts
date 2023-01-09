@@ -1,5 +1,6 @@
 export const colors = {
   primary: "rgba(22, 22, 22, 0.80)",
+  primaryDark: "rgba(22, 22, 22, 0.96)",
   white: "white",
   positive: "#41f43b",
   bluePositive: "#a6b2e1",
