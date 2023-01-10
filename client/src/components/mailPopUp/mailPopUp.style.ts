@@ -47,6 +47,15 @@ export const P = styled.p`
   color: black;
   cursor: pointer;
 `;
+export const ClickableText = styled.p`
+  font-size: 14px;
+  font-weight: bolder;
+  margin-top: 8px;
+  margin-left: 8px;
+  color: ${colors.white};
+  cursor: pointer;
+  text-decoration: underline ${colors.showActiveLink};
+`;
 
 export const Form = styled.form`
   margin-top: 10px;

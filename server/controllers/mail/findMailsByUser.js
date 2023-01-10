@@ -3,7 +3,7 @@ const Mails = require("../../models/Mail");
 const findMailByUser = async (req, res, next) => {
   try {
     const mails = await Mails.find({
-      to: req.params.email,
+      $or: [{ to: "allUsers@laundry.com" }, { to: req.params.email }],
     }).exec();
 
     res.status(200).send({ mails: mails });

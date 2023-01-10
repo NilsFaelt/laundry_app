@@ -9,11 +9,13 @@ export function useClickOustsideToClose(
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const handler = (event: any) => {
-      if (!ref.current?.contains(event.target)) {
-        dispatch(closeOusideClick());
-        if (setToogleMenu) setToogleMenu(false);
-      }
+    const handler = (event: Event) => {
+      const target = event.target as HTMLInputElement;
+      if (target)
+        if (!ref.current?.contains(target)) {
+          dispatch(closeOusideClick());
+          if (setToogleMenu) setToogleMenu(false);
+        }
     };
 
     document.addEventListener("mousedown", handler);

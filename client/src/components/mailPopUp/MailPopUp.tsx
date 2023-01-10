@@ -44,9 +44,8 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
   const [allMails, setAllMails] = useState<string[]>([]);
   const [allMailsFiltered, setAllMailsFiltered] = useState<string[]>([]);
   const [toogleMailWriteMail, setToogleMailWriteMail] = useState(false);
-
+  const allUsers = "allUsers@laundry.com";
   const date = shortenDateToString(new Date());
-  console.log(choosenMail);
 
   const fetchWrapper = async () => {
     const data = await getAllUsers();
@@ -133,6 +132,9 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
     setChoosenMail(null);
   };
 
+  const sendToAllOnCLick = () => {
+    setTo(allUsers);
+  };
   return (
     <styles.Container>
       <Head title='Mail' description='send mail' />
@@ -157,6 +159,11 @@ const MailPopUp = ({ setToogleMailPopUp }: Props) => {
               value={text}
             ></styles.TextArea>
             {sentSucees ? <styles.Label>Mail sent</styles.Label> : null}
+            {user?.admin && (
+              <styles.ClickableText onClick={() => sendToAllOnCLick()}>
+                Send to all users?
+              </styles.ClickableText>
+            )}
             <styles.Input
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setSubject(e.target.value)

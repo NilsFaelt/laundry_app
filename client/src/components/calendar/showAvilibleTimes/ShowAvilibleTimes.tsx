@@ -20,7 +20,6 @@ const ShowAvilibleTimes: React.FC<ShowAvailibleTimesProps> = ({
   const bookingLimit = useSelector(
     (state: RootState) => state.settingsReducer.bookingLimit
   );
-  console.log(bookingLimit, "limit");
   const [usersBookedLimit, setusersBookedLimit] = useState<
     BookedLaundrytimes[]
   >([]);

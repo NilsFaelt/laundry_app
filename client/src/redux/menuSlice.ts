@@ -20,6 +20,7 @@ const showActiveMenuSlice = createSlice({
         bookings: false,
         chat: false,
         userMenu: false,
+        mailPopUp: false,
       };
     },
 
@@ -30,6 +31,7 @@ const showActiveMenuSlice = createSlice({
         bookings: true,
         chat: false,
         userMenu: false,
+        mailPopUp: false,
       };
     },
     activateChat: (state) => {
@@ -39,6 +41,7 @@ const showActiveMenuSlice = createSlice({
         bookings: false,
         chat: true,
         userMenu: false,
+        mailPopUp: false,
       };
     },
     toogleMenu: (state) => {
@@ -47,6 +50,7 @@ const showActiveMenuSlice = createSlice({
     closeOusideClick: (state) => {
       return { ...state, userMenu: false };
     },
+
     handelDropDownClick: (state) => {
       return {
         ...state,
