@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getAllRooms } from "../../api/getAllRooms";
-import { addLaundryRoom, addLaundryRooms } from "../../redux/laundryRoomsSlice";
+import { addLaundryRooms } from "../../redux/laundryRoomsSlice";
 import { RootState } from "../../redux/store";
 import { loginUser } from "../../redux/userSlice";
 import { UserTypeWithNestedAdress } from "../../types/userType";
