@@ -1,7 +1,7 @@
 import axios from "axios";
 import { apiConfig } from "./apiConifig";
 
-export const addReminder = async () => {
+export const deleteReminder = async () => {
   try {
     const data = await axios.delete(
       `http://${apiConfig.url}:${apiConfig.port}/reminder`

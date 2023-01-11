@@ -24,3 +24,7 @@ export const Remove = styled.p`
   text-decoration: underline;
   cursor: pointer;
 `;
+export const P = styled.p`
+  font-size: 18px;
+  color: ${colors.white};
+`;

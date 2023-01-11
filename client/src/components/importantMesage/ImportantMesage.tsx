@@ -6,9 +6,11 @@ import { Warning } from "../forum/addThreadPopUp/addThreadPopUp.styles";
 
 import { useState } from "react";
 import { addReminder } from "../../api/addReminder";
+import DeletePopUp from "./deletePopUp/DeletePopUp";
 const ImportantMesage = () => {
   const [toogelDelete, setToogelDelete] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
+  const [sucesstMessage, setSucesstMessage] = useState(false);
   const [info, setInfo] = useState({
     text: "",
     title: "",
@@ -26,6 +28,7 @@ const ImportantMesage = () => {
         title: "",
         from: "",
       });
+      setSucesstMessage(true);
     } else {
       setAlertMessage(true);
     }
@@ -34,6 +37,7 @@ const ImportantMesage = () => {
   return (
     <BackgroundContainer>
       <styles.Container>
+        {toogelDelete && <DeletePopUp setToogelDelete={setToogelDelete} />}
         <styles.Remove onClick={() => setToogelDelete(true)}>
           Remove current message?
         </styles.Remove>
@@ -50,6 +54,7 @@ const ImportantMesage = () => {
             placeholder='Message'
           ></styles.TextArea>
           {alertMessage && <Warning>Couldnt Add Message</Warning>}
+          {sucesstMessage && <styles.P>Message added</styles.P>}
           <Input
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setInfo({ ...info, [e.target.name]: e.target.value })
