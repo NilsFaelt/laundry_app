@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../../styles/colors";
 import * as globalStyles from "../../../styles/globalStyles";
 import * as loginStyles from "../../login/login/login.styles";
+import { Delete } from "../eachBooking/eachBooking.styles";
 
 export const Container = styled(globalStyles.FlexedContainerCollumn)`
   position: absolute;
@@ -49,3 +50,11 @@ export const BtnDiv = styled.div`
 `;
 
 export const Input = styled.input``;
+export const Close = styled(Delete)`
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  :hover {
+    color: ${colors.white};
+  }
+`;

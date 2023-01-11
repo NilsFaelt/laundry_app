@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateBookingLimit } from "../../../redux/settingsSlice";
+
 import * as styles from "./bookingLimitPopUp.style";
 interface Props {
   setToogleBookingLimit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,6 +16,7 @@ const BookingLimitPopUp = ({ setToogleBookingLimit }: Props) => {
   };
   return (
     <styles.Container>
+      <styles.Close onClick={() => setToogleBookingLimit(false)} />
       <styles.P>Change BookingLimit</styles.P>
       <styles.Input
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

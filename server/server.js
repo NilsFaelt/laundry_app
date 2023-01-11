@@ -12,6 +12,7 @@ const threadRoute = require("./routes/bulletinBoard");
 const postsRoute = require("./routes/posts");
 const mailRoute = require("./routes/mail");
 const laundryRoomsRouter = require("./routes/laundryRooms");
+const remindersRouter = require("./routes/reminder");
 const errorHandler = require("./middlewares/errorHandler");
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.use("/thread", threadRoute);
 app.use("/posts", postsRoute);
 app.use("/mail", mailRoute);
 app.use("/laundryroom", laundryRoomsRouter);
+app.use("/reminder", remindersRouter);
 
 app.use(errorHandler);
 
