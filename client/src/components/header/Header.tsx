@@ -25,7 +25,6 @@ const Header = () => {
   useEffect(() => {
     fetchWraper();
   }, []);
-  console.log(reminder, "reminder");
 
   return (
     <styles.Container>

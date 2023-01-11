@@ -17,6 +17,12 @@ export const container = styled(globalStyles.FlexedContainerCollumn)`
 export const P = styled.p`
   color: white;
 `;
+export const Pclick = styled.p`
+  color: white;
+  text-decoration: underline ${colors.showActiveLink};
+  margin-top: 15px;
+  cursor: pointer;
+`;
 export const DangerBtn = styled(globalStyles.DangerBUtton)`
   margin-top: 2vh;
 `;
@@ -29,4 +35,19 @@ export const PstvBtn = styled(globalStyles.MainBtn)`
 export const BtnDiv = styled.div`
   display: flex;
   gap: 4vw;
+`;
+
+export const MessageTitle = styled.h2`
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  text-align: center;
+  color: ${colors.showActiveLink};
+`;
+
+export const PFrom = styled.p`
+  color: ${colors.showActiveLink};
+  font-size: 18px;
+  margin-top: 10px;
+  line-break: auto;
 `;
