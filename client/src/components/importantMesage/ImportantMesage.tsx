@@ -7,7 +7,8 @@ import { Warning } from "../forum/addThreadPopUp/addThreadPopUp.styles";
 import { useState } from "react";
 import { addReminder } from "../../api/addReminder";
 const ImportantMesage = () => {
-  const [alertMessage, setAlertMessage] = useState(true);
+  const [toogelDelete, setToogelDelete] = useState(false);
+  const [alertMessage, setAlertMessage] = useState(false);
   const [info, setInfo] = useState({
     text: "",
     title: "",
@@ -33,6 +34,9 @@ const ImportantMesage = () => {
   return (
     <BackgroundContainer>
       <styles.Container>
+        <styles.Remove onClick={() => setToogelDelete(true)}>
+          Remove current message?
+        </styles.Remove>
         <styles.Form
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => sendOnClick(e)}
         >

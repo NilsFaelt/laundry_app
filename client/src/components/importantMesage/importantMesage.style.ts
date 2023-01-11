@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/colors";
 import { Container as LaundryContainer } from "../laundryRooms/laundryRooms.style";
 
 export const Container = styled(LaundryContainer)``;
@@ -15,4 +16,11 @@ export const Form = styled.form`
 export const TextArea = styled.textarea`
   width: 90%;
   height: 300px;
+`;
+
+export const Remove = styled.p`
+  font-size: 18px;
+  color: ${colors.white};
+  text-decoration: underline;
+  cursor: pointer;
 `;

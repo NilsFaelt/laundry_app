@@ -12,8 +12,6 @@ export const loopThruLaundryTimes = async (
   setBookingTimes(laundryTimes);
   for (let i = 0; i < laundryTimes.length; i++) {
     data.map((booked: BookedLaundrytimes) => {
-      console.log(booked.laundryRoom, "dayta in func");
-      console.log(choosenRoom, "choosen");
       if (
         booked.bookedHours === laundryTimes[i].time &&
         booked.laundryRoom === choosenRoom

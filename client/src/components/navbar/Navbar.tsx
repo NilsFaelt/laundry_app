@@ -15,7 +15,7 @@ const Navbar = () => {
   const bookeTimes = useSelector(
     (state: RootState) => state.bookedTimesReducer.bookedTimes
   );
-  console.log(bookeTimes);
+
   const dispatch = useDispatch();
 
   return (
