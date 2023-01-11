@@ -81,6 +81,17 @@ const DropDownUserMenu = () => {
               LaundryRooms
             </styles.Link>
           ) : null}
+          {admin ? (
+            <styles.Link
+              onClick={() => dispatch(handelDropDownClick())}
+              animation={
+                userMenu ? "open-animation-nav" : "close-animation-nav"
+              }
+              to={"/reminder"}
+            >
+              Important Message
+            </styles.Link>
+          ) : null}
           <styles.Link
             onClick={handleLoggout}
             animation={userMenu ? "open-animation-nav" : "close-animation-nav"}

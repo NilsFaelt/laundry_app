@@ -14,6 +14,7 @@ import Root from "./components/root/Root";
 import "./index.css";
 import store from "./redux/store";
 import { HelmetProvider } from "react-helmet-async";
+import ImportantMesage from "./components/importantMesage/ImportantMesage";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "laundryrooms",
         element: <Laundryrooms />,
+      },
+      {
+        path: "reminder",
+        element: <ImportantMesage />,
       },
     ],
   },
