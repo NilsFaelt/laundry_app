@@ -6,8 +6,7 @@ export const typeCheckUser = (user: UserTypeWithNestedAdress) => {
     typeof user.email === "string" &&
     typeof user.name === "string" &&
     typeof user.lastName === "string" &&
-    typeof user.admin === "boolean" &&
-    typeof user.nrOfActiveBookings === "number"
+    typeof user.admin === "boolean"
   )
     return true;
   else return false;

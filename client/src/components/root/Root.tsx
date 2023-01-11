@@ -20,11 +20,14 @@ const Root = () => {
 
   useEffect(() => {
     const userFromLocaal = localStorage.getItem("user");
+    console.log(userFromLocaal, "from local bree");
     if (typeof userFromLocaal === "string") {
       const parsedUser = JSON.parse(userFromLocaal);
+      console.log(parsedUser, "from local bree");
       if (typeCheckUser(parsedUser)) dispatch(loginUser(parsedUser));
     }
   }, []);
+  console.log(user, "userrrr");
 
   const fetchWrapper = async () => {
     const data = await getAllRooms();
